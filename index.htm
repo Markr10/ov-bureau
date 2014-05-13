@@ -8,12 +8,58 @@
 </script>
 <script>
 $(document).ready(function(){
+	var contrast = 0;
   $("a.fontSizePlus").click(function(){
     $("#slogan").removeClass('footerSloganNormal').addClass('footerSloganBig');
 	$("#footer").removeClass('footerSloganNormal').addClass('footerSloganBig');
 	$("#menu").removeClass('menuPlanNormal').addClass('menuPlanBig');
 	$("#plan").removeClass('menuPlanNormal').addClass('menuPlanBig');
 	$("#content").removeClass('textNormal').addClass('textBig');
+  });
+  
+   $("a.fontSizeMinus").click(function(){
+    $("#slogan").removeClass('footerSloganBig').addClass('footerSloganNormal');
+	$("#footer").removeClass('footerSloganBig').addClass('footerSloganNormal');
+	$("#menu").removeClass('menuPlanBig').addClass('menuPlanNormal');
+	$("#plan").removeClass('menuPlanBig').addClass('menuPlanNormal');
+	$("#content").removeClass('textBig').addClass('textNormal');
+  });
+  
+  $("img").click(function(){
+	  if (contrast == 0)
+	  {
+		  contrast = 1;
+		  var backgroundColor = {'background-color': '#000'};
+		  var textColor = {'color': '#D1E631'};
+    $("#menu").css(backgroundColor);
+	$("#slogan").css(backgroundColor);
+	$("#plan").css(backgroundColor);
+	$("#content").css(backgroundColor);
+	$("#footer").css(backgroundColor);
+	$("body").css(backgroundColor);
+	$("#content").css(textColor);
+	$("#slogan").css(textColor);
+	$("#menu").css(textColor);
+	$("#plan").css(textColor);
+	$("#footer").css(textColor);
+	$("#container").css('box-shadow', '5px 0px 5px 0px  #D1E631, -5px 0px 5px 0px #D1E631, 0px 5px 5px 0px #D1E631');
+	
+
+
+	  }
+	  else
+	  {
+		  contrast = 0;
+    $("#menu").removeAttr('style');
+	$("#slogan").removeAttr('style');
+	$("#slogan").removeAttr('style');
+	$("#plan").removeAttr('style');
+	$("#content").removeAttr('style');
+	$("#content").removeAttr('style');
+	$("#footer").removeAttr('style');
+	$("body").removeAttr('style');
+	  }
+	
   });
 });
 </script>
@@ -22,15 +68,14 @@ $(document).ready(function(){
 <body>
 	<div id="container">
     	<div id="menu" class="menuPlanNormal">
-        <img src="images/contrast.png"/>
+        <img src="images/contrast.png"/><div id="textSize"><a href="#" class="fontSizePlus">A+</a> | 
+<a href="#" class="fontSizeMinus">A-</a></div>
         	<ul>
             	<li>Home</li>
                 <li>Waarom OV</li>
                 <li>Contact</li>
             </ul>
-            <div id="textSize"><a href="#" class="fontSizePlus">A+</a> | 
-<a href="#" class="fontReset">Reset</a> | 
-<a href="#" class="fontSizeMinus">A-</a></div>
+            
         </div>
         <div id="slogan" class="footerSloganNormal">Reis met het openbaar vervoer!</div>
     	<div id="header"></div>
