@@ -1,98 +1,100 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Mobiliteit Noord Groningen</title>
-<link rel="stylesheet" type="text/css" href="style.css" />
-<script src="lib/jquery.min.js">
-</script>
-<script>
-$(document).ready(function(){
-	//contrast variabele om te onthouden in welke contrast de gebruiker zit
-	var contrast = 0;
-	
-	//text vergroten
-  $("a.fontSizePlus").click(function(){
-    $("#slogan").removeClass('footerSloganNormal').addClass('footerSloganBig');
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Mobiliteit Noord Groningen</title>
+	<link rel="stylesheet" type="text/css" href="style.css" />
+	<script src="lib/jquery.min.js">
+	</script>
+	<script>
+	$(document).ready(function(){
+//contrast variabele om te onthouden in welke contrast de gebruiker zit
+var contrast = 0;
+
+//text vergroten
+$("a.fontSizePlus").click(function(){
+	$("#slogan").removeClass('footerSloganNormal').addClass('footerSloganBig');
 	$("#footer").removeClass('footerSloganNormal').addClass('footerSloganBig');
 	$("#menu").removeClass('menuPlanNormal').addClass('menuPlanBig');
 	$("#plan").removeClass('menuPlanNormal').addClass('menuPlanBig');
 	$("#content").removeClass('textNormal').addClass('textBig');
-  });
-  
-  //text verkleinen
-   $("a.fontSizeMinus").click(function(){
-    $("#slogan").removeClass('footerSloganBig').addClass('footerSloganNormal');
+});
+
+//text verkleinen
+$("a.fontSizeMinus").click(function(){
+	$("#slogan").removeClass('footerSloganBig').addClass('footerSloganNormal');
 	$("#footer").removeClass('footerSloganBig').addClass('footerSloganNormal');
 	$("#menu").removeClass('menuPlanBig').addClass('menuPlanNormal');
 	$("#plan").removeClass('menuPlanBig').addClass('menuPlanNormal');
 	$("#content").removeClass('textBig').addClass('textNormal');
-  });
-  
-  //klik op contrastknop
-  $("img").click(function(){
-	  //hoog contrast
-	  if (contrast == 0)
-	  {
-		  contrast = 1;
-		  var backgroundColor = {'background-color': '#000'};
-		  var textColor = {'color': '#D1E631'};
-    		$("#menu").css(backgroundColor);
-	$("#slogan").css(backgroundColor);
-	$("#plan").css(backgroundColor);
-	$("#content").css(backgroundColor);
-	$("#footer").css(backgroundColor);
-	$("body").css(backgroundColor);
-	$("#content").css(textColor);
-	$("#slogan").css(textColor);
-	$("#menu").css(textColor);
-	$("#plan").css(textColor);
-	$("#footer").css(textColor);
-	$("#container").css('box-shadow', '5px 0px 5px 0px  #D1E631, -5px 0px 5px 0px #D1E631, 0px 5px 5px 0px #D1E631');
-	$("img").attr('src', 'images/contrastwit.png');
+});
+
+//klik op contrastknop
+$("img").click(function(){
+  //hoog contrast
+  if (contrast == 0)
+  {
+  	contrast = 1;
+  	var backgroundColor = {'background-color': '#000'};
+  	var textColor = {'color': '#D1E631'};
+  	$("#menu").css(backgroundColor);
+  	$("#slogan").css(backgroundColor);
+  	$("#plan").css(backgroundColor);
+  	$("#content").css(backgroundColor);
+  	$("#footer").css(backgroundColor);
+  	$("body").css(backgroundColor);
+  	$("#content").css(textColor);
+  	$("#slogan").css(textColor);
+  	$("#menu").css(textColor);
+  	$("#plan").css(textColor);
+  	$("#footer").css(textColor);
+  	$("#container").css('box-shadow', '5px 0px 5px 0px  #D1E631, -5px 0px 5px 0px #D1E631, 0px 5px 5px 0px #D1E631');
+  	$("img").attr('src', 'images/contrastwit.png');
 
 
-	  }
-	  else
-	  {
-		  //normaal contrast
-		  contrast = 0;
-    $("#menu").removeAttr('style');
-	$("#slogan").removeAttr('style');
-	$("#slogan").removeAttr('style');
-	$("#plan").removeAttr('style');
-	$("#content").removeAttr('style');
-	$("#content").removeAttr('style');
-	$("#footer").removeAttr('style');
-	$("body").removeAttr('style');
-	$("#container").css('box-shadow', '5px 0px 5px 0px  #888888, -5px 0px 5px 0px #888888, 0px 5px 5px 0px #888888');
-	$("img").attr('src', 'images/contrast.png');
-	  }
+  }
+  else
+  {
+	  //normaal contrast
+	  contrast = 0;
+	  $("#menu").removeAttr('style');
+	  $("#slogan").removeAttr('style');
+	  $("#slogan").removeAttr('style');
+	  $("#plan").removeAttr('style');
+	  $("#content").removeAttr('style');
+	  $("#content").removeAttr('style');
+	  $("#footer").removeAttr('style');
+	  $("body").removeAttr('style');
+	  $("#container").css('box-shadow', '5px 0px 5px 0px  #888888, -5px 0px 5px 0px #888888, 0px 5px 5px 0px #888888');
+	  $("img").attr('src', 'images/contrast.png');
+	}
 	
-  });
+});
 });
 </script>
 </head>
 
 <body>
-<div id="container">
-  <div id="menu" class="menuPlanNormal"> <img src="images/contrast.png"/>
-    <div id="textSize"><a href="#" class="fontSizePlus">A+</a> | <a href="#" class="fontSizeMinus">A-</a></div>
-    <ul>
-      <li>Home</li>
-      <li>Waarom OV</li>
-      <li>Contact</li>
-    </ul>
-  </div>
-  <div id="slogan" class="footerSloganNormal">Reis met het openbaar vervoer!</div>
-  <div id="header"></div>
-  <div id="plan" class="menuPlanNormal">Plan uw reis!</div>
-  <div id="content" class="textNormal">
-    <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc malesuada enim id ligula ullamcorper, eget interdum lacus consequat. Praesent in est dolor. Praesent quis nisl leo. Fusce sit amet condimentum sem, lacinia lacinia nibh. Donec dignissim volutpat mauris, vitae dapibus lectus imperdiet sit amet. In vitae eros sollicitudin, pharetra magna luctus, vehicula metus. Nulla facilisi. Donec eu sapien interdum neque ornare feugiat vitae in risus. Phasellus quis risus sit amet lectus condimentum ultricies. Donec auctor ullamcorper nibh, ut volutpat purus facilisis ac. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent ut adipiscing justo. Ut in interdum libero. Praesent fermentum eget velit nec cursus. Praesent ac ornare elit.</p>
-    <p> Mauris felis nulla, interdum sed pellentesque sit amet, facilisis vitae mi. Morbi quis odio rhoncus, commodo libero non, porta ligula. Donec pharetra urna a tincidunt accumsan. Aenean dignissim adipiscing porttitor. Ut eget feugiat tellus. Donec feugiat metus sed odio adipiscing, quis pretium magna pharetra. Proin a sapien felis. Aliquam nec ornare quam. </p>
-    <p> In in nibh ac lorem posuere gravida vel sit amet magna. Mauris cursus, elit vel imperdiet feugiat, urna risus venenatis lorem, eu hendrerit leo tortor ac erat. Etiam fermentum tincidunt quam ac dignissim. Morbi a consectetur diam, non vestibulum odio. Vestibulum non lacinia est, ut ornare dolor. Donec tincidunt lectus diam, at luctus libero tincidunt vel. Aliquam aliquet semper diam ut dignissim. </p>
-  </div>
-  <div id="footer" class="footerSloganNormal">&copy; 2014 - by INF2D</div>
-</div>
+	<div id="container">
+		<div id="menu" class="menuPlanNormal"> <img src="images/contrast.png"/>
+			<div id="textSize">
+				<a href="#" class="fontSizePlus">A+</a> | <a href="#" class="fontSizeMinus">A-</a>
+			</div>
+			<ul>
+				<li>Home</li>
+				<li>Waarom OV</li>
+				<li>Contact</li>
+			</ul>
+		</div>
+		<div id="slogan" class="footerSloganNormal">Reis met het openbaar vervoer!</div>
+		<div id="header"></div>
+		<div id="plan" class="menuPlanNormal">Plan uw reis!</div>
+		<div id="content" class="textNormal">
+			<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc malesuada enim id ligula ullamcorper, eget interdum lacus consequat. Praesent in est dolor. Praesent quis nisl leo. Fusce sit amet condimentum sem, lacinia lacinia nibh. Donec dignissim volutpat mauris, vitae dapibus lectus imperdiet sit amet. In vitae eros sollicitudin, pharetra magna luctus, vehicula metus. Nulla facilisi. Donec eu sapien interdum neque ornare feugiat vitae in risus. Phasellus quis risus sit amet lectus condimentum ultricies. Donec auctor ullamcorper nibh, ut volutpat purus facilisis ac. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent ut adipiscing justo. Ut in interdum libero. Praesent fermentum eget velit nec cursus. Praesent ac ornare elit.</p>
+			<p> Mauris felis nulla, interdum sed pellentesque sit amet, facilisis vitae mi. Morbi quis odio rhoncus, commodo libero non, porta ligula. Donec pharetra urna a tincidunt accumsan. Aenean dignissim adipiscing porttitor. Ut eget feugiat tellus. Donec feugiat metus sed odio adipiscing, quis pretium magna pharetra. Proin a sapien felis. Aliquam nec ornare quam. </p>
+			<p> In in nibh ac lorem posuere gravida vel sit amet magna. Mauris cursus, elit vel imperdiet feugiat, urna risus venenatis lorem, eu hendrerit leo tortor ac erat. Etiam fermentum tincidunt quam ac dignissim. Morbi a consectetur diam, non vestibulum odio. Vestibulum non lacinia est, ut ornare dolor. Donec tincidunt lectus diam, at luctus libero tincidunt vel. Aliquam aliquet semper diam ut dignissim. </p>
+		</div>
+		<div id="footer" class="footerSloganNormal">&copy; 2014 - by INF2D</div>
+	</div>
 </body>
 </html>
