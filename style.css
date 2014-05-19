@@ -60,6 +60,10 @@ body
     text-decoration: none;
     color: white;
 }
+#menu a:hover, #menu a:active, #menu a:focus
+{
+    text-decoration: underline;
+}
 #slogan 
 {
     background-color: #c2c2c2;
@@ -109,10 +113,6 @@ body
     width: 80px;
     font-size: 16px;
 
-}
-#textSize a 
-{
-    color: #fff;
 }
 .menuPlanNormal 
 {
