@@ -93,8 +93,21 @@ $("img").click(function(){
 		<div id="slogan" class="footerSloganNormal">Reis met het openbaar vervoer!</div>
 		<div id="header"></div>
 		<div id="plan" class="menuPlanNormal">Contact ons</div>
-		<div id="content" class="textNormal">
-			<p></p>
+		<div id="contact" class="textNormal">
+			<form>
+        
+			    <label>Name</label>
+			    <input name="name" placeholder="Type Here">
+			            
+			    <label>Email</label>
+			    <input name="email" type="email" placeholder="Type Here">
+			            
+			    <label>Message</label>
+			    <textarea name="message" placeholder="Type Here"></textarea>
+			            
+			    <input id="submit" name="submit" type="submit" value="Submit"/>
+			        
+			</form>
 		</div>
 		<div id="footer" class="footerSloganNormal">&copy; 2014 - by INF2D</div>
 	</div>
