@@ -17,7 +17,7 @@ $("a.fontSizePlus").click(function(){
 	$("#footer").removeClass('footerSloganNormal').addClass('footerSloganBig');
 	$("#menu").removeClass('menuPlanNormal').addClass('menuPlanBig');
 	$("#plan").removeClass('menuPlanNormal').addClass('menuPlanBig');
-	$("#content").removeClass('textNormal').addClass('textBig');
+	$("#contact").removeClass('textNormal').addClass('textBig');
 });
 
 //text verkleinen
@@ -26,7 +26,7 @@ $("a.fontSizeMinus").click(function(){
 	$("#footer").removeClass('footerSloganBig').addClass('footerSloganNormal');
 	$("#menu").removeClass('menuPlanBig').addClass('menuPlanNormal');
 	$("#plan").removeClass('menuPlanBig').addClass('menuPlanNormal');
-	$("#content").removeClass('textBig').addClass('textNormal');
+	$("#contact").removeClass('textBig').addClass('textNormal');
 });
 
 //klik op contrastknop
@@ -40,12 +40,13 @@ $("img").click(function(){
   	$("#menu").css(backgroundColor);
   	$("#slogan").css(backgroundColor);
   	$("#plan").css(backgroundColor);
-  	$("#content").css(backgroundColor);
+  	$("#contact").css(backgroundColor);
   	$("#footer").css(backgroundColor);
   	$("body").css(backgroundColor);
-  	$("#content").css(textColor);
+  	$("#contact").css(textColor);
   	$("#slogan").css(textColor);
   	$("#menu").css(textColor);
+  	$("#menu a").css(textColor);
   	$("#plan").css(textColor);
   	$("#footer").css(textColor);
   	$("#container").css('box-shadow', '5px 0px 5px 0px  #D1E631, -5px 0px 5px 0px #D1E631, 0px 5px 5px 0px #D1E631');
@@ -58,11 +59,12 @@ $("img").click(function(){
 	  //normaal contrast
 	  contrast = 0;
 	  $("#menu").removeAttr('style');
+	  $("#menu a").removeAttr('style');
 	  $("#slogan").removeAttr('style');
 	  $("#slogan").removeAttr('style');
 	  $("#plan").removeAttr('style');
-	  $("#content").removeAttr('style');
-	  $("#content").removeAttr('style');
+	  $("#contact").removeAttr('style');
+	  $("#contact").removeAttr('style');
 	  $("#footer").removeAttr('style');
 	  $("body").removeAttr('style');
 	  $("#container").css('box-shadow', '5px 0px 5px 0px  #888888, -5px 0px 5px 0px #888888, 0px 5px 5px 0px #888888');
