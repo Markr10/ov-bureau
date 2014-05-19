@@ -16,7 +16,7 @@
                 </div>
                 <ul>
                     <li>
-                        <a href="index.htm">Home</a>
+                        <a href="index.html">Home</a>
                     </li>
                     <li>Waarom OV</li>
                     <li>
