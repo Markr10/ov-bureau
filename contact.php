@@ -4,76 +4,8 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>Mobiliteit Noord Groningen</title>
 	<link rel="stylesheet" type="text/css" href="style.css" />
-	<script src="lib/jquery.min.js">
-	</script>
-	<script>
-	$(document).ready(function(){
-//contrast variabele om te onthouden in welke contrast de gebruiker zit
-var contrast = 0;
-
-//text vergroten
-$("a.fontSizePlus").click(function(){
-	$("#slogan").removeClass('footerSloganNormal').addClass('footerSloganBig');
-	$("#footer").removeClass('footerSloganNormal').addClass('footerSloganBig');
-	$("#menu").removeClass('menuPlanNormal').addClass('menuPlanBig');
-	$("#plan").removeClass('menuPlanNormal').addClass('menuPlanBig');
-	$("#contact").removeClass('textNormal').addClass('textBig');
-});
-
-//text verkleinen
-$("a.fontSizeMinus").click(function(){
-	$("#slogan").removeClass('footerSloganBig').addClass('footerSloganNormal');
-	$("#footer").removeClass('footerSloganBig').addClass('footerSloganNormal');
-	$("#menu").removeClass('menuPlanBig').addClass('menuPlanNormal');
-	$("#plan").removeClass('menuPlanBig').addClass('menuPlanNormal');
-	$("#contact").removeClass('textBig').addClass('textNormal');
-});
-
-//klik op contrastknop
-$("img").click(function(){
-  //hoog contrast
-  if (contrast == 0)
-  {
-  	contrast = 1;
-  	var backgroundColor = {'background-color': '#000'};
-  	var textColor = {'color': '#D1E631'};
-  	$("#menu").css(backgroundColor);
-  	$("#slogan").css(backgroundColor);
-  	$("#plan").css(backgroundColor);
-  	$("#contact").css(backgroundColor);
-  	$("#footer").css(backgroundColor);
-  	$("body").css(backgroundColor);
-  	$("#contact").css(textColor);
-  	$("#slogan").css(textColor);
-  	$("#menu").css(textColor);
-  	$("#menu a").css(textColor);
-  	$("#plan").css(textColor);
-  	$("#footer").css(textColor);
-  	$("#container").css('box-shadow', '5px 0px 5px 0px  #D1E631, -5px 0px 5px 0px #D1E631, 0px 5px 5px 0px #D1E631');
-  	$("img").attr('src', 'images/contrastwit.png');
-
-
-  }
-  else
-  {
-	  //normaal contrast
-	  contrast = 0;
-	  $("#menu").removeAttr('style');
-	  $("#menu a").removeAttr('style');
-	  $("#slogan").removeAttr('style');
-	  $("#slogan").removeAttr('style');
-	  $("#plan").removeAttr('style');
-	  $("#contact").removeAttr('style');
-	  $("#contact").removeAttr('style');
-	  $("#footer").removeAttr('style');
-	  $("body").removeAttr('style');
-	  $("#container").css('box-shadow', '5px 0px 5px 0px  #888888, -5px 0px 5px 0px #888888, 0px 5px 5px 0px #888888');
-	  $("img").attr('src', 'images/contrast.png');
-	}
-	
-});
-});
-</script>
+	<script src="lib/jquery.min.js"></script>
+	<script src="lib/toegankelijkheid.js"></script>
 </head>
 
 <body>
