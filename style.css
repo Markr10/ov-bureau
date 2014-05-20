@@ -87,9 +87,8 @@ body
 }
 #content 
 {
-    min-height: 200px;
-    border-bottom: 1px solid #000;
     background-color:#FFF;
+    height: 100%;
 }
 #content p 
 {
@@ -106,6 +105,7 @@ body
     vertical-align: middle;
     padding-top: 6px;
     clear: both;
+    border-top: 1px solid #000;
 }
 #textSize 
 {
@@ -145,20 +145,21 @@ body
 {
     background-color:green;
     clear: both;
+    padding: 1px 0px 0px 20px;
+    margin: 0px;
 }
 
 #argumenten 
 {
-    width: 70%;
+    width: 80%;
     background-color:red;
-    margin: -14px 0px;
     float:left;
     box-sizing: border-box;
 }
 
 #afbeeldingen
 {
-    width: 30%;
+    width: 20%;
     background-color:blue;
     float: left;
 }
@@ -173,7 +174,6 @@ body
 {
     padding-top: 10px;
     min-height: 200px;
-    border-bottom: 1px solid #000;
     background-color:#FFF;
 }
 #contact label 
