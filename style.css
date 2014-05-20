@@ -5,7 +5,7 @@ html
 }
 body 
 {
-    margin: 0;
+    margin: 5px;
     background-color: #E8E8E8;
     font-family:Verdana, Geneva, sans-serif;
 }
@@ -105,6 +105,7 @@ body
     text-align: center;
     vertical-align: middle;
     padding-top: 6px;
+    clear: both;
 }
 #textSize 
 {
@@ -125,9 +126,6 @@ body
 .textNormal 
 {
     font-size: 10pt;
-    padding-top: 15px;
-    padding-left: 25px;
-    padding-right: 50px;
 }
 .menuPlanBig 
 {
@@ -140,6 +138,34 @@ body
 .textBig 
 {
     font-size: 14pt;	
+}
+
+/*      Argumenten      */
+#inleiding
+{
+    background-color:green;
+    clear: both;
+}
+
+#argumenten 
+{
+    width: 70%;
+    background-color:red;
+    margin: -14px 0px;
+    float:left;
+    box-sizing: border-box;
+}
+
+#afbeeldingen
+{
+    width: 30%;
+    background-color:blue;
+    float: left;
+}
+.textPadding
+{
+    font-size: 10pt;
+    padding-left: 10px;
 }
 
 /*      Contact Formulier       */
