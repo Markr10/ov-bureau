@@ -3,3 +3,17 @@ label
     font-weight: bold;
     cursor: pointer;
 }
+
+/* Voorkom dat er bij IE een X in het invoerveld komt te staan */
+.clearable::-ms-clear
+{
+    display: none;
+}
+
+form
+{
+    width: 500px;
+    margin: auto;
+}
+
+/*tabindex="-1"*/
