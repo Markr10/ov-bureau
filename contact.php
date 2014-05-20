@@ -18,7 +18,9 @@
                     <li>
                         <a href="index.html">Home</a>
                     </li>
-                    <li>Waarom OV</li>
+                    <li>
+                        <a href="waarom-ov.html">Waarom OV</a>
+                    </li>
                     <li>
                         <a href="contact.php" >Contact</a>
                     </li>

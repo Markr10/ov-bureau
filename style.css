@@ -124,7 +124,10 @@ body
 }
 .textNormal 
 {
-    font-size: 10pt;	
+    font-size: 10pt;
+    padding-top: 15px;
+    padding-left: 25px;
+    padding-right: 50px;
 }
 .menuPlanBig 
 {
