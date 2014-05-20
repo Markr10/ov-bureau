@@ -143,16 +143,17 @@ body
 /*      Argumenten      */
 #inleiding
 {
-    background-color:green;
+    background-color:#FFF;
     clear: both;
-    padding: 1px 0px 0px 20px;
+    padding: 10px 10px 0px 20px;
     margin: 0px;
 }
 
 #argumenten 
 {
     width: 80%;
-    background-color:red;
+    height: 430px;
+    background-color:#FFF;
     float:left;
     box-sizing: border-box;
 }
@@ -160,7 +161,8 @@ body
 #afbeeldingen
 {
     width: 20%;
-    background-color:blue;
+    height: 430px;
+    background-color:#FFF;
     float: left;
 }
 .textPadding
