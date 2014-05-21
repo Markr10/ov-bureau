@@ -18,15 +18,15 @@
                     <li>
                         <a href="index.html">Home</a>
                     </li>
-                    <li>Waarom OV</li>
+                    <li>
+                        <a href="waarom-ov.html">Waarom OV</a>
+                    </li>
                     <li>
                         <a href="contact.php" >Contact</a>
                     </li>
                 </ul>
             </div>
             <div id="slogan" class="footerSloganNormal">Reis met het openbaar vervoer!</div>
-            <div id="header"></div>
-            <div id="plan" class="menuPlanNormal">Contact ons</div>
             <div id="contact" class="textNormal">
                 <form>
 
