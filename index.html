@@ -9,6 +9,7 @@
         <script src="lib/jquery.min.js"></script>
         <script src="lib/toegankelijkheid.js"></script>
         <script src="lib/jquery.clearsearch-1.0.3-patched.js"></script>
+        <script src="lib/planner.js"></script>
     </head>
     <body>
         <div id="container">
@@ -31,9 +32,11 @@
             <div id="plan" class="menuPlanNormal">Plan uw reis!</div>
             <div id="content" class="textNormal">
                 <form id="planner" method="post" action="planner.php">
-                    <label for="from">Van</label>
-                    <input class="clearable" name="from" type="text" placeholder="Adres, station, postcode, etc" />
-                    <input name="submit" type="submit" value="Plannen"/>
+                    <label for="from" title="Vul bijvoorbeeld een adres, station, postcode in.">Van</label>
+                    <input name="from" id="from" class="clearable" type="text" placeholder="Adres, station, postcode, etc" autofocus />
+                    <label for="to" title="Vul bijvoorbeeld een adres, station, postcode in.">Naar</label>
+                    <input name="to" id="to" class="clearable" type="text" placeholder="Adres, station, postcode, etc" autofocus />
+                    <input name="submit" type="submit" value="Plannen" />
                 </form>
             </div>
             <div id="footer" class="footerSloganNormal">&copy; 2014 - by INF2D</div>

@@ -57,6 +57,7 @@ label
 #contact input:focus, #planner input:focus
 {
     border:1px solid #97d6eb;
+    outline: none;
 }
 /* TODO #submit uit code verwijderen */
 /* TODO code herschikken zodat stijlen toegepast worden */
