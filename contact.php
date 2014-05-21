@@ -27,8 +27,6 @@
                 </ul>
             </div>
             <div id="slogan" class="footerSloganNormal">Reis met het openbaar vervoer!</div>
-            <div id="header"></div>
-            <div id="plan" class="menuPlanNormal">Contact ons</div>
             <div id="contact" class="textNormal">
                 <form>
 
