@@ -1,7 +1,8 @@
 <link href="/style.css" rel="stylesheet" type="text/css" />
 <?php
-require_once '/include/cls.directionadvice.php';
+require_once '/include/cls.transitadvice.php';
 require_once '/include/cls.route.php';
+require_once '/include/cls.step.php';
 require_once '/include/fnc.functions.php';
 
 if (isset($_POST["submit"])) 
