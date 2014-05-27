@@ -22,6 +22,7 @@ class Route
     /**
      * Declare fields
      */
+    // Route Details
     private $departureTime;
     private $arrivalTime;
     private $distance;
@@ -30,6 +31,9 @@ class Route
     private $endAddress;
     private $unixDepartureTime;
     
+    // Route Steps
+    private $steps;
+    
     /**
      * Constructor of this class. Sets the class fields from received Google Directions API data.
      * 
@@ -37,14 +41,24 @@ class Route
      */
     function Route($route)
     {
+        $this->steps = array();
+        
         $this->departureTime = $route["legs"][0]["departure_time"]["text"];
         $this->arrivalTime = $route["legs"][0]["arrival_time"]["text"];
         $this->distance = $route["legs"][0]["distance"]["text"];
         $this->duration = $route["legs"][0]["duration"]["text"];
-        $this->startAddress = $route["legs"][0]["start_address"];
-        $this->endAddress = $route["legs"][0]["end_address"];
+        $this->startAddress = removeCountrySuffix($route["legs"][0]["start_address"]);
+        $this->endAddress = removeCountrySuffix($route["legs"][0]["end_address"]);
         
         $this->unixDepartureTime = $route["legs"][0]["departure_time"]["value"];
+        
+        // define steps
+        $steps = $route["legs"][0]["steps"];
+        
+        foreach($steps as $stepNr => $stepDetails)
+        {
+            $this->steps[$stepNr] = new Step($stepDetails);
+        }
     }
     
     /**

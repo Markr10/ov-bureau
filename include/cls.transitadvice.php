@@ -23,13 +23,18 @@ class TransitAdvice
     /**
      * Declare fields
      */
-    private $from;  // from where?
-    private $to;    // to where?
-    private $date;  // on which date?
-    private $time;  // at which time?
-    private $how;   // departure time or arrival time?
+    // Transit Advice Details
+    private $from;
+    private $to;
+    private $date;
+    private $time;
+    private $how;
+    
+    // Transit Routes
     private $routes;    // array of possible routes (each with their own `route`-class)
-    private $lastUnixTime;  // last given unixTime for transit advice
+    
+    // Last Route (Departing Time)
+    private $lastUnixTime;  // last given unixTime for transit advice route
 
     /**
      * Class constructor sets the class fields
@@ -61,10 +66,10 @@ class TransitAdvice
         // define routes
         $routes = $result["routes"];
 
-        foreach ($routes as $routenr => $route)
+        foreach ($routes as $routeNr => $routeDetails)
         {
             // add a new route to the array
-            $this->routes[$routenr] = new Route($route);
+            $this->routes[$routeNr] = new Route($routeDetails);
         }
     }
 
