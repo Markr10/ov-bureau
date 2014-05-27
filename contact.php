@@ -7,6 +7,8 @@
         <link rel="stylesheet" type="text/css" href="style.css" />
         <script src="lib/jquery.min.js"></script>
         <script src="lib/toegankelijkheid.js"></script>
+        <script src="lib/jquery.clearsearch-1.0.3-patched.js"></script>
+        <script src="lib/planner.js"></script>
     </head>
     <body>
         <div id="container">
@@ -28,13 +30,13 @@
             </div>
             <div id="slogan" class="footerSloganNormal">Reis met het openbaar vervoer!</div>
             <div id="contact" class="textNormal">
-                <form>
+                <form id="contactFormulier" method="post" action="bedankt.php">
 
                     <label>Name</label>
-                    <input name="name" placeholder="Type Here">
+                    <input name="name" id="name" class="clearable" type="text" placeholder="Type Here" autofocus />
 
                     <label>Email</label>
-                    <input name="email" type="email" placeholder="Type Here">
+                    <input name="email" id="email" class="clearable" type="text" placeholder="Type Here" autofocus />
 
                     <label>Message</label>
                     <textarea name="message" placeholder="Type Here"></textarea>
