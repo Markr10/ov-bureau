@@ -75,10 +75,13 @@ class TransitAdvice
 
     public function printAdvice()
     {
-        echo"<div id='transitAdvice'>";
-        echo"<h1>Reisadvies, " . $this->getFrom() . " naar " . $this->getTo() . " om " . $this->getTime() . "</h1>";
+        echo"
+        <div id='transitAdvice'>
+            <h1>Reisadvies, " . $this->getFrom() . " naar " . $this->getTo() . " om " . $this->getTime() . "</h1>";
         $this->printRoutes();
-        echo"</div>";
+        echo"
+        </div>
+        ";
     }
 
     /**
