@@ -77,11 +77,13 @@ class Route
     {
         echo"
             <div class='route'>
-                <div class='description'>Van " . $this->getStartAddress() . " naar " . $this->getEndAddress() . " </div>
-                <div class='depart_arrive'>" . $this->getDepartureTime() . " &gt;&gt; " . $this->getArrivalTime() . "</div>
-                <div class='distance'>Afstand: " . $this->getDistance() . "</div>
-                <div class='duration'>Tijdsduur: " . $this->getDuration() . "</div>
-                <div class='duration'>Aantal overstappen: " . $this->getAantalOverstappen() . "</div>
+                <div class='routeDetails'>
+                    <div class='description'>Van " . $this->getStartAddress() . " naar " . $this->getEndAddress() . " </div>
+                    <div class='depart_arrive'>" . $this->getDepartureTime() . " &gt;&gt; " . $this->getArrivalTime() . "</div>
+                    <div class='distance'>Afstand: " . $this->getDistance() . "</div>
+                    <div class='duration'>Tijdsduur: " . $this->getDuration() . "</div>
+                    <div class='overstappen'>Aantal overstappen: " . $this->getAantalOverstappen() . "</div>
+                </div>
                     ";
         foreach($this->steps as $step)
         {
