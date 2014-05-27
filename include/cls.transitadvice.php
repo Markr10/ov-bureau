@@ -100,14 +100,7 @@ class TransitAdvice
         foreach ($routesToOutput as $routeNr => $unixDepartureTime)
         {
             $route = $this->routes[$routeNr];
-
-            echo"<div class='route' data-route-nr='" . $routeNr . "'>";
-            echo"<div class='description'>Van " . $route->getStartAddress() . " naar " . $route->getEndAddress() . " </div>";
-            echo"<div class='depart_arrive'>Vertrek: " . $route->getDepartureTime() . ", aankomst: " . $route->getArrivalTime() . "</div>";
-            echo"<div class='distance'>Afstand: " . $route->getDistance() . "</div>";
-            echo"<div class='duration'>Tijdsduur: " . $route->getDuration() . "</div>";
-            echo"</div>";
-            echo"<br/><br/>";
+            $route->printRoute();
         }
     }
 
