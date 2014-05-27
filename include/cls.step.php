@@ -62,7 +62,7 @@ class Step
         $lineDetails = $transitDetails["line"];
         
         $this->lineAgency = $lineDetails["agencies"][0]["name"];
-        $this->lineName = $lineDetails["name"];
+        $this->lineName = (in_array("name", $lineDetails) ? $lineDetails["name"] : $lineDetails["short_name"]);
         
         $vehicleDetails = $lineDetails["vehicle"];
         

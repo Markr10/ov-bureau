@@ -15,7 +15,7 @@ if (isset($_POST["submit"]))
 
     $advice = new TransitAdvice($startAddress, $endAddress, date("d-m-Y"), $time, $how);
     $advice->printAdvice();
-
+    
 } else {
     ?>
     <form method="post" action="">
