@@ -14,17 +14,7 @@ if (isset($_POST["submit"]))
 
     $advice = new TransitAdvice($startAddress, $endAddress, date("d-m-Y"), $time, $how);
     $advice->printAdvice();
-/*
-        // convert to unix timestamp for API readability
-        $unixtime = strtotime($time);
 
-        $content = file_get_contents("https://maps.googleapis.com/maps/api/directions/json?origin=$startAddress&destination=$endAddress&sensor=false&key=AIzaSyCKZlUXOE0zYan1v9SD1RNyVipP-ZZAABc&$how=$unixtime&mode=transit&alternatives=true&language=nl");
-        $result = (array) json_decode($content, true);
-        
-        echo "<pre>";
-        print_r($result);
-        echo "</pre>";
-     */
 } else {
     ?>
     <form method="post" action="">
