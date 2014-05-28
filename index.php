@@ -1,9 +1,19 @@
+<?php
+
+            require_once '/include/cls.transitadvice.php';
+            require_once '/include/cls.route.php';
+            require_once '/include/fnc.functions.php';
+            require_once '/include/cls.step.php';
+
+            ?>
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta charset="utf-8" />
         <title>Mobiliteit Noord Groningen</title>
         <link rel="stylesheet" type="text/css" href="style.css" />
+        <link rel="stylesheet" type="text/css" href="css/ov-style.css" />
         <link rel="stylesheet" type="text/css" href="css/form-planner.css" />
         <script src="lib/jquery.min.js"></script>
         <script src="lib/toegankelijkheid.js"></script>
@@ -18,7 +28,7 @@
                 </div>
                 <ul>
                     <li>
-                        <a href="index.php">Home</a>
+                        <a href="index.html">Home</a>
                     </li>
                     <li>
                         <a href="waarom-ov.html">Waarom OV</a>
@@ -32,10 +42,6 @@
             <div id="header"></div>
             <div id="plan" class="menuPlanNormal">Plan uw reis!</div>
             <?php
-            require_once '/include/cls.transitadvice.php';
-            require_once '/include/cls.route.php';
-            require_once '/include/cls.step.php';
-            require_once '/include/fnc.functions.php';
 
             if (isset($_POST["submit"])) {
                 // define POST values

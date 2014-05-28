@@ -1,0 +1,87 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : May 28, 2014, 8:36:37 AM
+    Author     : Danny
+*/
+
+h1 {
+    font-size: 1.3em;
+}
+
+#transitAdvice {
+    margin: 0 auto;
+    width: 70%;
+    margin-bottom: 100px;
+}
+
+.route {
+    width: 100%;
+    margin-top: 60px;
+    background: red;
+}
+.description {
+    background: #232323;
+    display: none;
+}
+.depart_arrive {
+    background: #AADAEB;
+    border-radius: 10px;
+    padding: 4px;
+    width: 20%;
+    float: left;
+}
+.distance {
+    display: none;
+}
+
+.duration {
+    width: 28%;
+    float: right;
+        padding: 4px;
+
+}
+.step {
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 100px;
+    /*border: 1px solid silver;*/
+}
+
+.step img {
+    float: left;
+    margin-right: 20px;
+    width: 40px;
+}
+.lineName {
+    float: left;
+}
+.richting {
+    float: left;
+    margin-right: 20px;
+}
+
+.lineAgency {
+    float: left;
+    display: none;
+    
+}
+.departureTime {
+   background: silver;
+}
+.departure {
+    background: grey;
+}
+.arrival {
+    background: #eaeaea;
+}
+.arrivalStop {
+    float: left;
+}
+.arrivalTime {
+    float: left;
+    margin-right: 20px;
+}
