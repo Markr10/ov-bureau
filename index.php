@@ -1,12 +1,3 @@
-<?php
-
-            require_once '/include/cls.transitadvice.php';
-            require_once '/include/cls.route.php';
-            require_once '/include/fnc.functions.php';
-            require_once '/include/cls.step.php';
-
-            ?>
-
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
@@ -28,7 +19,7 @@
                 </div>
                 <ul>
                     <li>
-                        <a href="index.html">Home</a>
+                        <a href="index.php">Home</a>
                     </li>
                     <li>
                         <a href="waarom-ov.html">Waarom OV</a>
@@ -42,6 +33,10 @@
             <div id="header"></div>
             <div id="plan" class="menuPlanNormal">Plan uw reis!</div>
             <?php
+            require_once './include/cls.transitadvice.php';
+            require_once './include/cls.route.php';
+            require_once './include/cls.step.php';
+            require_once './include/fnc.functions.php';
 
             if (isset($_POST["submit"])) {
                 // define POST values
