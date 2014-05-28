@@ -40,7 +40,7 @@ label
 }
 
 /* Style the text boxes */
-#contact input, #planner input
+#contact input[type=text], #planner input[type=text]
 {
     width:439px;
     height:47px;
