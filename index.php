@@ -34,7 +34,7 @@
             <div id="plan" class="menuPlanNormal">Plan uw reis!</div>
             <?php
             //require_once '/include/cls.transitadvice.php';
-            require_once '/include/cls.route.php';
+            //require_once '/include/cls.route.php';
             //require_once '/include/cls.step.php';
             require_once '/include/fnc.functions.php';
 
