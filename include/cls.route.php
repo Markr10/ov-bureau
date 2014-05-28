@@ -75,25 +75,18 @@ class Route
      */
     public function printRoute()
     {
-        echo"
-            <div class='route'>
-                <div class='routeDetails'>
-                    <div class='description'>Van " . $this->getStartAddress() . " naar " . $this->getEndAddress() . " </div>
-                    <div class='depart_arrive'>" . $this->getDepartureTime() . " &gt;&gt; " . $this->getArrivalTime() . "</div>
-                    <div class='distance'>Afstand: " . $this->getDistance() . "</div>
-                    <div class='duration'>Tijdsduur: " . $this->getDuration() . "</div>
-                    <div class='overstappen'>Aantal overstappen: " . $this->getAantalOverstappen() . "</div>
-                </div>
-                    ";
+        echo"<div class='route'>";
+        echo"<div class='description'>Van " . $this->getStartAddress() . " naar " . $this->getEndAddress() . " </div>";
+        echo"<div class='depart_arrive'>" . $this->getDepartureTime() . " &gt;&gt; " . $this->getArrivalTime() . "</div>";
+        echo"<div class='distance'>Afstand: " . $this->getDistance() . "</div>";
+        echo"<div class='duration'>Tijdsduur: " . $this->getDuration() . "</div>";
+        echo"<div class='duration'>Aantal overstappen: " . $this->getAantalOverstappen() . "</div>";
+        echo"</div>";
+        
         foreach($this->steps as $step)
         {
             $step->printStep();
         }
-        echo"
-            </div>
-        ";
-        
-        
     }
     
     /**
