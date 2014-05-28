@@ -1,3 +1,4 @@
+testregel
 <?php
 
             require_once '/include/cls.transitadvice.php';
