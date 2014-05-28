@@ -86,6 +86,14 @@ body
     vertical-align: middle;
     padding-top: 3px;
 }
+#question 
+{
+    background-color:#FFF;
+    min-height: 300px;
+    height: 100%;
+    text-align: center;
+    padding-top: 20px;
+}
 #content 
 {
     background-color:#FFF;

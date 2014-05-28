@@ -5,8 +5,11 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>Mobiliteit Noord Groningen</title>
         <link rel="stylesheet" type="text/css" href="style.css" />
+        <link rel="stylesheet" type="text/css" href="css/form-planner.css" />
         <script src="lib/jquery.min.js"></script>
         <script src="lib/toegankelijkheid.js"></script>
+        <script src="lib/jquery.clearsearch-1.0.3-patched.js"></script>
+        <script src="lib/planner.js"></script>
     </head>
     <body>
         <div id="container">
