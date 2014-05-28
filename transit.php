@@ -15,18 +15,18 @@ if (isset($_POST["submit"]))
 
     $advice = new TransitAdvice($startAddress, $endAddress, date("d-m-Y"), $time, $how);
     $advice->printAdvice();
-    
+
 } else {
-    ?>
-    <form method="post" action="">
-        <input type="text" name="startAddress" placeholder="Start"><br />
-        <input type="text" name="endAddress" placeholder="Destiny"><br />
-        Vertrek<input type="radio" name="how" value="departure_time" checked><br />
-        Aankomst<input type="radio" name="how" value="arrival_time"><br />
-        <input type="text" name="time" value="<?php echo date("H:i") ?>"><br />
-        <button name="submit">Plan reis</button>
-    </form>
-    <?php
-}
+?>
+<form method="post" action="">
+    <input type="text" name="startAddress" placeholder="Start"><br />
+    <input type="text" name="endAddress" placeholder="Destiny"><br />
+    Vertrek<input type="radio" name="how" value="departure_time" checked><br />
+    Aankomst<input type="radio" name="how" value="arrival_time"><br />
+    <input type="text" name="time" value="<?php echo date("H:i") ?>"><br />
+    <button name="submit">Plan reis</button>
+</form>
+<?php
+       }
 ?>
 

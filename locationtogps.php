@@ -9,7 +9,7 @@ if(isset($_POST['submit'])) {
 
         static public function getLocation($address){
             $url = self::$url.urlencode($address);
-            
+
             $resp_json = self::curl_file_get_contents($url);
             $resp = json_decode($resp_json, true);
 
@@ -29,19 +29,19 @@ if(isset($_POST['submit'])) {
             curl_close($c);
 
             if ($contents) return $contents;
-                else return FALSE;
+            else return FALSE;
         }
     }
-        $address=urlencode($_POST['address']);
+    $address=urlencode($_POST['address']);
     $loc = geocoder::getLocation($address);
 
     echo "Adres: " . $address . "<hr>";
-//    print_r($loc);
+    //    print_r($loc);
     echo $loc['lat'] . "<br />";
     echo $loc['lng'] . "<br />";
 } else {
-    ?>
+?>
 
 <?php
 }
-    ?>
+?>
