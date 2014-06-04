@@ -99,7 +99,7 @@ class TransitAdvice
         {
             echo"<div id='transitAdvice'>
                     Er is geen reisadvies voor deze route beschikbaar. <br />
-                    Controleer of u de begin- en eindbestemming juist heeft ingevuld, of probeer het opnieuw.
+                    Controleer of u de begin- en eindbestemming juist heeft ingevuld, of probeer het later nogmaals.
                 </div>";
         }
     }
