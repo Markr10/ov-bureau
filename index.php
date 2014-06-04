@@ -4,6 +4,7 @@
         <meta charset="utf-8" />
         <title>Mobiliteit Noord Groningen</title>
         <link rel="stylesheet" type="text/css" href="style.css" />
+        <link rel="stylesheet" type="text/css" href="css/ov-style.css" />
         <link rel="stylesheet" type="text/css" href="css/form-planner.css" />
         <script src="lib/jquery.min.js"></script>
         <script src="lib/toegankelijkheid.js"></script>
@@ -18,7 +19,7 @@
                 </div>
                 <ul>
                     <li>
-                        <a href="index.html">Home</a>
+                        <a href="index.php">Home</a>
                     </li>
                     <li>
                         <a href="waarom-ov.html">Waarom OV</a>
@@ -32,11 +33,16 @@
             <div id="header"></div>
             <div id="plan" class="menuPlanNormal">Plan uw reis!</div>
             <?php
-            require_once '/include/cls.transitadvice.php';
-            require_once '/include/cls.route.php';
-            require_once '/include/fnc.functions.php';
+            require_once './include/cls.transitadvice.php';
+            require_once './include/cls.route.php';
+            require_once './include/cls.step.php';
+            require_once './include/fnc.functions.php';
 
-            if (isset($_POST["submit"])) {
+            // Predefine request status
+            $requestStatus = "NOT_FOUND";
+
+            if (isset($_POST["submit"]))
+            {
                 // define POST values
                 $how = $_POST["how"];
                 $time = $_POST["time"];
@@ -45,25 +51,38 @@
 
                 $advice = new TransitAdvice($startAddress, $endAddress, date("d-m-Y"), $time, $how);
                 $advice->printAdvice();
-            } else {
-                ?>
 
+                $requestStatus = $advice->getStatus();
+                /*
+                  //fetch data from API and decode received json
+                  $unixTime = strtotime(date("d-m-Y H:i", strtotime(date("d-m-Y") . " " . $time)));
+                  $content = file_get_contents("https://maps.googleapis.com/maps/api/directions/json?origin=" . urlencode($startAddress) . "&destination=" . urlencode($endAddress) . "&sensor=false&key=AIzaSyCKZlUXOE0zYan1v9SD1RNyVipP-ZZAABc&" . $how . "=$unixTime&mode=transit&alternatives=true&language=nl");
+                  $result = (array) json_decode($content, true);
+
+                  echo"<pre>";
+                  print_r($result);
+                  echo"</pre>";
+                 */
+            }
+            if ($requestStatus !== "OK")
+            {
+                ?>
                 <div id="content" class="textNormal">
-                    <form id="planner" method="post">
+                    <form id="planner" method="post" action="#plan">
                         <label for="startAddress" title="Vul bijvoorbeeld een adres, station of postcode in.">Van</label>
                         <input name="startAddress" id="from" class="clearable" type="text" placeholder="Adres, station, postcode, etc" autofocus />
                         <label for="endAddress" title="Vul bijvoorbeeld een adres, station of postcode in.">Naar</label>
                         <input name="endAddress" id="to" class="clearable" type="text" placeholder="Adres, station, postcode, etc" autofocus />
-                                                 <label for="how" title="">Vertrek/Aankomst</label>
-       <input type="radio" name="how" value="departure_time" checked>
-       <input type="radio" name="how" value="arrival_time">
-        <input type="text" class="clearable" name="time" value="<?php echo date("H:i") ?>">
-                        <input name="submit" type="submit" value="Plannen" />
+                        <label for="how" title="">Vertrek/Aankomst</label>
+                        <input type="radio" name="how" value="departure_time" checked />
+                        <input type="radio" name="how" value="arrival_time" />
+                        <input type="text" class="clearable" name="time" value="<?php echo date("H:i") ?>">
+                            <input name="submit" type="submit" value="Plannen" />
                     </form>
                 </div>
-    <?php
-}
-?>
+                <?php
+            }
+            ?>
             <div id="footer" class="footerSloganNormal">&copy; 2014 - by INF2D</div>
         </div>
     </body>

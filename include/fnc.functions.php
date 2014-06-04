@@ -6,9 +6,9 @@
  */
 
 /**
- * Necessary functions
+ * Necessary functions and Defines
  *
- * This script contains all functions to make coding easier
+ * This script contains all functions and Global Variables to make coding easier
  *
  * @category   Functions
  * @copyright  Copyright (c) 2014-2015 INF2D
@@ -16,6 +16,8 @@
  * @link       http://ovbureau.serverict.nl/include/fnc.functions.php
  * @since      File available since Release 0.1.0
  */
+
+define('ARROW',"&#10140;");
 
 /**
  * Method for removing country names at the end of the string, making it easier to read.
