@@ -82,12 +82,14 @@ class TransitAdvice
         if ($this->getStatus() === "OK")
         {
             echo"<div id='transitAdvice'>";
+            echo"";
             echo"<div id='from-to'>
                     " . $this->routes[$this->printRoutes("firstKey")]->getStartAddress() . " " . ARROW . " " . $this->routes[$this->printRoutes("firstKey")]->getEndAddress() . ".
                  </div>
                  <div id='next-travel' data-nr='" . $this->printRoutes("firstKey") . "'>
                     Volgende reis: " . $this->routes[$this->printRoutes("firstKey")]->getDepartureTime() . "
-                 </div>";
+                 </div>
+                 <div id='routeHeader'>Reisopties:</div>";
             echo"<div id='routeDetails'>";
             $this->printRoutes();
             echo"</div>";

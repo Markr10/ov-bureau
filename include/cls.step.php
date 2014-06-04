@@ -85,14 +85,6 @@ class Step
                     <img src='http://maps.gstatic.com/mapfiles/transit/iw/6/walk.png' alt='Lopen' title='Lopen' />
                     <div class='instructions'>" . $this->instructions . "</div>
                 </div>
-                <div class='departure'>
-                    <div class='departureTime'>" . $this->getDepartureTime() . "</div>
-                    <div class='departureStop'>" . $this->getDepartureStop() . "</div>
-                </div>
-                <div class='arrival'>
-                    <div class='arrivalTime'>" . $this->getArrivalTime() . "</div>
-                    <div class='arrivalStop'>" . $this->getArrivalStop() . "</div>
-                </div>
             </div>";
         }
         else
@@ -115,6 +107,7 @@ class Step
                 </div>
             </div>";
         }
+        echo"<div style='clear: both;'></div>";
     }
 
     /**
