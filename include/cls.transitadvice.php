@@ -29,10 +29,9 @@ class TransitAdvice
     private $date;
     private $time;
     private $how;
-    
+    private $status;
     // Transit Routes
     private $routes;    // array of possible routes (each with their own `route`-class)
-    
     // Last Route (Departing Time)
     private $lastUnixTime;  // last given unixTime for transit advice route
 
@@ -60,31 +59,56 @@ class TransitAdvice
     {
         // fetch data from API and decode received json
         $unixTime = strtotime(date("d-m-Y H:i", strtotime($this->getDate() . " " . $this->getTime())));
-        $content = file_get_contents("https://maps.googleapis.com/maps/api/directions/json?origin=" . $this->getFrom() . "&destination=" . $this->getTo() . "&sensor=false&key=AIzaSyCKZlUXOE0zYan1v9SD1RNyVipP-ZZAABc&" . $this->getHow() . "=$unixTime&mode=transit&alternatives=true&language=nl");
+        $content = file_get_contents("https://maps.googleapis.com/maps/api/directions/json?origin=" . urlencode($this->getFrom()) . "&destination=" . urlencode($this->getTo()) . "&sensor=false&key=AIzaSyCKZlUXOE0zYan1v9SD1RNyVipP-ZZAABc&" . $this->getHow() . "=$unixTime&mode=transit&alternatives=true&language=nl");
         $result = (array) json_decode($content, true);
 
         // define routes
         $routes = $result["routes"];
 
-        foreach ($routes as $routeNr => $routeDetails)
+        $this->setStatus($result["status"]);
+
+        if ($this->getStatus() === "OK")
         {
-            // add a new route to the array
-            $this->routes[$routeNr] = new Route($routeDetails);
+            foreach ($routes as $routeNr => $routeDetails)
+            {
+                // add a new route to the array
+                $this->routes[$routeNr] = new Route($routeDetails);
+            }
         }
     }
 
     public function printAdvice()
     {
-        echo"<div id='transitAdvice'>";
-        echo"<h1>Reisadvies, " . $this->getFrom() . " naar " . $this->getTo() . " om " . $this->getTime() . "</h1>";
-        $this->printRoutes();
-        echo"</div>";
+        if ($this->getStatus() === "OK")
+        {
+            echo"<div id='transitAdvice'>";
+            echo"<div id='from-to'>
+                    " . $this->routes[$this->printRoutes("firstKey")]->getStartAddress() . " " . ARROW . " " . $this->routes[$this->printRoutes("firstKey")]->getEndAddress() . ".
+                 </div>
+                 <div id='next-travel' data-nr='" . $this->printRoutes("firstKey") . "'>
+                    Volgende reis: " . $this->routes[$this->printRoutes("firstKey")]->getDepartureTime() . "
+                 </div>";
+            echo"<div id='routeDetails'>";
+            $this->printRoutes();
+            echo"</div>";
+            echo"</div>";
+        }
+        else
+        {
+            echo"<div id='transitAdvice'>
+                    Er is geen reisadvies voor deze route beschikbaar. <br />
+                    Controleer of u de begin- en eindbestemming juist heeft ingevuld, of probeer het opnieuw.
+                </div>";
+        }
     }
 
     /**
      * Method for printing all routes on screen
+     * 
+     * @param string $return    whether to return the first key of the array
+     * @return int              returns the first key of the array
      */
-    public function printRoutes()
+    public function printRoutes($return = "null")
     {
         $routesToOutput = array();
         foreach ($this->routes as $routeNr => $route)
@@ -96,11 +120,27 @@ class TransitAdvice
         // sort the array by ascending departureTime
         asort($routesToOutput);
 
-        // loop through the sorted array and fetch each key corresponding to the class field `routes`
-        foreach ($routesToOutput as $routeNr => $unixDepartureTime)
+        if ($return === "null")
         {
-            $route = $this->routes[$routeNr];
-            $route->printRoute();
+            // loop through the sorted array and fetch each key corresponding to the class field `routes`
+            foreach ($routesToOutput as $routeNr => $unixDepartureTime)
+            {
+                $route = $this->routes[$routeNr];
+                $route->printRouteDetails($routeNr);
+            }
+            echo"</div>";
+            echo"<div id='routes'>";
+            // loop through the sorted array and fetch each key corresponding to the class field `routes`
+            foreach ($routesToOutput as $routeNr => $unixDepartureTime)
+            {
+                $route = $this->routes[$routeNr];
+                $route->printRoute($routeNr);
+            }
+        }
+        else
+        {
+            reset($routesToOutput);
+            return key($routesToOutput);
         }
     }
 
@@ -134,6 +174,11 @@ class TransitAdvice
         $this->how = $how;
     }
 
+    private function setStatus($status)
+    {
+        $this->status = $status;
+    }
+
     /**
      * Field Getters
      * 
@@ -162,6 +207,11 @@ class TransitAdvice
     public function getHow()
     {
         return $this->how;
+    }
+
+    public function getStatus()
+    {
+        return $this->status;
     }
 
 }

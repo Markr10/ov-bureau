@@ -33,38 +33,55 @@
             <div id="header"></div>
             <div id="plan" class="menuPlanNormal">Plan uw reis!</div>
             <?php
-                require_once './include/cls.transitadvice.php';
-                require_once './include/cls.route.php';
-                require_once './include/cls.step.php';
-                require_once './include/fnc.functions.php';
+            require_once './include/cls.transitadvice.php';
+            require_once './include/cls.route.php';
+            require_once './include/cls.step.php';
+            require_once './include/fnc.functions.php';
 
-                if (isset($_POST["submit"])) {
-                    // define POST values
-                    $how = $_POST["how"];
-                    $time = $_POST["time"];
-                    $startAddress = $_POST["startAddress"];
-                    $endAddress = $_POST["endAddress"];
+            // Predefine request status
+            $requestStatus = "NOT_FOUND";
 
-                    $advice = new TransitAdvice($startAddress, $endAddress, date("d-m-Y"), $time, $how);
-                    $advice->printAdvice();
-                } else {
-            ?>
+            if (isset($_POST["submit"]))
+            {
+                // define POST values
+                $how = $_POST["how"];
+                $time = $_POST["time"];
+                $startAddress = $_POST["startAddress"];
+                $endAddress = $_POST["endAddress"];
 
-            <div id="content" class="textNormal">
-                <form id="planner" method="post">
-                    <label for="startAddress" title="Vul bijvoorbeeld een adres, station of postcode in.">Van</label>
-                    <input name="startAddress" id="from" class="clearable" type="text" placeholder="Adres, station, postcode, etc" autofocus />
-                    <label for="endAddress" title="Vul bijvoorbeeld een adres, station of postcode in.">Naar</label>
-                    <input name="endAddress" id="to" class="clearable" type="text" placeholder="Adres, station, postcode, etc" autofocus />
-                    <label for="how" title="">Vertrek/Aankomst</label>
-                    <input type="radio" name="how" value="departure_time" checked>
-                    <input type="radio" name="how" value="arrival_time">
-                    <input type="text" class="clearable" name="time" value="<?php echo date("H:i") ?>">
-                    <input name="submit" type="submit" value="Plannen" />
-                </form>
-            </div>
-            <?php
-}
+                $advice = new TransitAdvice($startAddress, $endAddress, date("d-m-Y"), $time, $how);
+                $advice->printAdvice();
+
+                $requestStatus = $advice->getStatus();
+                /*
+                  //fetch data from API and decode received json
+                  $unixTime = strtotime(date("d-m-Y H:i", strtotime(date("d-m-Y") . " " . $time)));
+                  $content = file_get_contents("https://maps.googleapis.com/maps/api/directions/json?origin=" . urlencode($startAddress) . "&destination=" . urlencode($endAddress) . "&sensor=false&key=AIzaSyCKZlUXOE0zYan1v9SD1RNyVipP-ZZAABc&" . $how . "=$unixTime&mode=transit&alternatives=true&language=nl");
+                  $result = (array) json_decode($content, true);
+
+                  echo"<pre>";
+                  print_r($result);
+                  echo"</pre>";
+                 */
+            }
+            if ($requestStatus !== "OK")
+            {
+                ?>
+                <div id="content" class="textNormal">
+                    <form id="planner" method="post" action="#plan">
+                        <label for="startAddress" title="Vul bijvoorbeeld een adres, station of postcode in.">Van</label>
+                        <input name="startAddress" id="from" class="clearable" type="text" placeholder="Adres, station, postcode, etc" autofocus />
+                        <label for="endAddress" title="Vul bijvoorbeeld een adres, station of postcode in.">Naar</label>
+                        <input name="endAddress" id="to" class="clearable" type="text" placeholder="Adres, station, postcode, etc" autofocus />
+                        <label for="how" title="">Vertrek/Aankomst</label>
+                        <input type="radio" name="how" value="departure_time" checked />
+                        <input type="radio" name="how" value="arrival_time" />
+                        <input type="text" class="clearable" name="time" value="<?php echo date("H:i") ?>">
+                            <input name="submit" type="submit" value="Plannen" />
+                    </form>
+                </div>
+                <?php
+            }
             ?>
             <div id="footer" class="footerSloganNormal">&copy; 2014 - by INF2D</div>
         </div>
