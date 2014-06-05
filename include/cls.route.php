@@ -68,7 +68,7 @@ class Route
         // het is overstappen TUSSEN de steps, daarom -1
         foreach ($this->steps as $step)
         {
-            if($step->getTravelMode() === "TRANSIT")
+            if ($step->getTravelMode() === "TRANSIT")
             {
                 $this->overstappen++;
             }
@@ -81,12 +81,12 @@ class Route
      */
     public function printRoute($routeNr = "")
     {
-        echo"<div class='route' data-routeNr='" . $routeNr . "'>";
+        echo"<div class='route' data-routenr='" . $routeNr . "'>";
         echo"<div class='description'>Van " . $this->getStartAddress() . " naar " . $this->getEndAddress() . " </div>";
         echo"<div class='depart_arrive'>" . $this->getDepartureTime() . " " . ARROW . " " . $this->getArrivalTime() . "</div>";
         echo"<div class='distance'>Afstand: " . $this->getDistance() . "</div>";
         echo"<div class='overstappen'>Aantal overstappen: " . $this->getAantalOverstappen() . "</div>";
-        echo"<div class='duration'>Tijdsduur: " . $this->getDuration() . "</div>";
+        echo"<div class='duration'>Reistijd: " . $this->getDuration() . "</div>";
 
         foreach ($this->steps as $step)
         {
@@ -101,10 +101,11 @@ class Route
      */
     public function printRouteDetails($routeNr = "")
     {
-        echo"<div class='detailedRoute' data-detailNr='" . $routeNr . "'>";
+        echo"<div class='detailedRoute' data-detailnr='" . $routeNr . "'>";
         echo"<div class='time'>" . $this->getDepartureTime() . " " . ARROW . " " . $this->getArrivalTime() . "</div>";
+        echo"<div class='route-arrow' data-arrow-detailnr='" . $routeNr . "'></div>";
         echo"<div class='steps'>Overstappen: " . $this->getAantalOverstappen() . "</div>";
-        echo"<div class='duration'>Tijdsduur: " . $this->getDuration() . "</div>";
+        echo"<div class='duration'>Reistijd: " . $this->getDuration() . "</div>";
         echo"</div>";
     }
 
