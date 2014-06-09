@@ -4,6 +4,8 @@
         <meta charset="utf-8">
         <title>Mobiliteit Noord Groningen</title>
         <link rel="stylesheet" type="text/css" href="style.css" />
+        <link rel="stylesheet" type="text/css" href="css/form-planner.css" />
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.5.1.min.js"></script>
         <script src="lib/jquery.min.js"></script>
         <script src="lib/toegankelijkheid.js"></script>
         <script src="lib/jquery.clearsearch-1.0.3-patched.js"></script>
@@ -31,14 +33,28 @@
             <div id="contact" class="textNormal">
                 <form id="contactFormulier" method="post" action="bedankt.php">
 
-                    <label>Name</label>
-                    <input name="name" id="name" class="clearable" type="text" placeholder="Type Here" autofocus />
+                    <select name="formType" id="formType" required>
+                        <option value selected="selected"> Maak uw keuze...</option>
+                        <option value="complaint"> Klacht</option>
+                        <option value="reaction"> Reactie</option>
+                        <option value="groupTransport"> Groepsvervoer</option>
+                        <option value="lostAndFound"> Verloren voorwerpen</option>
+                    </select>
 
+                    <script type="text/javascript" >
+                        $('#formType').change(function(event) {
+                            $('#test').load('contact/' + $(this).val() + '.php');
+                        }); 
+                    </script>
+
+                    <div id="test"></div>
+
+<!--                     <label>Name</label>
+                    <input name="name" id="name" class="clearable" type="text" placeholder="Type Here" autofocus />
                     <label>Email</label>
                     <input name="email" id="email" class="clearable" type="text" placeholder="Type Here" autofocus />
-
                     <label>Message</label>
-                    <textarea name="message" placeholder="Type Here"></textarea>
+                    <textarea name="message" type="text" placeholder="Type Here"></textarea> -->
 
                     <input id="submit" name="submit" type="submit" value="Submit"/>
 
