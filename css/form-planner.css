@@ -48,6 +48,11 @@ label
     letter-spacing:2px;
 }
 
+.inlinelabel {
+    float: left;
+    margin-right: 10px;
+}
+
 #contact form, form
 {
     margin:0 auto;

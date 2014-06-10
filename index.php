@@ -38,14 +38,15 @@
                     dayNames: ['zondag', 'maandag', 'dinsdag', 'woensdag', 'donderdag', 'vrijdag', 'zaterdag'],
                     dayNamesShort: ['zon', 'maa', 'din', 'woe', 'don', 'vri', 'zat'],
                     dayNamesMin: ['zo', 'ma', 'di', 'wo', 'do', 'vr', 'za'],
-                    weekHeader: 'Wk'
+                    weekHeader: 'Wk',
+                    minDate: 'dateToday'
                 });
             });
             $(document).ready(function()
             {
                 $("img[class='ui-datepicker-trigger']").each(function()
                 {
-                    $(this).attr('style', 'height:20px; position:absolute; top:15px;right:20px;');
+                    $(this).attr('style', 'height:20px; position:absolute; top:50px;right:20px;');
                 });
             });
         </script>
@@ -150,9 +151,9 @@
                         <input name="startAddress" id="from" class="clearable" type="text" placeholder="Adres, station, postcode, etc" autofocus />
                         <label for="endAddress" title="Vul bijvoorbeeld een adres, station of postcode in.">Naar</label>
                         <input name="endAddress" id="to" class="clearable" type="text" placeholder="Adres, station, postcode, etc" autofocus />
-                        <label for="how" title="">Vertrek/Aankomst</label>
-                        <input type="radio" name="how" value="departure_time" checked />
-                        <input type="radio" name="how" value="arrival_time" />
+                        <label for="depart" class="inlinelabel" title=""><input type="radio" name="how" value="departure_time" id="depart" checked /> Vertrek </label>
+                        <label for="arrive" class="inlinelabel" title=""><input type="radio" name="how" value="arrival_time" id="arrive" /> Aankomst </label>
+                        <div style="clear: both;"></div>
                         <div class="pickDateTime">
                             <div class="datePicker">
                                 <label for="datepicker" title="Vul de gewenste datum in.">Datum</label>
