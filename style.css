@@ -95,6 +95,18 @@ body
     text-align: center;
     padding-top: 20px;
 }
+#welAuto
+{
+    visibility: hidden;
+    margin-top: -20px;
+    margin-bottom: 10px;
+}
+#geenAuto
+{
+    visibility: hidden;
+    margin-top: -40px;
+    margin-bottom: 10px;
+}
 #content 
 {
     background-color:#FFF;
