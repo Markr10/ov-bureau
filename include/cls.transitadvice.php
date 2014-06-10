@@ -133,7 +133,7 @@ class TransitAdvice
                  <div id='backLink'><a href='" . $_SERVER["PHP_SELF"] . "' title='Plan opnieuw een reis'><span class='mirror'>" . ARROW . "</span>Plan opnieuw</a></div>
                  <div id='routeHeader'></div>";
             echo"<div id='routeDetails'>";
-            echo"<div id='earlier_travel_options' onClick=\"window.location.href='" . $_SERVER["PHP_SELF"] . "?earlier&t=" . strtotime($this->routes[$this->printRoutes("firstKey")]->getDepartureTime()) . "&sa=" . urlencode($this->getFrom()) . "&ea=" . urlencode($this->getTo()) . "&d=" . urlencode($this->getDate()) . "&h=" . urlencode($this->getHow()) . "#plan'\">Eerdere reisopties<span class='arrow_top'>" . ARROW . "</span></div>";
+            echo"<div id='earlier_travel_options' onClick=\"window.location.href='" . $_SERVER["PHP_SELF"] . "?earlier&t=" . strtotime($this->routes[$this->printRoutes("firstKey")]->getDepartureTime()) . "&sa=" . urlencode($this->getFrom()) . "&ea=" . urlencode($this->getTo()) . "&d=" . urlencode($this->getDate()) . "&h=" . urlencode($this->getHow()) . "#plan'; document.body.style.cursor='wait'; return true;\">Eerdere reisopties<span class='arrow_top'>" . ARROW . "</span></div>";
             $this->printRoutes();
             echo"</div>";
             echo"</div>";
@@ -173,7 +173,7 @@ class TransitAdvice
                 $route = $this->routes[$routeNr];
                 $route->printRouteDetails($routeNr);
             }
-            echo"<div id='later_travel_options' onClick=\"window.location.href='" . $_SERVER["PHP_SELF"] . "?later&t=" . $unixDepartureTime . "&sa=" . urlencode($this->getFrom()) . "&ea=" . urlencode($this->getTo()) . "&d=" . urlencode($this->getDate()) . "&h=" . urlencode($this->getHow()) . "#plan'\">Latere reisopties<span class='arrow_bottom'>" . ARROW . "</span></div>";
+            echo"<div id='later_travel_options' onClick=\"window.location.href='" . $_SERVER["PHP_SELF"] . "?later&t=" . $unixDepartureTime . "&sa=" . urlencode($this->getFrom()) . "&ea=" . urlencode($this->getTo()) . "&d=" . urlencode($this->getDate()) . "&h=" . urlencode($this->getHow()) . "#plan'; document.body.style.cursor='wait'; return true;\">Latere reisopties<span class='arrow_bottom'>" . ARROW . "</span></div>";
             echo"</div>";
             echo"<div id='routes'>";
             // loop through the sorted array and fetch each key corresponding to the class field `routes`

@@ -50,6 +50,13 @@
                 });
             });
         </script>
+        <script type="text/javsacript">
+            //Set the cursor ASAP to "Wait"
+            document.body.style.cursor='wait';
+
+            //When the window has finished loading, set it back to default...
+            window.onload=function(){document.body.style.cursor='default';}
+        </script>
     </head>
     <body>
         <div id="container">
@@ -116,13 +123,13 @@
 
                 $advice = new TransitAdvice($startAddress, $endAddress, $date, date("H:i", $time), $how);
 
-
+                $interval = REQUEST_INTERVAL; // interval in seconds = 15 minutes in this case
                 if (isset($_GET["earlier"])) // they wanted to travel earlier
                 {
                     $oldTime = $time;
                     while ($advice->getEarliestTime($how) >= $oldTime)
                     {
-                        $time -= 300;
+                        $time -= $interval;
                         $advice = new TransitAdvice($startAddress, $endAddress, $date, date("H:i", $time), $how);
                     }
                 }
@@ -131,7 +138,7 @@
                     $oldTime = $time;
                     while ($advice->getEarliestTime($how) <= $oldTime)
                     {
-                        $time += 300;
+                        $time += $interval;
                         $advice = new TransitAdvice($startAddress, $endAddress, $date, date("H:i", $time), $how);
                     }
                 }
@@ -141,6 +148,7 @@
                 // request the status
                 $requestStatus = $advice->getStatus();
             }
+            
 
             if ($requestStatus !== "OK")
             {
@@ -151,9 +159,6 @@
                         <input name="startAddress" id="from" class="clearable" type="text" placeholder="Adres, station, postcode, etc" autofocus />
                         <label for="endAddress" title="Vul bijvoorbeeld een adres, station of postcode in.">Naar</label>
                         <input name="endAddress" id="to" class="clearable" type="text" placeholder="Adres, station, postcode, etc" autofocus />
-                        <label for="depart" class="inlinelabel" title=""><input type="radio" name="how" value="departure_time" id="depart" checked /> Vertrek </label>
-                        <label for="arrive" class="inlinelabel" title=""><input type="radio" name="how" value="arrival_time" id="arrive" /> Aankomst </label>
-                        <div style="clear: both;"></div>
                         <div class="pickDateTime">
                             <div class="datePicker">
                                 <label for="datepicker" title="Vul de gewenste datum in.">Datum</label>
@@ -164,6 +169,9 @@
                                 <input type="text" id="timepicker" class="clearable" name="time" value="<?php echo date("H:i") ?>" />
                             </div>
                         </div>
+                        <label for="depart" class="inlinelabel" title=""><input type="radio" name="how" value="departure_time" id="depart" checked /> Vertrektijd </label>
+                        <label for="arrive" class="inlinelabel" title=""><input type="radio" name="how" value="arrival_time" id="arrive" /> Aankomsttijd </label>
+                        <div style="clear: both;"></div>
                         <input name="submit" type="submit" value="Plannen" />
                     </form>
                 </div>
