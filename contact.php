@@ -43,18 +43,11 @@
 
                     <script type="text/javascript" >
                         $('#formType').change(function(event) {
-                            $('#test').load('contact/' + $(this).val() + '.php');
+                            $('#contactContent').load('contact/' + $(this).val() + '.php');
                         }); 
                     </script>
 
-                    <div id="test"></div>
-
-<!--                     <label>Name</label>
-                    <input name="name" id="name" class="clearable" type="text" placeholder="Type Here" autofocus />
-                    <label>Email</label>
-                    <input name="email" id="email" class="clearable" type="text" placeholder="Type Here" autofocus />
-                    <label>Message</label>
-                    <textarea name="message" type="text" placeholder="Type Here"></textarea> -->
+                    <div id="contactContent"></div>
 
                     <input id="submit" name="submit" type="submit" value="Submit"/>
 
