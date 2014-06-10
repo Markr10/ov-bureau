@@ -76,6 +76,11 @@ label
     border-radius:5px;
 }
 
+#contact h2
+{
+    margin-left: 280px;
+}
+
 #contactContent textarea
 {
     width: 1000px;
