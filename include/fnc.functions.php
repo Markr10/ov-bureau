@@ -18,6 +18,7 @@
  */
 
 define('ARROW',"&#10140;");
+define('REQUEST_INTERVAL', 900); // interval in seconds = 15 minutes in this case
 
 /**
  * Method for removing country names at the end of the string, making it easier to read.

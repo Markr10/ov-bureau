@@ -123,13 +123,13 @@
 
                 $advice = new TransitAdvice($startAddress, $endAddress, $date, date("H:i", $time), $how);
 
-
+                $interval = REQUEST_INTERVAL; // interval in seconds = 15 minutes in this case
                 if (isset($_GET["earlier"])) // they wanted to travel earlier
                 {
                     $oldTime = $time;
                     while ($advice->getEarliestTime($how) >= $oldTime)
                     {
-                        $time -= 300;
+                        $time -= $interval;
                         $advice = new TransitAdvice($startAddress, $endAddress, $date, date("H:i", $time), $how);
                     }
                 }
@@ -138,7 +138,7 @@
                     $oldTime = $time;
                     while ($advice->getEarliestTime($how) <= $oldTime)
                     {
-                        $time += 300;
+                        $time += $interval;
                         $advice = new TransitAdvice($startAddress, $endAddress, $date, date("H:i", $time), $how);
                     }
                 }
@@ -148,6 +148,7 @@
                 // request the status
                 $requestStatus = $advice->getStatus();
             }
+            
 
             if ($requestStatus !== "OK")
             {
