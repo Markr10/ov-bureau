@@ -9,6 +9,17 @@ body
     background-color: #E8E8E8;
     font-family:Verdana, Geneva, sans-serif;
     font-size: 14px;
+    min-height: 100%;
+}
+
+a {
+    color: #9e0b0f;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #808080;
 }
 
 #container 
@@ -241,4 +252,22 @@ body
 #submit:hover 
 {
     opacity:.9;
+}
+
+.mirror {
+    float: left;
+    margin: 0 -10px 0 0;
+    padding: 0;
+    /* Mirror the text */
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg); 
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
+    /* Make sure it stays aligned left */
+    -webkit-transform-origin: left;
+    -moz-transform-origin: left;
+    -ms-transform-origin: left;
+    -o-transform-origin: left;
+    transform-origin: left;
 }

@@ -77,6 +77,47 @@ class TransitAdvice
         }
     }
 
+    public function getEarliestTime($time = "departure_time")
+    {
+        $routeNr = $this->printRoutes("firstKey");
+        if ($time === "departure_time")
+        {
+            $timeToReturn = $this->routes[$routeNr]->getUnixDepartureTime();
+            return $timeToReturn;
+        }
+        else if ($time === "arrival_time")
+        {
+            $timeToReturn = $this->routes[$routeNr]->getUnixArrivalTime();
+            return $timeToReturn;
+        }
+        else
+        {
+            return null;
+        }
+    }
+
+    public function getLatestTime($time = "departure_time")
+    {
+        $routeNr = $this->printRoutes("lastKey");
+        if ($time === "departure_time")
+        {
+            $timeToReturn = $this->routes[$routeNr]->getUnixDepartureTime();
+            return $timeToReturn;
+        }
+        else if ($time === "arrival_time")
+        {
+            $timeToReturn = $this->routes[$routeNr]->getUnixArrivalTime();
+            return $timeToReturn;
+        }
+        else
+        {
+            return null;
+        }
+    }
+
+    /**
+     * Prints the transit advice on the screen within div's for css styling
+     */
     public function printAdvice()
     {
         if ($this->getStatus() === "OK")
@@ -89,8 +130,10 @@ class TransitAdvice
                  <div id='next-travel' data-nr='" . $this->printRoutes("firstKey") . "'>
                     Volgende reis: " . $this->routes[$this->printRoutes("firstKey")]->getDepartureTime() . "
                  </div>
-                 <div id='routeHeader'>Reisopties:</div>";
+                 <div id='backLink'><a href='" . $_SERVER["PHP_SELF"] . "' title='Plan opnieuw een reis'><span class='mirror'>" . ARROW . "</span>Plan opnieuw</a></div>
+                 <div id='routeHeader'></div>";
             echo"<div id='routeDetails'>";
+            echo"<div id='earlier_travel_options' onClick=\"window.location.href='" . $_SERVER["PHP_SELF"] . "?earlier&t=" . strtotime($this->routes[$this->printRoutes("firstKey")]->getDepartureTime()) . "&sa=" . urlencode($this->getFrom()) . "&ea=" . urlencode($this->getTo()) . "&d=" . urlencode($this->getDate()) . "&h=" . urlencode($this->getHow()) . "#plan'\">Eerdere reisopties<span class='arrow_top'>" . ARROW . "</span></div>";
             $this->printRoutes();
             echo"</div>";
             echo"</div>";
@@ -130,6 +173,7 @@ class TransitAdvice
                 $route = $this->routes[$routeNr];
                 $route->printRouteDetails($routeNr);
             }
+            echo"<div id='later_travel_options' onClick=\"window.location.href='" . $_SERVER["PHP_SELF"] . "?later&t=" . $unixDepartureTime . "&sa=" . urlencode($this->getFrom()) . "&ea=" . urlencode($this->getTo()) . "&d=" . urlencode($this->getDate()) . "&h=" . urlencode($this->getHow()) . "#plan'\">Latere reisopties<span class='arrow_bottom'>" . ARROW . "</span></div>";
             echo"</div>";
             echo"<div id='routes'>";
             // loop through the sorted array and fetch each key corresponding to the class field `routes`
@@ -141,8 +185,20 @@ class TransitAdvice
         }
         else
         {
-            reset($routesToOutput);
-            return key($routesToOutput);
+            if ($return === "lastKey")
+            {
+                foreach($routesToOutput as $routeNr => $unixDepartureTime)
+                {
+                    $nrToReturn = $routeNr;
+                }
+                // when the loop has ended the value of $nrToReturn contains the last key
+                return $nrToReturn;
+            }
+            else
+            {
+                reset($routesToOutput);
+                return key($routesToOutput);
+            }
         }
     }
 
