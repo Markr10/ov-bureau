@@ -3,8 +3,8 @@
     <head>
         <meta charset="utf-8" />
         <title>Mobiliteit Noord Groningen</title>
-        <link rel="stylesheet" type="text/css" href="style.css" />
         <link rel="stylesheet" type="text/css" href="css/ov-style.css" />
+        <link rel="stylesheet" type="text/css" href="style.css" />
         <link rel="stylesheet" type="text/css" href="css/form-planner.css" />
         <script src="lib/jquery.min.js"></script>
         <script src="lib/toegankelijkheid.js"></script>
