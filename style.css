@@ -147,7 +147,7 @@ body
 }
 .textBig 
 {
-    font-size: 14pt;	
+    font-size: 140% !important;
 }
 
 /*      Argumenten      */
