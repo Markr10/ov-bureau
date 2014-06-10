@@ -10,6 +10,46 @@
         <script src="lib/toegankelijkheid.js"></script>
         <script src="lib/jquery.clearsearch-1.0.3-patched.js"></script>
         <script src="lib/planner.js"></script>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" />
+        <script src="//code.jquery.com/jquery-1.9.1.js"></script>
+        <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+        <script>
+            $(function() {
+                $("#datepicker").datepicker({
+                    showOn: "both", // show onclick calendar AND textfield
+                    buttonImage: "images/calendar-icon.gif", // define image path to calendar
+                    buttonImageOnly: true, // calendar image, no button
+                    showAnim: "slideDown", // slideDown animation
+                    showButtonPanel: true, // show buttons for 'today' and 'done'
+                    changeMonth: true, // month = changeable
+                    changeYear: true, // year = changeable
+                    dateFormat: 'dd-mm-yy', // date notation
+                    showWeek: false, // show week numbers
+                    buttonText: 'Open kalender',
+                    // NEDERLANDS
+                    closeText: 'Sluiten',
+                    prevText: '←',
+                    nextText: '→',
+                    currentText: 'Vandaag',
+                    monthNames: ['januari', 'februari', 'maart', 'april', 'mei', 'juni',
+                        'juli', 'augustus', 'september', 'oktober', 'november', 'december'],
+                    monthNamesShort: ['januari', 'februari', 'maart', 'april', 'mei', 'juni',
+                        'juli', 'augustus', 'september', 'oktober', 'november', 'december'],
+                    dayNames: ['zondag', 'maandag', 'dinsdag', 'woensdag', 'donderdag', 'vrijdag', 'zaterdag'],
+                    dayNamesShort: ['zon', 'maa', 'din', 'woe', 'don', 'vri', 'zat'],
+                    dayNamesMin: ['zo', 'ma', 'di', 'wo', 'do', 'vr', 'za'],
+                    weekHeader: 'Wk',
+                    minDate: 'dateToday'
+                });
+            });
+            $(document).ready(function()
+            {
+                $("img[class='ui-datepicker-trigger']").each(function()
+                {
+                    $(this).attr('style', 'height:20px; position:absolute; top:50px;right:20px;');
+                });
+            });
+        </script>
     </head>
     <body>
         <div id="container">
@@ -59,11 +99,49 @@
                   $content = file_get_contents("https://maps.googleapis.com/maps/api/directions/json?origin=" . urlencode($startAddress) . "&destination=" . urlencode($endAddress) . "&sensor=false&key=AIzaSyCKZlUXOE0zYan1v9SD1RNyVipP-ZZAABc&" . $how . "=$unixTime&mode=transit&alternatives=true&language=nl");
                   $result = (array) json_decode($content, true);
 
+                  // print the received aray on screen for visualization-testing
                   echo"<pre>";
                   print_r($result);
                   echo"</pre>";
                  */
             }
+            else if (isset($_GET["earlier"]) || isset($_GET["later"]))
+            {
+                // define GET values
+                $how = $_GET["h"]; // "departure_time" or "arrival_time"
+                $time = $_GET["t"]; // in Unix format, VERY IMPORTANT !!!
+                $startAddress = $_GET["sa"];
+                $endAddress = $_GET["ea"];
+                $date = $_GET["d"]; // d-m-Y
+
+                $advice = new TransitAdvice($startAddress, $endAddress, $date, date("H:i", $time), $how);
+
+
+                if (isset($_GET["earlier"])) // they wanted to travel earlier
+                {
+                    $oldTime = $time;
+                    while ($advice->getEarliestTime($how) >= $oldTime)
+                    {
+                        $time -= 300;
+                        $advice = new TransitAdvice($startAddress, $endAddress, $date, date("H:i", $time), $how);
+                    }
+                }
+                else // they chose for later options!
+                {
+                    $oldTime = $time;
+                    while ($advice->getEarliestTime($how) <= $oldTime)
+                    {
+                        $time += 300;
+                        $advice = new TransitAdvice($startAddress, $endAddress, $date, date("H:i", $time), $how);
+                    }
+                }
+
+                // print the advice on the screen
+                $advice->printAdvice();
+                // request the status
+                $requestStatus = $advice->getStatus();
+            }
+
             if ($requestStatus !== "OK")
             {
                 ?>
@@ -73,11 +151,20 @@
                         <input name="startAddress" id="from" class="clearable" type="text" placeholder="Adres, station, postcode, etc" autofocus />
                         <label for="endAddress" title="Vul bijvoorbeeld een adres, station of postcode in.">Naar</label>
                         <input name="endAddress" id="to" class="clearable" type="text" placeholder="Adres, station, postcode, etc" autofocus />
-                        <label for="how" title="">Vertrek/Aankomst</label>
-                        <input type="radio" name="how" value="departure_time" checked />
-                        <input type="radio" name="how" value="arrival_time" />
-                        <input type="text" class="clearable" name="time" value="<?php echo date("H:i") ?>">
-                            <input name="submit" type="submit" value="Plannen" />
+                        <label for="depart" class="inlinelabel" title=""><input type="radio" name="how" value="departure_time" id="depart" checked /> Vertrek </label>
+                        <label for="arrive" class="inlinelabel" title=""><input type="radio" name="how" value="arrival_time" id="arrive" /> Aankomst </label>
+                        <div style="clear: both;"></div>
+                        <div class="pickDateTime">
+                            <div class="datePicker">
+                                <label for="datepicker" title="Vul de gewenste datum in.">Datum</label>
+                                <input type="text" id="datepicker" value="<?php echo date("d-m-Y") ?>" />
+                            </div>
+                            <div class="timePicker">
+                                <label for="timepicker" title="Vul de gewenste tijd in.">Tijd</label>
+                                <input type="text" id="timepicker" class="clearable" name="time" value="<?php echo date("H:i") ?>" />
+                            </div>
+                        </div>
+                        <input name="submit" type="submit" value="Plannen" />
                     </form>
                 </div>
                 <?php

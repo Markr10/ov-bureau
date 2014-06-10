@@ -30,6 +30,7 @@ class Route
     private $startAddress;
     private $endAddress;
     private $unixDepartureTime;
+    private $unixArrivalTime;
     // Route Steps
     private $steps;
     // Route Overstappen
@@ -55,6 +56,7 @@ class Route
         $this->endAddress = removeCountrySuffix($route["legs"][0]["end_address"]);
 
         $this->unixDepartureTime = $route["legs"][0]["departure_time"]["value"];
+        $this->unixArrivalTime = $route["legs"][0]["arrival_time"]["value"];
 
         // define steps
         $steps = $route["legs"][0]["steps"];
@@ -101,7 +103,7 @@ class Route
      */
     public function printRouteDetails($routeNr = "")
     {
-        echo"<div class='detailedRoute' data-detailnr='" . $routeNr . "'>";
+        echo"<div class='detailedRoute' data-detailnr='" . $routeNr . "' onClick=\"window.location.href='#plan'\">";
         echo"<div class='time'>" . $this->getDepartureTime() . " " . ARROW . " " . $this->getArrivalTime() . "</div>";
         echo"<div class='route-arrow' data-arrow-detailnr='" . $routeNr . "'></div>";
         echo"<div class='steps'>Overstappen: " . $this->getAantalOverstappen() . "</div>";
@@ -145,6 +147,11 @@ class Route
     public function getUnixDepartureTime()
     {
         return $this->unixDepartureTime;
+    }
+    
+    public function getUnixArrivalTime()
+    {
+        return $this->unixArrivalTime;
     }
 
     public function getAantalOverstappen()

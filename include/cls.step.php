@@ -94,7 +94,7 @@ class Step
                 <div class='details'>
                     <img src='" . $this->getVehicleIcon() . "' alt='" . $this->getVehicleName() . "' title='" . $this->getVehicleName() . "' />
                     <div class='lineName'>" . $this->getLineName() . "</div>
-                    <div class='richting'>(richting " . $this->getHeadSign() . ")</div>
+                    <div class='richting'>(" . $this->getVehicleName() . " richting " . $this->getHeadSign() . ")</div>
                     <div class='lineAgency'>" . $this->getLineAgency() . "</div>
                 </div>
                 <div class='departure'>
