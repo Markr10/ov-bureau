@@ -106,6 +106,18 @@ a:hover {
     text-align: center;
     padding-top: 20px;
 }
+#welAuto
+{
+    visibility: hidden;
+    margin-top: -20px;
+    margin-bottom: 20px;
+}
+#geenAuto
+{
+    visibility: hidden;
+    margin-top: -58px;
+    margin-bottom: 20px;
+}
 #content 
 {
     background-color:#FFF;
@@ -200,44 +212,6 @@ a:hover {
     min-height: 200px;
     background-color:#FFF;
 }
-#contact label 
-{
-    display:block;
-    margin-top:20px;
-    letter-spacing:2px;
-}
-#contact form 
-{
-    margin:0 auto;
-    width:459px;
-}
-
-/* Style the text boxes */
-#contact input, textarea 
-{
-    width:439px;
-    height:27px;
-    background:#efefef;
-    border:1px solid #dedede;
-    padding:10px;
-    margin-top:3px;
-    font-size:0.9em;
-    color:#3a3a3a;
-    -moz-border-radius:5px;
-    -webkit-border-radius:5px;
-    border-radius:5px;
-}
-
-#contact textarea 
-{
-    height:213px;
-    /*background:url(images/textarea-bg.jpg) right no-repeat #efefef;*/
-    background:#efefef;
-}
-#contact input:focus, textarea:focus 
-{
-    border:1px solid #97d6eb;
-}
 #submit
 {
     width:127px;
@@ -254,7 +228,8 @@ a:hover {
     opacity:.9;
 }
 
-.mirror {
+.mirror 
+{
     float: left;
     margin: 0 -10px 0 0;
     padding: 0;
