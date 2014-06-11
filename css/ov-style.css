@@ -73,7 +73,7 @@ h1 {
 }
 
 #routeDetails .detailedRoute.active .time {
-    background: #9e0b0f;
+    background-color: #9e0b0f;
     float: left;
     width: 102%;
     color: #fff;
@@ -83,14 +83,15 @@ h1 {
     border-top-right-radius: 0px !important;
 }
 
+
 #routeDetails .detailedRoute .steps {
     float: none;
-    color: #000 !important;
+    color: #000;
 }
 
 #routeDetails .detailedRoute .duration {
     float: none;
-    color: #000 !important;
+    color: #000;
 }
 
 #routeDetails .detailedRoute .route-arrow {
@@ -122,7 +123,7 @@ h1 {
     border-radius: 5px;
     margin-bottom: 10px;
     padding: 5px;
-    background: #c8c8c8;
+    background-color: #c8c8c8;
     cursor: pointer;
     box-shadow: 1px 1px 5px #000;
 }

@@ -19,7 +19,6 @@
                     showOn: "both", // show onclick calendar AND textfield
                     buttonImage: "images/calendar-icon.gif", // define image path to calendar
                     buttonImageOnly: true, // calendar image, no button
-                    showAnim: "slideDown", // slideDown animation
                     showButtonPanel: true, // show buttons for 'today' and 'done'
                     changeMonth: true, // month = changeable
                     changeYear: true, // year = changeable
