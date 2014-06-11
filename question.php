@@ -54,6 +54,7 @@ else // gebruik meegezonden/ "oude" cookies
         <meta charset="utf-8">
         <title>Mobiliteit Noord Groningen</title>
         <link rel="stylesheet" type="text/css" href="style.css" />
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.5.1.min.js"></script>
         <script src="lib/jquery.min.js"></script>
         <script src="lib/toegankelijkheid.js"></script>
     </head>
@@ -79,19 +80,45 @@ else // gebruik meegezonden/ "oude" cookies
             <div id="header"></div>
             <div id="plan" class="menuPlanNormal">Plan uw reis!</div>
             <div id="question" class="textNormal">
-                <form method="POST" action="question.php">
+                <form name="questionForm" method="POST" action="question.php">
+
+                    
  
-                    <label>Ik heb een auto</label><br>
-                    <Input type = 'Radio' Name ='wAuto' <?php echo $radio1; ?> value= 'wLopen'>en in staat meer dan 800 meter te lopen of fietsen</input><br>
-                    <Input type = 'Radio' Name ='wAuto' <?php echo $radio2; ?> value= 'nLopen'>ben niet in staat te lopen of te fietsen</input><br><br>
+                    <label>Ik heb een auto</label>
+                    <Input type = 'Radio' Name ='auto' style="margin-left: 15px; margin-right: 5px;" value= 'ja'>ja</input>
+                    <Input type = 'Radio' Name ='auto' style="margin-left: 15px; margin-right: 5px;" value= 'nee'>nee</input></br></br></br>
 
+                    <script>
+                    $(document).ready(function () 
+                    {
+                        $("input[name=auto]:radio").click(function () 
+                        {
+                            console.log($(this).val());
+                            if ($(this).val() == 'ja') 
+                            {
+                                $("#geenAuto").css("visibility","hidden");
+                                $("#welAuto").css("visibility","visible");
+                            }
+                            if ($(this).val() == 'nee')
+                            {
+                                $("#welAuto").css("visibility","hidden");
+                                $("#geenAuto").css("visibility","visible");
+                            }
+                        })
+                    });
+                    </script>
 
+                    <div id="welAuto">
+                        <Input type = 'Radio' Name ='wAuto' <?php echo $radio1; ?> style="margin-left: 15px; margin-right: 5px;" value= 'wLopen'>Ik ben in staat meer dan 800 meter te lopen of fietsen</input><br>
+                        <Input type = 'Radio' Name ='wAuto' <?php echo $radio2; ?> style="margin-left: 15px; margin-right: 5px;" value= 'nLopen'>Ik ben niet in staat te lopen of te fietsen</input>
+                    </div>
 
-                    <label>Ik heb geen auto</label><br>
-                    <Input type = 'Radio' Name ='gAuto' <?php echo $radio3; ?> value= 'wLopen'>en in staat meer dan 800 meter te lopen of fietsen</input><br>
-                    <Input type = 'Radio' Name ='gAuto' <?php echo $radio4; ?> value= 'nLopen'>ben niet in staat te lopen of te fietsen</input><br>
+                    <div id="geenAuto">
+                        <Input type = 'Radio' Name ='gAuto' <?php echo $radio3; ?> style="margin-left: 15px; margin-right: 5px;" value= 'wLopen'>Ik ben in staat meer dan 800 meter te lopen of fietsen</input><br>
+                        <Input type = 'Radio' Name ='gAuto' <?php echo $radio4; ?> style="margin-left: 15px; margin-right: 5px;" value= 'nLopen'>Ik ben niet in staat te lopen of te fietsen</input>
+                    </div>
 
-                    <input id="submit" name="submit" type="submit" value="Submit"/>
+                    <input id="submit" name="submit" type="submit" value="Verder"/>
 
                     
 
