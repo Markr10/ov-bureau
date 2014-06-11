@@ -109,13 +109,13 @@ else // gebruik meegezonden/ "oude" cookies
                     </script>
 
                     <div id="welAuto">
-                        <Input type = 'Radio' Name ='wAuto' <?php echo $radio1; ?> style="margin-left: 15px; margin-right: 5px;" value= 'wLopen'>Ik ben in staat meer dan 800 meter te lopen of fietsen</input><br>
-                        <Input type = 'Radio' Name ='wAuto' <?php echo $radio2; ?> style="margin-left: 15px; margin-right: 5px;" value= 'nLopen'>Ik ben niet in staat te lopen of te fietsen</input>
+                        <Input type = 'Radio' Name ='wAuto' <?php echo (isset($radio1)? $radio1 : ""); ?> style="margin-left: 15px; margin-right: 5px;" value= 'wLopen'>Ik ben in staat meer dan 800 meter te lopen of fietsen</input><br>
+                        <Input type = 'Radio' Name ='wAuto' <?php echo (isset($radio2)? $radio2 : ""); ?> style="margin-left: 15px; margin-right: 5px;" value= 'nLopen'>Ik ben niet in staat te lopen of te fietsen</input>
                     </div>
 
                     <div id="geenAuto">
-                        <Input type = 'Radio' Name ='gAuto' <?php echo $radio3; ?> style="margin-left: 15px; margin-right: 5px;" value= 'wLopen'>Ik ben in staat meer dan 800 meter te lopen of fietsen</input><br>
-                        <Input type = 'Radio' Name ='gAuto' <?php echo $radio4; ?> style="margin-left: 15px; margin-right: 5px;" value= 'nLopen'>Ik ben niet in staat te lopen of te fietsen</input>
+                        <Input type = 'Radio' Name ='gAuto' <?php echo (isset($radio3)? $radio3 : ""); ?> style="margin-left: 15px; margin-right: 5px;" value= 'wLopen'>Ik ben in staat meer dan 800 meter te lopen of fietsen</input><br>
+                        <Input type = 'Radio' Name ='gAuto' <?php echo (isset($radio4)? $radio4 : ""); ?> style="margin-left: 15px; margin-right: 5px;" value= 'nLopen'>Ik ben niet in staat te lopen of te fietsen</input>
                     </div>
 
                     <input id="submit" name="submit" type="submit" value="Verder"/>
