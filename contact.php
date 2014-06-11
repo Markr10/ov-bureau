@@ -50,7 +50,7 @@
 
                     <div id="contactContent"></div>
 
-                    <input id="submit" name="submit" type="submit" value="Submit"/>
+                    <input id="submit" name="submit" type="submit" value="Dien in"/>
 
                 </form>
             </div>

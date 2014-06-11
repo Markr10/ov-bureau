@@ -96,29 +96,29 @@ else // gebruik meegezonden/ "oude" cookies
                             console.log($(this).val());
                             if ($(this).val() == 'ja') 
                             {
-                                $("#welAuto").css("visibility","visible")
-                                $("#geenAuto").css("visibility","hidden")
+                                $("#geenAuto").css("visibility","hidden");
+                                $("#welAuto").css("visibility","visible");
                             }
                             if ($(this).val() == 'nee')
                             {
-                                $("#welAuto").css("visibility","hidden")
-                                $("#geenAuto").css("visibility","visible")
+                                $("#welAuto").css("visibility","hidden");
+                                $("#geenAuto").css("visibility","visible");
                             }
                         })
                     });
                     </script>
 
                     <div id="welAuto">
-                        <Input type = 'Radio' Name ='wAuto' <?php echo $radio1; ?> value= 'wLopen'>en in staat meer dan 800 meter te lopen of fietsen</input><br>
-                        <Input type = 'Radio' Name ='wAuto' <?php echo $radio2; ?> value= 'nLopen'>ben niet in staat te lopen of te fietsen</input>
+                        <Input type = 'Radio' Name ='wAuto' <?php echo $radio1; ?> style="margin-left: 15px; margin-right: 5px;" value= 'wLopen'>Ik ben in staat meer dan 800 meter te lopen of fietsen</input><br>
+                        <Input type = 'Radio' Name ='wAuto' <?php echo $radio2; ?> style="margin-left: 15px; margin-right: 5px;" value= 'nLopen'>Ik ben niet in staat te lopen of te fietsen</input>
                     </div>
 
                     <div id="geenAuto">
-                        <Input type = 'Radio' Name ='gAuto' <?php echo $radio3; ?> value= 'wLopen'>en in staat meer dan 800 meter te lopen of fietsen</input><br>
-                        <Input type = 'Radio' Name ='gAuto' <?php echo $radio4; ?> value= 'nLopen'>ben niet in staat te lopen of te fietsen</input>
+                        <Input type = 'Radio' Name ='gAuto' <?php echo $radio3; ?> style="margin-left: 15px; margin-right: 5px;" value= 'wLopen'>Ik ben in staat meer dan 800 meter te lopen of fietsen</input><br>
+                        <Input type = 'Radio' Name ='gAuto' <?php echo $radio4; ?> style="margin-left: 15px; margin-right: 5px;" value= 'nLopen'>Ik ben niet in staat te lopen of te fietsen</input>
                     </div>
 
-                    <input id="submit" name="submit" type="submit" value="Submit"/>
+                    <input id="submit" name="submit" type="submit" value="Verder"/>
 
                     
 
