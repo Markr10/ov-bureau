@@ -5,7 +5,6 @@
         <title>Mobiliteit Noord Groningen</title>
         <link rel="stylesheet" type="text/css" href="style.css" />
         <link rel="stylesheet" type="text/css" href="css/form-planner.css" />
-        <script type="text/javascript" src="http://code.jquery.com/jquery-1.5.1.min.js"></script>
         <script src="lib/jquery.min.js"></script>
         <script src="lib/toegankelijkheid.js"></script>
         <script src="lib/jquery.clearsearch-1.0.3-patched.js"></script>
