@@ -95,7 +95,8 @@ a:hover {
     border-bottom: 1px solid #000;
     color:#FFF;
     text-align: center;
-    vertical-align: middle;
+    margin: 0 auto;
+    /*vertical-align: middle;*/
     padding-top: 3px;
 }
 #question 
