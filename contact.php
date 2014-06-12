@@ -13,7 +13,7 @@
     </head>
     <body>
         <div id="container">
-            <div id="menu" class="menuPlanNormal"> <img src="images/contrast.png"  alt="Wijzig contrast"/>
+            <div id="menu" class="menuPlanNormal"> <img src="images/contrastwit.png"  alt="Wijzig contrast"/>
                 <div id="textSize">
                     <a href="#" class="fontSizePlus">A+</a> | <a href="#" class="fontSizeMinus">A-</a>
                 </div>
