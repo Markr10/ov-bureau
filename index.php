@@ -3,59 +3,43 @@
     <head>
         <meta charset="utf-8" />
         <title>Mobiliteit Noord Groningen</title>
-        <link rel="stylesheet" type="text/css" href="css/ov-style.css" />
+
+        <!-- Screen CSS -->
+        <link rel="stylesheet" href="css/slider.css" type="text/css" media="screen" />
+        <!-- lightbox CSS -->
+        <link rel="stylesheet" href="js/prettyPhoto/css/prettyPhoto.css" type="text/css" media="screen" />
+        
+        <!--Stylesheets OV Bureau-->
+                <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" />
+                <link rel="stylesheet" type="text/css" href="css/ov-style.css" />
         <link rel="stylesheet" type="text/css" href="style.css" />
         <link rel="stylesheet" type="text/css" href="css/form-planner.css" />
-        <script src="lib/jquery.min.js"></script>
+        <!-- JAVASCRIPT GOES HERE -->	
+                <script src="lib/jquery.min.js"></script>
+
+
+        
+        
         <script src="lib/toegankelijkheid.js"></script>
         <script src="lib/jquery.clearsearch-1.0.3-patched.js"></script>
         <script src="lib/planner.js"></script>
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" />
-        <script src="//code.jquery.com/jquery-1.9.1.js"></script>
+
         <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-        <script>
-            $(function() {
-                $("#datepicker").datepicker({
-                    showOn: "both", // show onclick calendar AND textfield
-                    buttonImage: "images/calendar-icon.gif", // define image path to calendar
-                    buttonImageOnly: true, // calendar image, no button
-                    showButtonPanel: true, // show buttons for 'today' and 'done'
-                    changeMonth: true, // month = changeable
-                    changeYear: true, // year = changeable
-                    dateFormat: 'dd-mm-yy', // date notation
-                    showWeek: false, // show week numbers
-                    buttonText: 'Open kalender',
-                    // NEDERLANDS
-                    closeText: 'Sluiten',
-                    prevText: '←',
-                    nextText: '→',
-                    currentText: 'Vandaag',
-                    monthNames: ['januari', 'februari', 'maart', 'april', 'mei', 'juni',
-                        'juli', 'augustus', 'september', 'oktober', 'november', 'december'],
-                    monthNamesShort: ['januari', 'februari', 'maart', 'april', 'mei', 'juni',
-                        'juli', 'augustus', 'september', 'oktober', 'november', 'december'],
-                    dayNames: ['zondag', 'maandag', 'dinsdag', 'woensdag', 'donderdag', 'vrijdag', 'zaterdag'],
-                    dayNamesShort: ['zon', 'maa', 'din', 'woe', 'don', 'vri', 'zat'],
-                    dayNamesMin: ['zo', 'ma', 'di', 'wo', 'do', 'vr', 'za'],
-                    weekHeader: 'Wk',
-                    minDate: 'dateToday'
-                });
-            });
-            $(document).ready(function()
-            {
-                $("img[class='ui-datepicker-trigger']").each(function()
-                {
-                    $(this).attr('style', 'height:20px; position:absolute; top:50px;right:20px;');
-                });
-            });
-        </script>
-        <script type="text/javsacript">
+        <script src="js/prettyPhoto/js/jquery.prettyPhoto.js" type="text/javascript"></script>	
+
+        <!--this file includes the aviaslider: -->
+        <script type='text/javascript' src='js/jquery.aviaSlider.js'></script>
+
+        <!--this file includes the activation call for the avia slider. You should edit here: -->
+        <script type='text/javascript' src='js/custom.js'></script>
+
+<!--        <script type="text/javsacript">
             //Set the cursor ASAP to "Wait"
             document.body.style.cursor='wait';
 
             //When the window has finished loading, set it back to default...
             window.onload=function(){document.body.style.cursor='default';}
-        </script>
+        </script>-->
     </head>
     <body>
         <div id="container">
@@ -76,7 +60,13 @@
                 </ul>
             </div>
             <div id="slogan" class="footerSloganNormal">Reis met het openbaar vervoer!</div>
-            <div id="header"></div>
+            <div id="header">
+                <ul class='aviaslider' id="fullwidth-fade-slider" style="width: 100%; height: 256px;">
+                <li><img src="images/slides/1.jpg" alt="" /></a></li>
+                <li><img src="images/slides/2.jpg" alt="A heading of your choice :: This is the image description defined in your alt tag" /></a></li>
+                <li><img src="images/slides/3.jpg" alt="Another heading :: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor" /></a></li>
+            </ul>
+            </div>
             <div id="plan" class="menuPlanNormal">Plan uw reis!</div>
             <?php
             require_once './include/cls.transitadvice.php';
@@ -181,3 +171,39 @@
         </div>
     </body>
 </html>
+        <script>
+            $(function() {
+                $("#datepicker").datepicker({
+                    showOn: "both", // show onclick calendar AND textfield
+                    buttonImage: "images/calendar-icon.gif", // define image path to calendar
+                    buttonImageOnly: true, // calendar image, no button
+                    showButtonPanel: true, // show buttons for 'today' and 'done'
+                    changeMonth: true, // month = changeable
+                    changeYear: true, // year = changeable
+                    dateFormat: 'dd-mm-yy', // date notation
+                    showWeek: false, // show week numbers
+                    buttonText: 'Open kalender',
+                    // NEDERLANDS
+                    closeText: 'Sluiten',
+                    prevText: '←',
+                    nextText: '→',
+                    currentText: 'Vandaag',
+                    monthNames: ['januari', 'februari', 'maart', 'april', 'mei', 'juni',
+                        'juli', 'augustus', 'september', 'oktober', 'november', 'december'],
+                    monthNamesShort: ['januari', 'februari', 'maart', 'april', 'mei', 'juni',
+                        'juli', 'augustus', 'september', 'oktober', 'november', 'december'],
+                    dayNames: ['zondag', 'maandag', 'dinsdag', 'woensdag', 'donderdag', 'vrijdag', 'zaterdag'],
+                    dayNamesShort: ['zon', 'maa', 'din', 'woe', 'don', 'vri', 'zat'],
+                    dayNamesMin: ['zo', 'ma', 'di', 'wo', 'do', 'vr', 'za'],
+                    weekHeader: 'Wk',
+                    minDate: 'dateToday'
+                });
+            });
+            $(document).ready(function()
+            {
+                $("img[class='ui-datepicker-trigger']").each(function()
+                {
+                    $(this).attr('style', 'height:20px; position:absolute; top:50px;right:20px;');
+                });
+            });
+        </script>
