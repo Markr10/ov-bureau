@@ -1,3 +1,40 @@
+<script>
+    $(function() {
+        $("#datepicker").datepicker({
+            showOn: "both", // show onclick calendar AND textfield
+            buttonImage: "images/calendar-icon.gif", // define image path to calendar
+            buttonImageOnly: true, // calendar image, no button
+            showButtonPanel: true, // show buttons for 'today' and 'done'
+            changeMonth: true, // month = changeable
+            changeYear: true, // year = changeable
+            dateFormat: 'dd-mm-yy', // date notation
+            showWeek: false, // show week numbers
+            buttonText: 'Open kalender',
+            // NEDERLANDS
+            closeText: 'Sluiten',
+            prevText: '←',
+            nextText: '→',
+            currentText: 'Vandaag',
+            monthNames: ['januari', 'februari', 'maart', 'april', 'mei', 'juni',
+                'juli', 'augustus', 'september', 'oktober', 'november', 'december'],
+            monthNamesShort: ['januari', 'februari', 'maart', 'april', 'mei', 'juni',
+                'juli', 'augustus', 'september', 'oktober', 'november', 'december'],
+            dayNames: ['zondag', 'maandag', 'dinsdag', 'woensdag', 'donderdag', 'vrijdag', 'zaterdag'],
+            dayNamesShort: ['zon', 'maa', 'din', 'woe', 'don', 'vri', 'zat'],
+            dayNamesMin: ['zo', 'ma', 'di', 'wo', 'do', 'vr', 'za'],
+            weekHeader: 'Wk',
+            minDate: 'dateToday'
+        });
+    });
+    $(document).ready(function()
+    {
+        $("img[class='ui-datepicker-trigger']").each(function()
+        {
+            $(this).attr('style', 'height:20px; position:absolute; top:16px;right:10px;');
+        });
+    });
+</script>
+
 <fieldset>
     <legend>Persoonlijke gegevens</legend>
     <table>
@@ -134,10 +171,14 @@
         </tr>
         <tr>
             <td>
-                <label for="incidentDate" class="required">Datum voorval</label>
+                <label for="datepicker" class="required">Datum voorval</label>
             </td>
             <td>
-                <input type="text" name="incidentDatum" id="incidentDate" value="" required />
+                <div class="pickDateTime">
+                    <div class="datePicker">
+                        <input type="text" id="datepicker" value="<?php echo date("d-m-Y") ?>" required />
+                    </div>
+                </div>
             </td>
         </tr>
         <tr>

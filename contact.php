@@ -3,13 +3,18 @@
     <head>
         <meta charset="utf-8">
         <title>Mobiliteit Noord Groningen</title>
+        <link rel="stylesheet" type="text/css" href="css/ov-style.css" />
         <link rel="stylesheet" type="text/css" href="style.css" />
         <link rel="stylesheet" type="text/css" href="css/form-planner.css" />
-        <script type="text/javascript" src="http://code.jquery.com/jquery-1.5.1.min.js"></script>
         <script src="lib/jquery.min.js"></script>
         <script src="lib/toegankelijkheid.js"></script>
         <script src="lib/jquery.clearsearch-1.0.3-patched.js"></script>
         <script src="lib/planner.js"></script>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" />
+        <script src="//code.jquery.com/jquery-1.9.1.js"></script>
+        <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+        
     </head>
     <body>
         <div id="container">
