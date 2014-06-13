@@ -1,3 +1,9 @@
+<?php
+require_once './include/fnc.functions.php';
+require_once './include/cls.transitadvice.php';
+require_once './include/cls.route.php';
+require_once './include/cls.step.php';
+?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
@@ -56,8 +62,10 @@
             //When the window has finished loading, set it back to default...
             window.onload=function(){document.body.style.cursor='default';}
         </script>
+        <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+        <script type="text/javascript" src="lib/maps.js"></script>
     </head>
-    <body>
+    <body onload="initialize()">
         <div id="container">
             <div id="menu" class="menuPlanNormal"> <img src="images/contrast.png" alt="Wijzig contrast"/>
                 <div id="textSize">
@@ -79,25 +87,25 @@
             <div id="header"></div>
             <div id="plan" class="menuPlanNormal">Plan uw reis!</div>
             <?php
-            require_once './include/cls.transitadvice.php';
-            require_once './include/cls.route.php';
-            require_once './include/cls.step.php';
-            require_once './include/fnc.functions.php';
-
             // Predefine request status
             $requestStatus = "NOT_FOUND";
 
-            if (isset($_POST["submit"]))
+            if (isset($_GET["plan"]))
             {
                 // define POST values
-                $how = $_POST["how"];
-                $time = $_POST["time"];
-                $startAddress = $_POST["startAddress"];
-                $endAddress = $_POST["endAddress"];
+                $how = $_GET["h"];
+                $time = $_GET["t"];
+                $date = $_GET["d"];
+                $startAddress = $_GET["sa"];
+                $endAddress = $_GET["ea"];
 
-                $advice = new TransitAdvice($startAddress, $endAddress, date("d-m-Y"), $time, $how);
+                $advice = new TransitAdvice($startAddress, $endAddress, $date, $time, $how);
                 $advice->printAdvice();
-
+                ?>
+                    <script type="text/javascript">
+                        calcRoute();
+                    </script>
+                <?php
                 $requestStatus = $advice->getStatus();
                 /*
                   //fetch data from API and decode received json
@@ -147,13 +155,21 @@
                 // request the status
                 $requestStatus = $advice->getStatus();
             }
-            
+
 
             if ($requestStatus !== "OK")
             {
+                if (isset($_GET["uhoh"]))
+                {
+                    echo"
+                        <div id='transitAdvice'>
+                            Er is iets mis gegaan, probeer het opnieuw.
+                        </div>
+                        ";
+                }
                 ?>
                 <div id="content" class="textNormal">
-                    <form id="planner" method="post" action="#plan">
+                    <form id="planner" method="post" action="question.php">
                         <label for="startAddress" title="Vul bijvoorbeeld een adres, station of postcode in.">Van</label>
                         <input name="startAddress" id="from" class="clearable" type="text" placeholder="Adres, station, postcode, etc" autofocus />
                         <label for="endAddress" title="Vul bijvoorbeeld een adres, station of postcode in.">Naar</label>
@@ -161,17 +177,17 @@
                         <div class="pickDateTime">
                             <div class="datePicker">
                                 <label for="datepicker" title="Vul de gewenste datum in.">Datum</label>
-                                <input type="text" id="datepicker" value="<?php echo date("d-m-Y") ?>" />
+                                <input type="text" name="date" id="datepicker" value="<?php echo date("d-m-Y") ?>" autocomplete="off" />
                             </div>
                             <div class="timePicker">
                                 <label for="timepicker" title="Vul de gewenste tijd in.">Tijd</label>
-                                <input type="text" id="timepicker" class="clearable" name="time" value="<?php echo date("H:i") ?>" />
+                                <input type="text" id="timepicker" class="clearable" name="time" autocomplete="off" maxlength="5" value="<?php echo date("H:i"); ?>" />
                             </div>
                         </div>
                         <label for="depart" class="inlinelabel" title=""><input type="radio" name="how" value="departure_time" id="depart" checked /> Vertrektijd </label>
                         <label for="arrive" class="inlinelabel" title=""><input type="radio" name="how" value="arrival_time" id="arrive" /> Aankomsttijd </label>
                         <div style="clear: both;"></div>
-                        <input name="submit" type="submit" value="Plannen" />
+                        <input name="submit" type="submit" value="Plan mijn reis!" />
                     </form>
                 </div>
                 <?php
@@ -181,3 +197,4 @@
         </div>
     </body>
 </html>
+

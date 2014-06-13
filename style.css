@@ -105,18 +105,20 @@ a:hover {
     height: 100%;
     text-align: center;
     padding-top: 20px;
+    line-height: 200%;
+    position: relative;
+    overflow: auto;
 }
-#welAuto
+#autoKeuze {
+    text-align: left;
+    margin-bottom: 70px;
+}
+#welAuto, #geenAuto
 {
     visibility: hidden;
-    margin-top: -20px;
-    margin-bottom: 20px;
-}
-#geenAuto
-{
-    visibility: hidden;
-    margin-top: -58px;
-    margin-bottom: 20px;
+    text-align: left;
+    position: absolute;
+    top: 60px;
 }
 #content 
 {

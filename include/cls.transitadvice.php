@@ -127,6 +127,12 @@ class TransitAdvice
             echo"<div id='from-to'>
                     " . $this->routes[$this->printRoutes("firstKey")]->getStartAddress() . " " . ARROW . " " . $this->routes[$this->printRoutes("firstKey")]->getEndAddress() . ".
                  </div>
+                 <input type=\"hidden\" id=\"routeStart\" value='" . urlencode($this->routes[$this->printRoutes("firstKey")]->getStartAddress()) . "' />
+                 <input type=\"hidden\" id=\"routeEnd\" value='" . urlencode($this->routes[$this->printRoutes("firstKey")]->getEndAddress()) . "'/>                 
+                 <div id='onDate'>
+                    Op " . $this->getDate() . "
+                 </div>
+                 <div id='questionLink'>" . $_COOKIE["hasAnsweredQuestions"] . "<br/><a href='question.php?edit=1&t=" . $this->routes[$this->printRoutes("firstKey")]->getDepartureTime() . "&sa=" . urlencode($this->getFrom()) . "&ea=" . urlencode($this->getTo()) . "&d=" . urlencode($this->getDate()) . "&h=" . urlencode($this->getHow()) . "#plan'>" . ARROW . " Wijzig uw gegevens</a></div>
                  <div id='next-travel' data-nr='" . $this->printRoutes("firstKey") . "'>
                     Volgende reis: " . $this->routes[$this->printRoutes("firstKey")]->getDepartureTime() . "
                  </div>
@@ -135,6 +141,7 @@ class TransitAdvice
             echo"<div id='routeDetails'>";
             echo"<div id='earlier_travel_options' onClick=\"window.location.href='" . $_SERVER["PHP_SELF"] . "?earlier&t=" . strtotime($this->routes[$this->printRoutes("firstKey")]->getDepartureTime()) . "&sa=" . urlencode($this->getFrom()) . "&ea=" . urlencode($this->getTo()) . "&d=" . urlencode($this->getDate()) . "&h=" . urlencode($this->getHow()) . "#plan'; document.body.style.cursor='wait'; return true;\">Eerdere reisopties<span class='arrow_top'>" . ARROW . "</span></div>";
             $this->printRoutes();
+            echo"<div id='map_canvas'></div>";
             echo"</div>";
             echo"</div>";
         }
@@ -142,7 +149,7 @@ class TransitAdvice
         {
             echo"<div id='transitAdvice'>
                     Er is geen reisadvies voor deze route beschikbaar. <br />
-                    Controleer of u de begin- en eindbestemming juist heeft ingevuld, of probeer het later nogmaals.
+                    Controleer of alle velden juist zijn ingevuld, of probeer het later nogmaals.
                 </div>";
         }
     }
@@ -174,6 +181,24 @@ class TransitAdvice
                 $route->printRouteDetails($routeNr);
             }
             echo"<div id='later_travel_options' onClick=\"window.location.href='" . $_SERVER["PHP_SELF"] . "?later&t=" . $unixDepartureTime . "&sa=" . urlencode($this->getFrom()) . "&ea=" . urlencode($this->getTo()) . "&d=" . urlencode($this->getDate()) . "&h=" . urlencode($this->getHow()) . "#plan'; document.body.style.cursor='wait'; return true;\">Latere reisopties<span class='arrow_bottom'>" . ARROW . "</span></div>";
+            /**
+             * 
+             * // IMPLEMENTATIE REGIOTAXI onder de API reisAdvies!
+             * 
+             */
+            $tijdsduur = get_driving_information(urlencode($this->getFrom()), urlencode($this->getTo()));
+            $duration = formatDurationStringRegioTaxi($tijdsduur);
+            $aankomsttijd = date("H:i", strtotime("+" . preg_replace(array("/dag/", "/uur/", "/min/"), array("days", "hours", "minutes"), $duration)));
+            echo"<div id='regioTaxiDetailsHeader'>Regio Taxi</div>";
+            echo"<div class='detailedRoute' data-detailnr='regiotaxi'>";
+            echo"<div class='time'>" . $this->getTime() . " " . ARROW . " " . $aankomsttijd . "</div>";
+            echo"<div class='route-arrow' data-arrow-detailnr='regiotaxi'></div>";
+            echo"<div class='steps'>Wachttijd: incl. 30 min.</div>";
+            echo"<div class='duration'>Reistijd: " . $duration . ".</div>";
+            echo"</div>";
+            /**
+             * // einde implementatie regio taxi
+             */
             echo"</div>";
             echo"<div id='routes'>";
             // loop through the sorted array and fetch each key corresponding to the class field `routes`
@@ -182,12 +207,26 @@ class TransitAdvice
                 $route = $this->routes[$routeNr];
                 $route->printRoute($routeNr);
             }
+            /**
+             * IMPLEMENT REGIOTAXI
+             */
+            echo"<div class='route' data-routenr='regiotaxi'>";
+            echo"<div class='description'>Van " . $this->getFrom() . " naar " . $this->getTo() . " </div>";
+            echo"<div class='depart_arrive'>" . $this->getTime() . " " . ARROW . " " . $aankomsttijd . "</div>";
+            foreach ($this->steps as $step)
+            {
+                $step->printStep();
+            }
+            echo"</div>";
+            /**
+             * END IMPLEMENTING REGIOTAXI
+             */
         }
         else
         {
             if ($return === "lastKey")
             {
-                foreach($routesToOutput as $routeNr => $unixDepartureTime)
+                foreach ($routesToOutput as $routeNr => $unixDepartureTime)
                 {
                     $nrToReturn = $routeNr;
                 }
