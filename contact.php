@@ -36,6 +36,7 @@
             </div>
             <div id="slogan" class="footerSloganNormal">Reis met het openbaar vervoer!</div>
             <div id="contact" class="textNormal">
+            
                 <h2>Contact formulieren</h2>
                 <form id="contactFormulier" method="post" action="bedankt.php">
 
