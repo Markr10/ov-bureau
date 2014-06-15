@@ -255,3 +255,7 @@ h1 {
     float: left;
     width: 80%;
 }
+
+.borderall {
+    border: 1px solid #D1E631;
+}
