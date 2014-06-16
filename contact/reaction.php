@@ -22,8 +22,7 @@
             dayNames: ['zondag', 'maandag', 'dinsdag', 'woensdag', 'donderdag', 'vrijdag', 'zaterdag'],
             dayNamesShort: ['zon', 'maa', 'din', 'woe', 'don', 'vri', 'zat'],
             dayNamesMin: ['zo', 'ma', 'di', 'wo', 'do', 'vr', 'za'],
-            weekHeader: 'Wk',
-            minDate: 'dateToday'
+            weekHeader: 'Wk'
         });
     });
     $(document).ready(function()
@@ -176,7 +175,7 @@
             <td>
                 <div class="pickDateTime">
                     <div class="datePicker">
-                        <input type="text" id="datepicker" value="<?php echo date("d-m-Y") ?>" required />
+                        <input type="text" name='datum' id="datepicker" value="<?php echo date("d-m-Y") ?>" required />
                     </div>
                 </div>
             </td>

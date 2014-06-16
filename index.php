@@ -26,6 +26,7 @@ require_once './include/cls.step.php';
         <script src="lib/toegankelijkheid.js"></script>
         <script src="lib/jquery.clearsearch-1.0.3-patched.js"></script>
         <script src="lib/planner.js"></script>
+        <script src="lib/cookie/jquery.cookie.js"></script>
         <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
         <script src="js/prettyPhoto/js/jquery.prettyPhoto.js" type="text/javascript"></script>
 
@@ -83,7 +84,7 @@ require_once './include/cls.step.php';
         <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
         <script type="text/javascript" src="lib/maps.js"></script>
     </head>
-    <body onload="initialize();">
+    <body>
         <div id="container">
             <div id="menu" class="menuPlanNormal"> <img src="images/contrastwit.png" alt="Wijzig contrast"/>
                 <div id="textSize">
@@ -102,15 +103,26 @@ require_once './include/cls.step.php';
                 </ul>
             </div>
             <div id="slogan" class="footerSloganNormal">Reis met het openbaar vervoer!</div>
-            <div id="header">
-                <ul class='aviaslider' id="fullwidth-fade-slider" style="width: 100%; height: 256px;">
-                    <li><img src="images/slides/1.jpg" alt="" /></a></li>
-                    <li><img src="images/slides/2.jpg" alt="A heading of your choice :: This is the image description defined in your alt tag" /></a></li>
-                    <li><img src="images/slides/3.jpg" alt="Another heading :: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor" /></a></li>
-                </ul>
-            </div>
-            <div id="plan" class="menuPlanNormal">Plan uw reis!</div>
             <?php
+            if (isset($_GET["plan"]) || isset($_GET["later"]) || isset($_GET["earlier"]) || isset($_GET["edit"]))
+            {
+                
+            }
+            else
+            {
+                ?>
+                <div id="header">
+                    <ul class='aviaslider' id="fullwidth-fade-slider" style="width: 100%; height: 256px;">
+                        <li><img src="images/slides/1.jpg" alt="" /></a></li>
+                        <li><img src="images/slides/2.jpg" alt="A heading of your choice :: This is the image description defined in your alt tag" /></a></li>
+                        <li><img src="images/slides/3.jpg" alt="Another heading :: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor" /></a></li>
+                    </ul>
+                </div>
+                <div id="plan" class="menuPlanNormal">Plan uw reis!</div>
+
+
+                <?php
+            }
             // Predefine request status
             $requestStatus = "NOT_FOUND";
 
@@ -127,10 +139,7 @@ require_once './include/cls.step.php';
                 $advice->printAdvice();
                 ?>
                 <script type="text/javascript">
-                    calcRoute();
-                    $(function() {
-                        $("#map_canvas").attr("class", "map_canvas_inactive");
-                    });
+                calcRoute();
                 </script>
                 <?php
                 $requestStatus = $advice->getStatus();
@@ -168,6 +177,11 @@ require_once './include/cls.step.php';
 
                 // print the advice on the screen
                 $advice->printAdvice();
+                ?>
+                <script type="text/javascript">
+                calcRoute();
+                </script>
+                <?php
                 // request the status
                 $requestStatus = $advice->getStatus();
             }

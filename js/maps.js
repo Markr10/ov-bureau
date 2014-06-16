@@ -65,6 +65,7 @@ function foundYou(position) {
   });
 }
 function calcRoute() {
+initialize();
   // get the travelmode, startpoint and via point from the form  
 var travelMode = "DRIVING";
 var start = $("#routeStart").val();
