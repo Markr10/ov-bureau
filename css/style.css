@@ -33,7 +33,7 @@ a:hover {
 
 #header 
 {
-    background-image: url(images/fotoHeader.png);
+    background-image: url(../images/fotoHeader.png);
     height: 256px;
     width: 1024px;	
     border-bottom: 1px solid #000;
