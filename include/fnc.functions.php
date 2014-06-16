@@ -91,7 +91,7 @@ function get_driving_information($start, $finish)
     if ($data)
     {
         $decode = (array) json_decode($data, true);
-        return floor($decode['routes'][0]['legs'][0]['duration']["value"] / 60);
+        return array(floor($decode['routes'][0]['legs'][0]['duration']["value"] / 60), $decode['routes'][0]['legs'][0]['distance']["value"]);
     }
     else
     {

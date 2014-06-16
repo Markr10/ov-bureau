@@ -1,4 +1,7 @@
 <?php
+/**
+ * Include all classes and functions
+ */
 require_once './include/fnc.functions.php';
 require_once './include/cls.transitadvice.php';
 require_once './include/cls.route.php';
@@ -20,6 +23,7 @@ require_once './include/cls.step.php';
         <script src="//code.jquery.com/jquery-1.9.1.js"></script>
         <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
         <script>
+            // Setup jQuery DatePicker
             $(function() {
                 $("#datepicker").datepicker({
                     showOn: "both", // show onclick calendar AND textfield
@@ -65,7 +69,7 @@ require_once './include/cls.step.php';
         <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
         <script type="text/javascript" src="lib/maps.js"></script>
     </head>
-    <body onload="initialize()">
+    <body onload="initialize();">
         <div id="container">
             <div id="menu" class="menuPlanNormal"> <img src="images/contrast.png" alt="Wijzig contrast"/>
                 <div id="textSize">
@@ -107,17 +111,6 @@ require_once './include/cls.step.php';
                     </script>
                 <?php
                 $requestStatus = $advice->getStatus();
-                /*
-                  //fetch data from API and decode received json
-                  $unixTime = strtotime(date("d-m-Y H:i", strtotime(date("d-m-Y") . " " . $time)));
-                  $content = file_get_contents("https://maps.googleapis.com/maps/api/directions/json?origin=" . urlencode($startAddress) . "&destination=" . urlencode($endAddress) . "&sensor=false&key=AIzaSyCKZlUXOE0zYan1v9SD1RNyVipP-ZZAABc&" . $how . "=$unixTime&mode=transit&alternatives=true&language=nl");
-                  $result = (array) json_decode($content, true);
-
-                  // print the received aray on screen for visualization-testing
-                  echo"<pre>";
-                  print_r($result);
-                  echo"</pre>";
-                 */
             }
             else if (isset($_GET["earlier"]) || isset($_GET["later"]))
             {
