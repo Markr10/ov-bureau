@@ -109,7 +109,6 @@ class Route
         echo"<div class='steps'>Overstappen: " . $this->getAantalOverstappen() . "</div>";
         echo"<div class='duration'>Reistijd: " . $this->getDuration() . "</div>";
         echo"</div>";
-        echo"<hr class='sepRoute' />";
     }
 
     /**

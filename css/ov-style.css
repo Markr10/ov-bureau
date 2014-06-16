@@ -68,15 +68,16 @@ h1 {
 #map_canvas {
     width: 100%;
     height: 300px;
-    display: block;
+    position: absolute;
+    left: -9999px;
 }
 
-#map_canvas .active {
-    display: block;
+.map_canvas_active {
+    left: 0px !important;
 }
 
-#map_canvas .inactive {
-    display: none;
+.map_canvas_inactive {
+    left: -9999px;
 }
 
 /* First the little detailed route blocks on the left */
@@ -221,6 +222,9 @@ hr .sepRoute {
     float: left;
     margin-left: 4%;
     width: 64%;
+    position: relative;
+    overflow: auto;
+    min-height: 500px;
 }
 
 #routes .active {
