@@ -30,15 +30,25 @@ require_once './include/cls.step.php';
         <script type="text/javascript" src="js/jquery/custom/planner.js"></script>
         <script type="text/javascript" src="js/jquery/cookie/jquery.cookie.js"></script>
         <script type="text/javascript" src="js/jquery/prettyPhoto/js/jquery.prettyPhoto.js"></script>
-        <!--AviaSlider -->
+        <!-- AviaSlider -->
         <script type="text/javascript" src='js/jquery/aviaSlider/jquery.aviaSlider.min.js'></script>
-        <!--this file includes the activation call for the avia slider. You should edit here -->
+        <!-- This file includes the activation call for the AviaSlider. You should edit here. -->
         <script type="text/javascript" src='js/jquery/aviaSlider/custom.min.js'></script>
         <!-- Google Maps -->
         <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
         <script type="text/javascript" src="js/maps.js"></script>
         
         <script type="text/javsacript">
+            // Set the cursor ASAP to "Wait"
+            document.body.style.cursor='wait';
+            
+            // When the window has finished loading, set it back to default...
+            $(window).load(function()
+            {
+                document.body.style.cursor='default';
+            });
+            
+            
             // Setup jQuery DatePicker
             $(function() {
                 $("#datepicker").datepicker({
@@ -50,8 +60,9 @@ require_once './include/cls.step.php';
                     changeYear: true, // year = changeable
                     dateFormat: 'dd-mm-yy', // date notation
                     showWeek: false, // show week numbers
-                    buttonText: 'Open kalender',
+                    minDate: 'dateToday',
                     // NEDERLANDS
+                    buttonText: 'Open kalender',
                     closeText: 'Sluiten',
                     prevText: '←',
                     nextText: '→',
@@ -63,8 +74,7 @@ require_once './include/cls.step.php';
                     dayNames: ['zondag', 'maandag', 'dinsdag', 'woensdag', 'donderdag', 'vrijdag', 'zaterdag'],
                     dayNamesShort: ['zon', 'maa', 'din', 'woe', 'don', 'vri', 'zat'],
                     dayNamesMin: ['zo', 'ma', 'di', 'wo', 'do', 'vr', 'za'],
-                    weekHeader: 'Wk',
-                    minDate: 'dateToday'
+                    weekHeader: 'Wk'
                 });
             });
             $(document).ready(function()
@@ -74,14 +84,6 @@ require_once './include/cls.step.php';
                     $(this).attr('style', 'height:20px; position:absolute; top:50px;right:20px;');
                 });
             });
-        </script>
-        
-        <script type="text/javsacript">
-            //Set the cursor ASAP to "Wait"
-            document.body.style.cursor='wait';
-
-            //When the window has finished loading, set it back to default...
-            window.onload=function(){document.body.style.cursor='default';}
         </script>
     </head>
     <body>
