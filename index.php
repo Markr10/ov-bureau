@@ -84,7 +84,7 @@ require_once './include/cls.step.php';
         <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
         <script type="text/javascript" src="lib/maps.js"></script>
     </head>
-    <body onload="initialize();">
+    <body>
         <div id="container">
             <div id="menu" class="menuPlanNormal"> <img src="images/contrastwit.png" alt="Wijzig contrast"/>
                 <div id="textSize">
@@ -104,7 +104,7 @@ require_once './include/cls.step.php';
             </div>
             <div id="slogan" class="footerSloganNormal">Reis met het openbaar vervoer!</div>
             <?php
-            if (isset($_GET["plan"]))
+            if (isset($_GET["plan"]) || isset($_GET["later"]) || isset($_GET["earlier"]) || isset($_GET["edit"]))
             {
                 
             }
