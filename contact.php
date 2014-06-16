@@ -14,7 +14,6 @@
         <script type="text/javascript" src="js/jquery/ui/jquery-ui-1.10.4.custom.min.js"></script>
         <script type="text/javascript" src="js/jquery/jquery.clearsearch-1.0.3-patched.js"></script>
         <script type="text/javascript" src="js/jquery/custom/toegankelijkheid.js"></script>
-        <script type="text/javascript" src="js/jquery/custom/planner.js"></script>
     </head>
     <body>
         <div id="container">
