@@ -38,7 +38,7 @@ require_once './include/cls.step.php';
         <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
         <script type="text/javascript" src="js/maps.js"></script>
         
-        <script type="text/javsacript">
+        <script type="text/javascript">
             // Set the cursor ASAP to "Wait"
             document.body.style.cursor='wait';
             
