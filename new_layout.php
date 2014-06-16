@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <meta charset="utf-8">
+        <meta charset="utf-8" />
         <title>Mobiliteit Noord Groningen</title>
-        <link rel="stylesheet" type="text/css" href="style.css" />
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
         <link rel="stylesheet" type="text/css" href="css/form-planner.css" />
-        <script src="lib/jquery.min.js"></script>
-        <script src="lib/toegankelijkheid.js"></script>
-        <script src="lib/jquery.clearsearch-1.0.3-patched.js"></script>
-        <script src="lib/planner.js"></script>
+        <script type="text/javascript" src="js/jquery/jquery.min.js"></script>
+        <script type="text/javascript" src="js/jquery/custom/toegankelijkheid.js"></script>
+        <script type="text/javascript" src="js/jquery/jquery.clearsearch-1.0.3-patched.js"></script>
+        <script type="text/javascript" src="js/jquery/custom/planner.js"></script>
     </head>
     <body>
         <div id="container">
