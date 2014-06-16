@@ -120,36 +120,35 @@ else
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <meta charset="utf-8">
-            <title>Mobiliteit Noord Groningen</title>
-            <link rel="stylesheet" type="text/css" href="style.css" />
-            <link rel="stylesheet" type="text/css" href="css/ov-style.css" />
-            <link rel="stylesheet" type="text/css" href="css/form-planner.css" />
-            <script type="text/javascript" src="http://code.jquery.com/jquery-1.5.1.min.js"></script>
-            <script src="lib/jquery.min.js"></script>
-            <script src="lib/toegankelijkheid.js"></script>
-            <script>
-                $(document).ready(function()
-                {
-                    $("#geenAuto").css("visibility", "hidden");
-                    $("#welAuto").css("visibility", "hidden");
+        <meta charset="utf-8" />
+        <title>Mobiliteit Noord Groningen</title>
+        <link rel="stylesheet" type="text/css" href="css/ov-style.css" />
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
+        <link rel="stylesheet" type="text/css" href="css/form-planner.css" />
+        <script type="text/javascript" src="js/jquery/jquery.min.js"></script>
+        <script type="text/javascript" src="js/jquery/custom/toegankelijkheid.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function()
+            {
+                $("#geenAuto").css("visibility", "hidden");
+                $("#welAuto").css("visibility", "hidden");
 
-                    $("input[name=auto]:radio").click(function()
+                $("input[name=auto]:radio").click(function()
+                {
+                    console.log($(this).val());
+                    if ($(this).val() === 'ja')
                     {
-                        console.log($(this).val());
-                        if ($(this).val() === 'ja')
-                        {
-                            $("#geenAuto").css("visibility", "hidden");
-                            $("#welAuto").css("visibility", "visible");
-                        }
-                        if ($(this).val() === 'nee')
-                        {
-                            $("#welAuto").css("visibility", "hidden");
-                            $("#geenAuto").css("visibility", "visible");
-                        }
-                    });
+                        $("#geenAuto").css("visibility", "hidden");
+                        $("#welAuto").css("visibility", "visible");
+                    }
+                    if ($(this).val() === 'nee')
+                    {
+                        $("#welAuto").css("visibility", "hidden");
+                        $("#geenAuto").css("visibility", "visible");
+                    }
                 });
-            </script>
+            });
+        </script>
     </head>
     <body>
         <div id="container">

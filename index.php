@@ -12,25 +12,43 @@ require_once './include/cls.step.php';
     <head>
         <meta charset="utf-8" />
         <title>Mobiliteit Noord Groningen</title>
-        <!-- Screen CSS -->
+        <!-- Slider screen CSS -->
         <link rel="stylesheet" type="text/css" href="css/slider.css" media="screen" />
-        <!-- Lightbox CSS -->
-        <link rel="stylesheet" href="js/prettyPhoto/css/prettyPhoto.css" type="text/css" media="screen" />
+        <!-- PrettyPhoto screen CSS -->
+        <link rel="stylesheet" type="text/css" href="js/prettyPhoto/css/prettyPhoto.css" media="screen" />
         <!--Stylesheets OV Bureau-->
         <link rel="stylesheet" type="text/css" href="css/ov-style.css" />
-        <link rel="stylesheet" type="text/css" href="style.css" />
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
         <link rel="stylesheet" type="text/css" href="css/form-planner.css" />
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" />
-        <!-- JavaScript -->	
-        <script src="lib/jquery.min.js"></script>
-        <script src="lib/toegankelijkheid.js"></script>
-        <script src="lib/jquery.clearsearch-1.0.3-patched.js"></script>
-        <script src="lib/planner.js"></script>
-        <script src="lib/cookie/jquery.cookie.js"></script>
-        <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-        <script src="js/prettyPhoto/js/jquery.prettyPhoto.js" type="text/javascript"></script>
-
-        <script>
+        <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+        <!-- JavaScript -->
+        <script type="text/javascript" src="js/jquery/jquery.min.js"></script>
+        <script type="text/javascript" src="js/jquery/jquery-migrate-1.2.1.min.js"></script>
+        <script type="text/javascript" src="js/jquery/ui/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="js/jquery/jquery.clearsearch-1.0.3-patched.js"></script>
+        <script type="text/javascript" src="js/jquery/custom/toegankelijkheid.js"></script>
+        <script type="text/javascript" src="js/jquery/custom/planner.js"></script>
+        <script type="text/javascript" src="js/jquery/cookie/jquery.cookie.js"></script>
+        <script type="text/javascript" src="js/jquery/prettyPhoto/js/jquery.prettyPhoto.js"></script>
+        <!-- AviaSlider -->
+        <script type="text/javascript" src='js/jquery/aviaSlider/jquery.aviaSlider.min.js'></script>
+        <!-- This file includes the activation call for the AviaSlider. You should edit here. -->
+        <script type="text/javascript" src='js/jquery/aviaSlider/custom.min.js'></script>
+        <!-- Google Maps -->
+        <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+        <script type="text/javascript" src="js/maps.js"></script>
+        
+        <script type="text/javsacript">
+            // Set the cursor ASAP to "Wait"
+            document.body.style.cursor='wait';
+            
+            // When the window has finished loading, set it back to default...
+            $(window).load(function()
+            {
+                document.body.style.cursor='default';
+            });
+            
+            
             // Setup jQuery DatePicker
             $(function() {
                 $("#datepicker").datepicker({
@@ -42,8 +60,9 @@ require_once './include/cls.step.php';
                     changeYear: true, // year = changeable
                     dateFormat: 'dd-mm-yy', // date notation
                     showWeek: false, // show week numbers
-                    buttonText: 'Open kalender',
+                    minDate: 'dateToday',
                     // NEDERLANDS
+                    buttonText: 'Open kalender',
                     closeText: 'Sluiten',
                     prevText: '←',
                     nextText: '→',
@@ -55,8 +74,7 @@ require_once './include/cls.step.php';
                     dayNames: ['zondag', 'maandag', 'dinsdag', 'woensdag', 'donderdag', 'vrijdag', 'zaterdag'],
                     dayNamesShort: ['zon', 'maa', 'din', 'woe', 'don', 'vri', 'zat'],
                     dayNamesMin: ['zo', 'ma', 'di', 'wo', 'do', 'vr', 'za'],
-                    weekHeader: 'Wk',
-                    minDate: 'dateToday'
+                    weekHeader: 'Wk'
                 });
             });
             $(document).ready(function()
@@ -67,22 +85,6 @@ require_once './include/cls.step.php';
                 });
             });
         </script>
-
-        <!--this file includes the aviaslider: -->
-        <script type='text/javascript' src='js/jquery.aviaSlider.js'></script>
-
-        <!--this file includes the activation call for the avia slider. You should edit here: -->
-        <script type='text/javascript' src='js/custom.js'></script>
-
-        <script type="text/javsacript">
-            //Set the cursor ASAP to "Wait"
-            document.body.style.cursor='wait';
-
-            //When the window has finished loading, set it back to default...
-            window.onload=function(){document.body.style.cursor='default';}
-        </script>
-        <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
-        <script type="text/javascript" src="lib/maps.js"></script>
     </head>
     <body>
         <div id="container">

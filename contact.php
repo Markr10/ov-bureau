@@ -4,19 +4,17 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <meta charset="utf-8">
+        <meta charset="utf-8" />
         <title>Mobiliteit Noord Groningen</title>
         <link rel="stylesheet" type="text/css" href="css/ov-style.css" />
-        <link rel="stylesheet" type="text/css" href="style.css" />
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
         <link rel="stylesheet" type="text/css" href="css/form-planner.css" />
-        <script src="lib/jquery.min.js"></script>
-        <script src="lib/toegankelijkheid.js"></script>
-        <script src="lib/jquery.clearsearch-1.0.3-patched.js"></script>
-        <script src="lib/planner.js"></script>
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" />
-        <script src="//code.jquery.com/jquery-1.9.1.js"></script>
-        <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-        
+        <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+        <script type="text/javascript" src="js/jquery/jquery.min.js"></script>
+        <script type="text/javascript" src="js/jquery/ui/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="js/jquery/jquery.clearsearch-1.0.3-patched.js"></script>
+        <script type="text/javascript" src="js/jquery/custom/toegankelijkheid.js"></script>
+        <script type="text/javascript" src="js/jquery/custom/planner.js"></script>
     </head>
     <body>
         <div id="container">
