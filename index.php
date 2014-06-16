@@ -12,16 +12,23 @@ require_once './include/cls.step.php';
     <head>
         <meta charset="utf-8" />
         <title>Mobiliteit Noord Groningen</title>
+        <!-- Screen CSS -->
+        <link rel="stylesheet" type="text/css" href="css/slider.css" media="screen" />
+        <!-- Lightbox CSS -->
+        <link rel="stylesheet" href="js/prettyPhoto/css/prettyPhoto.css" type="text/css" media="screen" />
+        <!--Stylesheets OV Bureau-->
         <link rel="stylesheet" type="text/css" href="css/ov-style.css" />
         <link rel="stylesheet" type="text/css" href="style.css" />
         <link rel="stylesheet" type="text/css" href="css/form-planner.css" />
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" />
+        <!-- JavaScript -->	
         <script src="lib/jquery.min.js"></script>
         <script src="lib/toegankelijkheid.js"></script>
         <script src="lib/jquery.clearsearch-1.0.3-patched.js"></script>
         <script src="lib/planner.js"></script>
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" />
-        <script src="//code.jquery.com/jquery-1.9.1.js"></script>
-        <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+        <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+        <script src="js/prettyPhoto/js/jquery.prettyPhoto.js" type="text/javascript"></script>
+
         <script>
             // Setup jQuery DatePicker
             $(function() {
@@ -59,6 +66,13 @@ require_once './include/cls.step.php';
                 });
             });
         </script>
+
+        <!--this file includes the aviaslider: -->
+        <script type='text/javascript' src='js/jquery.aviaSlider.js'></script>
+
+        <!--this file includes the activation call for the avia slider. You should edit here: -->
+        <script type='text/javascript' src='js/custom.js'></script>
+
         <script type="text/javsacript">
             //Set the cursor ASAP to "Wait"
             document.body.style.cursor='wait';
@@ -71,7 +85,7 @@ require_once './include/cls.step.php';
     </head>
     <body onload="initialize();">
         <div id="container">
-            <div id="menu" class="menuPlanNormal"> <img src="images/contrast.png" alt="Wijzig contrast"/>
+            <div id="menu" class="menuPlanNormal"> <img src="images/contrastwit.png" alt="Wijzig contrast"/>
                 <div id="textSize">
                     <a href="#" class="fontSizePlus">A+</a> | <a href="#" class="fontSizeMinus">A-</a>
                 </div>
@@ -88,7 +102,13 @@ require_once './include/cls.step.php';
                 </ul>
             </div>
             <div id="slogan" class="footerSloganNormal">Reis met het openbaar vervoer!</div>
-            <div id="header"></div>
+            <div id="header">
+                <ul class='aviaslider' id="fullwidth-fade-slider" style="width: 100%; height: 256px;">
+                    <li><img src="images/slides/1.jpg" alt="" /></a></li>
+                    <li><img src="images/slides/2.jpg" alt="A heading of your choice :: This is the image description defined in your alt tag" /></a></li>
+                    <li><img src="images/slides/3.jpg" alt="Another heading :: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor" /></a></li>
+                </ul>
+            </div>
             <div id="plan" class="menuPlanNormal">Plan uw reis!</div>
             <?php
             // Predefine request status
@@ -190,4 +210,3 @@ require_once './include/cls.step.php';
         </div>
     </body>
 </html>
-
