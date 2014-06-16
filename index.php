@@ -15,7 +15,7 @@ require_once './include/cls.step.php';
         <!-- Slider screen CSS -->
         <link rel="stylesheet" type="text/css" href="css/slider.css" media="screen" />
         <!-- PrettyPhoto screen CSS -->
-        <link rel="stylesheet" type="text/css" href="js/prettyPhoto/css/prettyPhoto.css" media="screen" />
+        <link rel="stylesheet" type="text/css" href="js/jquery/prettyPhoto/css/prettyPhoto.css" media="screen" />
         <!--Stylesheets OV Bureau-->
         <link rel="stylesheet" type="text/css" href="css/ov-style.css" />
         <link rel="stylesheet" type="text/css" href="css/style.css" />
