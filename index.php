@@ -67,6 +67,10 @@ require_once './include/cls.step.php';
                     weekHeader: 'Wk'
                 });
                 
+                $(".datePicker").each(function()
+                {
+                    $(this).attr('style', 'z-index:25;');
+                });
                 
                 $("img[class='ui-datepicker-trigger']").each(function()
                 {
