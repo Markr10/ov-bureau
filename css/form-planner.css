@@ -130,6 +130,11 @@ label
     border:1px solid #97d6eb;
     outline: none;
 }
+/*#contact .required
+{
+    border:2px solid red;
+    outline: none;
+}*/
 /* TODO #submit uit code verwijderen */
 /* TODO code herschikken zodat stijlen toegepast worden */
 input[type=submit]

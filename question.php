@@ -16,7 +16,7 @@ if (isset($_POST["submit"]))
     $time = (empty($_POST["time"]) ? "null" : $_POST["time"]);
     $startAddress = (empty($_POST["startAddress"]) ? "null" : $_POST["startAddress"]);
     $endAddress = (empty($_POST["endAddress"]) ? "null" : $_POST["endAddress"]);
-    $transitURL = "?plan&h=" . $how . "&d=" . $date . "&t=" . $time . "&sa=" . $startAddress . "&ea=" . $endAddress . "#plan";
+    $transitURL = "?plan=new&h=" . $how . "&d=" . $date . "&t=" . $time . "&sa=" . $startAddress . "&ea=" . $endAddress;
 
     // if there are already cookies set, which means the user already 
     // answered the questions, proceed to transit advice
@@ -68,18 +68,22 @@ else if (isset($_POST['submit_question']))
             if ($_POST['wAuto'] == 'wLopen') // WEL Auto, WEL Lopen
             {
                 $conditie = "U heeft <strong>wel</strong> een auto en u kunt <strong>wel</strong> meer dan 800 meter lopen of fietsen";
+                setcookie("kanLopen", "true", $cookietime, '/');
             }
             if ($_POST['wAuto'] == 'nLopen') // WEL Auto, NIET Lopen
             {
                 $conditie = "U heeft <strong>wel</strong> een auto en u kunt <strong>niet</strong> meer dan 800 meter lopen of fietsen";
+                setcookie("kanLopen", "false", $cookietime, '/');
             }
             if ($_POST['gAuto'] == 'wLopen') // NIET Auto, WEL Lopen
             {
                 $conditie = "U heeft <strong>geen</strong> auto maar u kunt <strong>wel</strong> meer dan 800 meter lopen of fietsen";
+                setcookie("kanLopen", "true", $cookietime, '/');
             }
             if ($_POST['gAuto'] == 'nLopen') // NIET Auto, NIET Lopen
             {
                 $conditie = "U heeft <strong>geen</strong> auto en u kunt <strong>niet</strong> meer dan 800 meter lopen of fietsen";
+                setcookie("kanLopen", "false", $cookietime, '/');
             }
 
             // set cookie for having answered all the questions
@@ -99,7 +103,7 @@ else if (isset($_GET["edit"]))
     $time = (empty($_GET["t"]) ? "null" : $_GET["t"]);
     $startAddress = (empty($_GET["sa"]) ? "null" : $_GET["sa"]);
     $endAddress = (empty($_GET["ea"]) ? "null" : $_GET["ea"]);
-    $transitURL = "?plan&h=" . $how . "&d=" . $date . "&t=" . $time . "&sa=" . $startAddress . "&ea=" . $endAddress . "#plan";
+    $transitURL = "?plan=new&h=" . $how . "&d=" . $date . "&t=" . $time . "&sa=" . $startAddress . "&ea=" . $endAddress;
 
     unset($_COOKIE["hasAnsweredQuestions"]);
     setcookie("hasAnsweredQuestions", "", time() - 3600, '/');

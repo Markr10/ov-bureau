@@ -35,6 +35,8 @@
     });
 </script>
 
+
+
 <fieldset>
     <legend>Persoonlijke gegevens</legend>
     <table>
@@ -54,7 +56,7 @@
                 <label for="initials" class="required">Voorletters</label>
             </td>
             <td>
-                <input type="text" name="initialen" id="initials" value="" maxlength="50" required />
+                <input type="text" style="" name="initialen" id="initials" value="" maxlength="50" required />
             </td>
         </tr>
         <tr>
@@ -176,7 +178,7 @@
             <td>
                 <div class="pickDateTime">
                     <div class="datePicker">
-                        <input type="text" id="datepicker" value="<?php echo date("d-m-Y") ?>" required />
+                        <input type="text" name='datum' id="datepicker" value="<?php echo date("d-m-Y") ?>" required />
                     </div>
                 </div>
             </td>

@@ -176,7 +176,7 @@
             <td>
                 <div class="pickDateTime">
                     <div class="datePicker">
-                        <input type="text" id="datepicker" value="<?php echo date("d-m-Y") ?>" required />
+                        <input type="text" name='datum' id="datepicker" value="<?php echo date("d-m-Y") ?>" required />
                     </div>
                 </div>
             </td>
