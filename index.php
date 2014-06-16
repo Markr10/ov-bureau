@@ -177,6 +177,11 @@ require_once './include/cls.step.php';
 
                 // print the advice on the screen
                 $advice->printAdvice();
+                ?>
+                <script type="text/javascript">
+                calcRoute();
+                </script>
+                <?php
                 // request the status
                 $requestStatus = $advice->getStatus();
             }
