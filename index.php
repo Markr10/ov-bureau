@@ -39,16 +39,6 @@ require_once './include/cls.step.php';
         <script type="text/javascript" src="js/maps.js"></script>
         
         <script type="text/javascript">
-            // Set the cursor ASAP to "Wait"
-            document.body.style.cursor='wait';
-            
-            // When the window has finished loading, set it back to default...
-            $(window).load(function()
-            {
-                document.body.style.cursor='default';
-            });
-            
-            
             // Setup jQuery DatePicker
             $(function() {
                 $("#datepicker").datepicker({
@@ -76,13 +66,22 @@ require_once './include/cls.step.php';
                     dayNamesMin: ['zo', 'ma', 'di', 'wo', 'do', 'vr', 'za'],
                     weekHeader: 'Wk'
                 });
-            });
-            $(document).ready(function()
-            {
+                
+                
                 $("img[class='ui-datepicker-trigger']").each(function()
                 {
                     $(this).attr('style', 'height:20px; position:absolute; top:50px;right:20px;');
                 });
+                
+                
+                // Set the cursor ASAP to "Wait"
+                document.body.style.cursor='wait';
+            });
+            
+            // When the window has finished loading, set it back to default...
+            $(window).load(function()
+            {
+                document.body.style.cursor='default';
             });
         </script>
     </head>
