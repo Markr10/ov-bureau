@@ -26,6 +26,7 @@ require_once './include/cls.step.php';
         <script src="lib/toegankelijkheid.js"></script>
         <script src="lib/jquery.clearsearch-1.0.3-patched.js"></script>
         <script src="lib/planner.js"></script>
+        <script src="lib/cookie/jquery.cookie.js"></script>
         <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
         <script src="js/prettyPhoto/js/jquery.prettyPhoto.js" type="text/javascript"></script>
 
@@ -128,9 +129,6 @@ require_once './include/cls.step.php';
                 ?>
                 <script type="text/javascript">
                     calcRoute();
-                    $(function() {
-                        $("#map_canvas").attr("class", "map_canvas_inactive");
-                    });
                 </script>
                 <?php
                 $requestStatus = $advice->getStatus();

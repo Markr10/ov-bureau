@@ -68,18 +68,22 @@ else if (isset($_POST['submit_question']))
             if ($_POST['wAuto'] == 'wLopen') // WEL Auto, WEL Lopen
             {
                 $conditie = "U heeft <strong>wel</strong> een auto en u kunt <strong>wel</strong> meer dan 800 meter lopen of fietsen";
+                setcookie("kanLopen", "true", $cookietime, '/');
             }
             if ($_POST['wAuto'] == 'nLopen') // WEL Auto, NIET Lopen
             {
                 $conditie = "U heeft <strong>wel</strong> een auto en u kunt <strong>niet</strong> meer dan 800 meter lopen of fietsen";
+                setcookie("kanLopen", "false", $cookietime, '/');
             }
             if ($_POST['gAuto'] == 'wLopen') // NIET Auto, WEL Lopen
             {
                 $conditie = "U heeft <strong>geen</strong> auto maar u kunt <strong>wel</strong> meer dan 800 meter lopen of fietsen";
+                setcookie("kanLopen", "true", $cookietime, '/');
             }
             if ($_POST['gAuto'] == 'nLopen') // NIET Auto, NIET Lopen
             {
                 $conditie = "U heeft <strong>geen</strong> auto en u kunt <strong>niet</strong> meer dan 800 meter lopen of fietsen";
+                setcookie("kanLopen", "false", $cookietime, '/');
             }
 
             // set cookie for having answered all the questions
