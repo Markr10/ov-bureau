@@ -197,13 +197,16 @@ hr .sepRoute {
 
 #routeDetails .detailedRoute:hover .time,
 #routeDetails #earlier_travel_options:hover,
-#routeDetails #later_travel_options:hover,
-#routeDetails #earlier_travel_options:hover .arrow_top,
-#routeDetails #later_travel_options:hover .arrow_bottom {
+#routeDetails #later_travel_options:hover {
     background: #9e0b0f;
     color: #fff;
 /*    border-top-left-radius: 5px;
     border-top-right-radius: 5px;*/
+}
+
+#routeDetails #earlier_travel_options:hover .arrow_top,
+#routeDetails #later_travel_options:hover .arrow_bottom {
+    color: #fff;
 }
 
 #routeDetails #regioTaxiDetailsHeader,
