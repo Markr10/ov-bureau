@@ -27,6 +27,7 @@ label
 
 .timePicker input {
     width: 100% !important;
+    letter-spacing: 2px;
 }
 
 .datePicker {
@@ -141,6 +142,7 @@ input[type=submit]
     margin-top:20px;
     margin-bottom: 20px;
     cursor:pointer;
+    letter-spacing: 1px;
 }
 input[type=submit]:hover 
 {

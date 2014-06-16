@@ -1,62 +1,151 @@
 <?php
-// verstuurt nieuwe cookies + pas de nieuwe instellingen toe
-if(isset($_POST['submit']))
+require_once 'include/fnc.functions.php';
+
+$transitURL = "?uhoh";
+$transitERROR = "";
+$conditie = "";
+
+/**
+ * If the user clicked on the submit button to ask for a transit advice (from INDEX.PHP)
+ */
+if (isset($_POST["submit"]))
 {
-    $time = time() + 60*60*24*7*26; // Half jaar totdat cookie verloopt.
-    if($_POST['wAuto'] == 'wLopen')
-    { 
-        setcookie("A", 1, $time);
-        setcookie("B", 0, $time);
-        $radio1 = 'checked';
-    }
-    if($_POST['wAuto'] == 'nLopen')
-    { 
-        setcookie("A", 0, $time);
-        setcookie("B", 1, $time);
-        $radio2 = 'checked';
-    }
-    if($_POST['gAuto'] == 'wLopen')
-    { 
-        setcookie("C", 1, $time);
-        setcookie("D", 0, $time);
-        $radio3 = 'checked';
-    }
-    if($_POST['gAuto'] == 'nLopen')
-    { 
-        setcookie("C", 0, $time);
-        setcookie("D", 1, $time);
-        $radio4 = 'checked';
+    // define POST values
+    $how = (empty($_POST["how"]) ? "null" : $_POST["how"]);
+    $date = (empty($_POST["date"]) ? "null" : $_POST["date"]);
+    $time = (empty($_POST["time"]) ? "null" : $_POST["time"]);
+    $startAddress = (empty($_POST["startAddress"]) ? "null" : $_POST["startAddress"]);
+    $endAddress = (empty($_POST["endAddress"]) ? "null" : $_POST["endAddress"]);
+    $transitURL = "?plan&h=" . $how . "&d=" . $date . "&t=" . $time . "&sa=" . $startAddress . "&ea=" . $endAddress . "#plan";
+
+    // if there are already cookies set, which means the user already 
+    // answered the questions, proceed to transit advice
+    if (isset($_COOKIE["hasAnsweredQuestions"]))
+    {
+        header("Location: index.php" . $transitURL);
     }
 }
-else // gebruik meegezonden/ "oude" cookies
+/**
+ * If the user has filled in the questions, and asks for transit advice (from QUESTION.PHP)
+ */
+else if (isset($_POST['submit_question']))
 {
-    if(isset($_COOKIE["A"]) && $_COOKIE["A"]) 
+    // fetch the URL set in the form
+    $transitURL = $_POST["transitURL"];
+
+    if (!isset($_POST["auto"])) // de vraag is niet beantwoord!
     {
-        $radio1 = 'checked';
-    } 
-    if(isset($_COOKIE["B"]) && $_COOKIE["B"]) 
-    {
-        $radio2 = 'checked';
+        $transitERROR = "<div id='transitAdvice'>Er is iets niet goed gegaan. <br/>Controleer of u alles correct heeft ingevuld en probeer het opnieuw.</div>";
     }
-    if(isset($_COOKIE["C"]) && $_COOKIE["C"]) 
+    else
     {
-        $radio3 = 'checked';
-    } 
-    if(isset($_COOKIE["D"]) && $_COOKIE["D"]) 
-    {
-        $radio4 = 'checked';
+        if ($_POST["auto"] == "ja")
+        {
+
+            if (!isset($_POST["wAuto"]) || empty($_POST["wAuto"])) // de vervolgvraag is niet beantwoord!
+            {
+                $transitERROR = "<div id='transitAdvice'>Er is iets niet goed gegaan. <br/>Controleer of u alles correct heeft ingevuld en probeer het opnieuw.</div>";
+            }
+        }
+        else if ($_POST["auto"] == "nee")
+        {
+
+            if (!isset($_POST["gAuto"]) || empty($_POST["gAuto"])) // de vervolgvraag is niet beantwoord!
+            {
+                $transitERROR = "<div id='transitAdvice'>Er is iets niet goed gegaan. <br/>Controleer of u alles correct heeft ingevuld en probeer het opnieuw.</div>";
+            }
+        }
+        else // $_POST["auto"] is LEEG!
+        {
+            $transitERROR = "<div id='transitAdvice'>Er is iets niet goed gegaan. <br/>Controleer of u alles correct heeft ingevuld en probeer het opnieuw.</div>";
+        }
+
+        // als er geen errorwaarde is geconstateerd, ga verder!
+        if ($transitERROR === "")
+        {
+            $cookietime = time() + COOKIE_LIFETIME; // Half jaar totdat cookie verloopt.
+            // cookies aanmaken/overschrijven
+            if ($_POST['wAuto'] == 'wLopen') // WEL Auto, WEL Lopen
+            {
+                $conditie = "U heeft <strong>wel</strong> een auto en u kunt <strong>wel</strong> meer dan 800 meter lopen of fietsen";
+            }
+            if ($_POST['wAuto'] == 'nLopen') // WEL Auto, NIET Lopen
+            {
+                $conditie = "U heeft <strong>wel</strong> een auto en u kunt <strong>niet</strong> meer dan 800 meter lopen of fietsen";
+            }
+            if ($_POST['gAuto'] == 'wLopen') // NIET Auto, WEL Lopen
+            {
+                $conditie = "U heeft <strong>geen</strong> auto maar u kunt <strong>wel</strong> meer dan 800 meter lopen of fietsen";
+            }
+            if ($_POST['gAuto'] == 'nLopen') // NIET Auto, NIET Lopen
+            {
+                $conditie = "U heeft <strong>geen</strong> auto en u kunt <strong>niet</strong> meer dan 800 meter lopen of fietsen";
+            }
+
+            // set cookie for having answered all the questions
+            setcookie("hasAnsweredQuestions", $conditie, $cookietime, '/');
+
+            header("Location: index.php" . $transitURL);
+        }
     }
+}
+/**
+ * De gebruiker wil graag opnieuw de vragen beantwoorden
+ */
+else if (isset($_GET["edit"]))
+{
+    $how = (empty($_GET["h"]) ? "null" : $_GET["h"]);
+    $date = (empty($_GET["d"]) ? "null" : $_GET["d"]);
+    $time = (empty($_GET["t"]) ? "null" : $_GET["t"]);
+    $startAddress = (empty($_GET["sa"]) ? "null" : $_GET["sa"]);
+    $endAddress = (empty($_GET["ea"]) ? "null" : $_GET["ea"]);
+    $transitURL = "?plan&h=" . $how . "&d=" . $date . "&t=" . $time . "&sa=" . $startAddress . "&ea=" . $endAddress . "#plan";
+
+    unset($_COOKIE["hasAnsweredQuestions"]);
+    setcookie("hasAnsweredQuestions", "", time() - 3600, '/');
+}
+/**
+ * Er is niets gevraagd aan deze pagina, de gebruiker mag hier dan niet komen
+ * Stuur de gebruiker weer terug naar de homepagina
+ */
+else
+{
+    header("Location: index.php");
 }
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta charset="utf-8">
-        <title>Mobiliteit Noord Groningen</title>
-        <link rel="stylesheet" type="text/css" href="style.css" />
-        <script type="text/javascript" src="http://code.jquery.com/jquery-1.5.1.min.js"></script>
-        <script src="lib/jquery.min.js"></script>
-        <script src="lib/toegankelijkheid.js"></script>
+            <title>Mobiliteit Noord Groningen</title>
+            <link rel="stylesheet" type="text/css" href="style.css" />
+            <link rel="stylesheet" type="text/css" href="css/ov-style.css" />
+            <link rel="stylesheet" type="text/css" href="css/form-planner.css" />
+            <script type="text/javascript" src="http://code.jquery.com/jquery-1.5.1.min.js"></script>
+            <script src="lib/jquery.min.js"></script>
+            <script src="lib/toegankelijkheid.js"></script>
+            <script>
+                $(document).ready(function()
+                {
+                    $("#geenAuto").css("visibility", "hidden");
+                    $("#welAuto").css("visibility", "hidden");
+
+                    $("input[name=auto]:radio").click(function()
+                    {
+                        console.log($(this).val());
+                        if ($(this).val() === 'ja')
+                        {
+                            $("#geenAuto").css("visibility", "hidden");
+                            $("#welAuto").css("visibility", "visible");
+                        }
+                        if ($(this).val() === 'nee')
+                        {
+                            $("#welAuto").css("visibility", "hidden");
+                            $("#geenAuto").css("visibility", "visible");
+                        }
+                    });
+                });
+            </script>
     </head>
     <body>
         <div id="container">
@@ -79,50 +168,35 @@ else // gebruik meegezonden/ "oude" cookies
             <div id="slogan" class="footerSloganNormal">Reis met het openbaar vervoer!</div>
             <div id="header"></div>
             <div id="plan" class="menuPlanNormal">Plan uw reis!</div>
+
+            <?php echo $transitERROR; ?>
+
             <div id="question" class="textNormal">
+
                 <form name="questionForm" method="POST" action="question.php">
 
+                    <div id="autoKeuze">
+                        <label>Ik heb een auto:</label>
+                        <input type='radio' name='auto' value='ja' id="keuzeJa" /><label for="keuzeJa">Ja</label>
+                        <input type='radio' name='auto' value='nee' id="keuzeNee" /><label for="keuzeNee">Nee</label>
+                    </div>
                     
- 
-                    <label>Ik heb een auto</label>
-                    <Input type = 'Radio' Name ='auto' style="margin-left: 15px; margin-right: 5px;" value= 'ja'>ja</input>
-                    <Input type = 'Radio' Name ='auto' style="margin-left: 15px; margin-right: 5px;" value= 'nee'>nee</input></br></br></br>
-
-                    <script>
-                    $(document).ready(function () 
-                    {
-                        $("input[name=auto]:radio").click(function () 
-                        {
-                            console.log($(this).val());
-                            if ($(this).val() == 'ja') 
-                            {
-                                $("#geenAuto").css("visibility","hidden");
-                                $("#welAuto").css("visibility","visible");
-                            }
-                            if ($(this).val() == 'nee')
-                            {
-                                $("#welAuto").css("visibility","hidden");
-                                $("#geenAuto").css("visibility","visible");
-                            }
-                        })
-                    });
-                    </script>
-
                     <div id="welAuto">
-                        <Input type = 'Radio' Name ='wAuto' <?php echo (isset($radio1)? $radio1 : ""); ?> style="margin-left: 15px; margin-right: 5px;" value= 'wLopen'>Ik ben in staat meer dan 800 meter te lopen of fietsen</input><br>
-                        <Input type = 'Radio' Name ='wAuto' <?php echo (isset($radio2)? $radio2 : ""); ?> style="margin-left: 15px; margin-right: 5px;" value= 'nLopen'>Ik ben niet in staat te lopen of te fietsen</input>
+                        <input type='radio' name='wAuto' <?php echo (isset($_COOKIE["radio1"]) ? $_COOKIE["radio1"] : ""); ?> value='wLopen' id="wAutowLopen" /><label for="wAutowLopen">Ik ben in staat meer dan 800 meter te lopen of fietsen</label><br/>
+                        <input type='radio' name='wAuto' <?php echo (isset($_COOKIE["radio2"]) ? $_COOKIE["radio2"] : ""); ?> value='nLopen' id="wAutonLopen" /><label for="wAutonLopen">Ik ben niet in staat te lopen of te fietsen</label>
                     </div>
 
                     <div id="geenAuto">
-                        <Input type = 'Radio' Name ='gAuto' <?php echo (isset($radio3)? $radio3 : ""); ?> style="margin-left: 15px; margin-right: 5px;" value= 'wLopen'>Ik ben in staat meer dan 800 meter te lopen of fietsen</input><br>
-                        <Input type = 'Radio' Name ='gAuto' <?php echo (isset($radio4)? $radio4 : ""); ?> style="margin-left: 15px; margin-right: 5px;" value= 'nLopen'>Ik ben niet in staat te lopen of te fietsen</input>
+                        <input type='radio' name='gAuto' <?php echo (isset($_COOKIE["radio3"]) ? $_COOKIE["radio3"] : ""); ?> value='wLopen' id="gAutowLopen" /><label for="gAutowLopen">Ik ben in staat meer dan 800 meter te lopen of fietsen</label><br/>
+                        <input type='radio' name='gAuto' <?php echo (isset($_COOKIE["radio4"]) ? $_COOKIE["radio4"] : ""); ?> value='nLopen' id="gAutonLopen" /><label for="gAutonLopen">Ik ben niet in staat te lopen of te fietsen</label>
                     </div>
 
-                    <input id="submit" name="submit" type="submit" value="Verder"/>
+                    <input type="hidden" name="transitURL" value="<?php echo $transitURL; ?>"/>
 
-                    
+                    <input id="submit" name="submit_question" type="submit" value="Toon reisadvies"/>
 
                 </form>
+
             </div>
             <div id="footer" class="footerSloganNormal">&copy; 2014 - by INF2D</div>
         </div>
