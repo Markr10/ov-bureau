@@ -141,7 +141,6 @@ class TransitAdvice
             echo"<div id='routeDetails'>";
             echo"<div id='ovDetailsHeader'>Openbaar Vervoer</div>";
             echo"<div id='earlier_travel_options' onClick=\"window.location.href='" . $_SERVER["PHP_SELF"] . "?earlier&t=" . strtotime($this->routes[$this->printRoutes("firstKey")]->getDepartureTime()) . "&sa=" . urlencode($this->getFrom()) . "&ea=" . urlencode($this->getTo()) . "&d=" . urlencode($this->getDate()) . "&h=" . urlencode($this->getHow()) . "#plan'; document.body.style.cursor='wait'; return true;\">Eerdere reisopties<span class='arrow_top'>" . ARROW . "</span></div>";
-            echo"<hr class='sepRoute' />";
             $this->printRoutes();
             echo"<div id='map_canvas'></div>";
             echo"</div>";

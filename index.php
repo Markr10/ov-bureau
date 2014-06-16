@@ -126,9 +126,12 @@ require_once './include/cls.step.php';
                 $advice = new TransitAdvice($startAddress, $endAddress, $date, $time, $how);
                 $advice->printAdvice();
                 ?>
-                    <script type="text/javascript">
-                        calcRoute();
-                    </script>
+                <script type="text/javascript">
+                    calcRoute();
+                    $(function() {
+                        $("#map_canvas").attr("class", "map_canvas_inactive");
+                    });
+                </script>
                 <?php
                 $requestStatus = $advice->getStatus();
             }
