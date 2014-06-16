@@ -20,11 +20,11 @@ require_once './include/cls.step.php';
         <link rel="stylesheet" type="text/css" href="css/ov-style.css" />
         <link rel="stylesheet" type="text/css" href="css/style.css" />
         <link rel="stylesheet" type="text/css" href="css/form-planner.css" />
-        <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+        <link rel="stylesheet" type="text/css" href="css/jquery-ui-1.10.4.custom.min.css" />
         <!-- JavaScript -->
         <script type="text/javascript" src="js/jquery/jquery.min.js"></script>
         <script type="text/javascript" src="js/jquery/jquery-migrate-1.2.1.min.js"></script>
-        <script type="text/javascript" src="js/jquery/ui/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="js/jquery/ui/jquery-ui-1.10.4.custom.min.js"></script>
         <script type="text/javascript" src="js/jquery/jquery.clearsearch-1.0.3-patched.js"></script>
         <script type="text/javascript" src="js/jquery/custom/toegankelijkheid.js"></script>
         <script type="text/javascript" src="js/jquery/custom/planner.js"></script>
