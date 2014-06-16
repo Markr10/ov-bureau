@@ -16,7 +16,7 @@ if (isset($_POST["submit"]))
     $time = (empty($_POST["time"]) ? "null" : $_POST["time"]);
     $startAddress = (empty($_POST["startAddress"]) ? "null" : $_POST["startAddress"]);
     $endAddress = (empty($_POST["endAddress"]) ? "null" : $_POST["endAddress"]);
-    $transitURL = "?plan&h=" . $how . "&d=" . $date . "&t=" . $time . "&sa=" . $startAddress . "&ea=" . $endAddress . "#plan";
+    $transitURL = "?plan=new&h=" . $how . "&d=" . $date . "&t=" . $time . "&sa=" . $startAddress . "&ea=" . $endAddress;
 
     // if there are already cookies set, which means the user already 
     // answered the questions, proceed to transit advice
@@ -103,7 +103,7 @@ else if (isset($_GET["edit"]))
     $time = (empty($_GET["t"]) ? "null" : $_GET["t"]);
     $startAddress = (empty($_GET["sa"]) ? "null" : $_GET["sa"]);
     $endAddress = (empty($_GET["ea"]) ? "null" : $_GET["ea"]);
-    $transitURL = "?plan&h=" . $how . "&d=" . $date . "&t=" . $time . "&sa=" . $startAddress . "&ea=" . $endAddress . "#plan";
+    $transitURL = "?plan=new&h=" . $how . "&d=" . $date . "&t=" . $time . "&sa=" . $startAddress . "&ea=" . $endAddress;
 
     unset($_COOKIE["hasAnsweredQuestions"]);
     setcookie("hasAnsweredQuestions", "", time() - 3600, '/');

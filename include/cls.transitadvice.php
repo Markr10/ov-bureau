@@ -132,7 +132,7 @@ class TransitAdvice
                  <div id='onDate'>
                     Op " . $this->getDate() . " om " . $this->getTime() . "
                  </div>
-                 <div id='questionLink'>" . $_COOKIE["hasAnsweredQuestions"] . "<br/><a href='question.php?edit=1&t=" . $this->routes[$this->printRoutes("firstKey")]->getDepartureTime() . "&sa=" . urlencode($this->getFrom()) . "&ea=" . urlencode($this->getTo()) . "&d=" . urlencode($this->getDate()) . "&h=" . urlencode($this->getHow()) . "#plan'>" . ARROW . " Wijzig uw gegevens</a></div>
+                 <div id='questionLink'>" . $_COOKIE["hasAnsweredQuestions"] . "<br/><a href='question.php?edit=1&t=" . $this->routes[$this->printRoutes("firstKey")]->getDepartureTime() . "&sa=" . urlencode($this->getFrom()) . "&ea=" . urlencode($this->getTo()) . "&d=" . urlencode($this->getDate()) . "&h=" . urlencode($this->getHow()) . "'>" . ARROW . " Wijzig uw gegevens</a></div>
                  <div id='next-travel' data-nr='" . $this->printRoutes("firstKey") . "'>
                     Volgende reis: " . $this->routes[$this->printRoutes("firstKey")]->getDepartureTime() . "
                  </div>
@@ -144,7 +144,7 @@ class TransitAdvice
                 $this->implementRegioTaxi();
             }
             echo"<div id='ovDetailsHeader'>Openbaar Vervoer</div>";
-            echo"<div id='earlier_travel_options' onClick=\"window.location.href='" . $_SERVER["PHP_SELF"] . "?earlier&t=" . strtotime($this->routes[$this->printRoutes("firstKey")]->getDepartureTime()) . "&sa=" . urlencode($this->getFrom()) . "&ea=" . urlencode($this->getTo()) . "&d=" . urlencode($this->getDate()) . "&h=" . urlencode($this->getHow()) . "#plan'; document.body.style.cursor='wait'; return true;\">Eerdere reisopties<span class='arrow_top'>" . ARROW . "</span></div>";
+            echo"<div id='earlier_travel_options' onClick=\"window.location.href='" . $_SERVER["PHP_SELF"] . "?earlier=true&t=" . strtotime($this->routes[$this->printRoutes("firstKey")]->getDepartureTime()) . "&sa=" . urlencode($this->getFrom()) . "&ea=" . urlencode($this->getTo()) . "&d=" . urlencode($this->getDate()) . "&h=" . urlencode($this->getHow()) . "'; document.body.style.cursor='wait'; return true;\">Eerdere reisopties<span class='arrow_top'>" . ARROW . "</span></div>";
             $this->printRoutes();
             echo"<div id='map_canvas'></div>";
             echo"</div>";
@@ -185,7 +185,7 @@ class TransitAdvice
                 $route = $this->routes[$routeNr];
                 $route->printRouteDetails($routeNr);
             }
-            echo"<div id='later_travel_options' onClick=\"window.location.href='" . $_SERVER["PHP_SELF"] . "?later&t=" . $unixDepartureTime . "&sa=" . urlencode($this->getFrom()) . "&ea=" . urlencode($this->getTo()) . "&d=" . urlencode($this->getDate()) . "&h=" . urlencode($this->getHow()) . "#plan'; document.body.style.cursor='wait'; return true;\">Latere reisopties<span class='arrow_bottom'>" . ARROW . "</span></div>";
+            echo"<div id='later_travel_options' onClick=\"window.location.href='" . $_SERVER["PHP_SELF"] . "?later=true&t=" . $unixDepartureTime . "&sa=" . urlencode($this->getFrom()) . "&ea=" . urlencode($this->getTo()) . "&d=" . urlencode($this->getDate()) . "&h=" . urlencode($this->getHow()) . "'; document.body.style.cursor='wait'; return true;\">Latere reisopties<span class='arrow_bottom'>" . ARROW . "</span></div>";
             if (isset($_COOKIE["kanLopen"]) && $_COOKIE["kanLopen"] == "true")
             {
                 $this->implementRegioTaxi();
@@ -204,16 +204,16 @@ class TransitAdvice
             $driving_information = get_driving_information(urlencode($this->getFrom()), urlencode($this->getTo()));
             $tijdsduur = $driving_information[0];
             $afstand = $driving_information[1];
-            $vervoer = ($afstand > 25000 ? "Valys" : "Regiotaxi");
+            $vervoer = ($afstand > 25000 ? "Valys" : "Regiotaxi"); // kijken of er met de Valys of Regiotaxi gegaan moet worden
             $duration = formatDurationStringRegioTaxi($tijdsduur);
-            $aankomsttijd = date("H:i", strtotime("+" . preg_replace(array("/dag/", "/uur/", "/min/"), array("days", "hours", "minutes"), $duration)));
+            $aankomsttijd = date("H:i", strtotime($this->getTime() . "+" . preg_replace(array("/dag/", "/uur/", "/min/"), array("days", "hours", "minutes"), $duration)));
 
             echo"<div class='route' data-routenr='regiotaxi'>";
             echo"<div class='description'>Van " . $this->getFrom() . " naar " . $this->getTo() . " </div>";
             echo"<div class='depart_arrive'>" . $this->getTime() . " " . ARROW . " " . $aankomsttijd . "</div>";
             echo"<div class='step'>
                     <div class='details'>
-                        <img src='//maps.gstatic.com/mapfiles/transit/iw/6/rail.png' alt='Trein' title='Trein'>
+                        <img src='images/car.png' alt='Trein' title='Trein'>
                         <div class='lineName'>$vervoer</div>
                         <div class='richting'></div>
                         <div class='lineAgency'>WMO</div>
@@ -255,13 +255,13 @@ class TransitAdvice
     {
         /**
          * 
-         * // IMPLEMENTATIE REGIOTAXI onder de API reisAdvies!
+         * // IMPLEMENTATIE REGIOTAXI bij de API reisAdvies!
          * 
          */
         $driving_information = get_driving_information(urlencode($this->getFrom()), urlencode($this->getTo()));
         $tijdsduur = $driving_information[0];
         $duration = formatDurationStringRegioTaxi($tijdsduur);
-        $aankomsttijd = date("H:i", strtotime("+" . preg_replace(array("/dag/", "/uur/", "/min/"), array("days", "hours", "minutes"), $duration)));
+        $aankomsttijd = date("H:i", strtotime($this->getTime() . "+" . preg_replace(array("/dag/", "/uur/", "/min/"), array("days", "hours", "minutes"), $duration)));
         echo"<div id='regioTaxiDetailsHeader'>Regio Taxi</div>";
         echo"<div class='detailedRoute' data-detailnr='regiotaxi'>";
         echo"<div class='time'>" . $this->getTime() . " " . ARROW . " " . $aankomsttijd . "</div>";

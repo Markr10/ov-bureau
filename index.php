@@ -103,15 +103,26 @@ require_once './include/cls.step.php';
                 </ul>
             </div>
             <div id="slogan" class="footerSloganNormal">Reis met het openbaar vervoer!</div>
-            <div id="header">
-                <ul class='aviaslider' id="fullwidth-fade-slider" style="width: 100%; height: 256px;">
-                    <li><img src="images/slides/1.jpg" alt="" /></a></li>
-                    <li><img src="images/slides/2.jpg" alt="A heading of your choice :: This is the image description defined in your alt tag" /></a></li>
-                    <li><img src="images/slides/3.jpg" alt="Another heading :: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor" /></a></li>
-                </ul>
-            </div>
-            <div id="plan" class="menuPlanNormal">Plan uw reis!</div>
             <?php
+            if (isset($_GET["plan"]))
+            {
+                
+            }
+            else
+            {
+                ?>
+                <div id="header">
+                    <ul class='aviaslider' id="fullwidth-fade-slider" style="width: 100%; height: 256px;">
+                        <li><img src="images/slides/1.jpg" alt="" /></a></li>
+                        <li><img src="images/slides/2.jpg" alt="A heading of your choice :: This is the image description defined in your alt tag" /></a></li>
+                        <li><img src="images/slides/3.jpg" alt="Another heading :: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor" /></a></li>
+                    </ul>
+                </div>
+                <div id="plan" class="menuPlanNormal">Plan uw reis!</div>
+
+
+                <?php
+            }
             // Predefine request status
             $requestStatus = "NOT_FOUND";
 
@@ -128,7 +139,7 @@ require_once './include/cls.step.php';
                 $advice->printAdvice();
                 ?>
                 <script type="text/javascript">
-                    calcRoute();
+                calcRoute();
                 </script>
                 <?php
                 $requestStatus = $advice->getStatus();
