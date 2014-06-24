@@ -161,7 +161,7 @@
                 <option value="Veiligheid" >Veiligheid</option>
                 <option value="Reisinformatie" >Reisinformatie</option>
                 <option value="Vervoerbewijzen" >Vervoerbewijzen</option>
-                <option value="Personeel" >Personeel/option>
+                <option value="Personeel" >Personeel</option>
                 <option value="Voertuigen" >Voertuigen</option>
                 <option value="OV-Chipkaart" >OV-Chipkaart</option>
                 <option value="Anders" >Anders</option>

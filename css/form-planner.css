@@ -79,6 +79,8 @@ label
 {
     width: 500px;
     margin-left: -40px;
+    border-bottom: 1px;
+    border-color: #9e0b0f;
 }
 
 #contactContent input[type=text]
