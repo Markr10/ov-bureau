@@ -325,7 +325,7 @@ class TransitAdvice
         else
         {
             echo"<div class='route' data-routenr='" . strtolower($vervoersmiddel) . "'>";
-            echo"<div class='description'>Van " . $this->getFrom() . " naar " . $this->getTo() . " </div>";
+            echo"<div class='description'>Van " . $this->routes[$this->printRoutes("firstKey")]->getStartAddress() . " naar " . $this->routes[$this->printRoutes("firstKey")]->getEndAddress() . " </div>";
             echo"<div class='depart_arrive'>" . $this->getTime() . " " . ARROW . " " . $aankomsttijd . "</div>";
             echo"<div class='step'>
                     <div class='details'>
@@ -336,11 +336,11 @@ class TransitAdvice
                     </div>
                     <div class='departure'>
                         <div class='departureTime'>" . $this->getTime() . "</div>
-                        <div class='departureStop'>" . $this->getFrom() . "</div>
+                        <div class='departureStop'>" . $this->routes[$this->printRoutes("firstKey")]->getStartAddress() . "</div>
                     </div>
                     <div class='arrival'>
                         <div class='arrivalTime'>" . $aankomsttijd . "</div>
-                        <div class='arrivalStop'>" . $this->getTo() . "</div>
+                        <div class='arrivalStop'>" . $this->routes[$this->printRoutes("firstKey")]->getEndAddress() . "</div>
                     </div>
                  </div>";
             echo"</div>";

@@ -75,7 +75,10 @@ class Route
                 $this->overstappen++;
             }
         }
-        $this->overstappen--;
+        if ($this->overstappen > 0)
+        {
+            $this->overstappen--;
+        }
     }
 
     /**
@@ -148,7 +151,7 @@ class Route
     {
         return $this->unixDepartureTime;
     }
-    
+
     public function getUnixArrivalTime()
     {
         return $this->unixArrivalTime;

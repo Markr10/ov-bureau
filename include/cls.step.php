@@ -70,6 +70,10 @@ class Step
             $this->vehicleIcon = $vehicleDetails["icon"];
             $this->vehicleName = $vehicleDetails["name"];
         }
+        else
+        {
+            $this->duration = $step["duration"]["text"];
+        }
     }
 
     /**
@@ -77,13 +81,13 @@ class Step
      */
     public function printStep()
     {
-        if ($this->travelMode === "WALKING")
+        if ($this->travelMode !== "TRANSIT")
         {
             echo"
             <div class='step'>
                 <div class='details'>
-                    <img src='http://maps.gstatic.com/mapfiles/transit/iw/6/walk.png' alt='Lopen' title='Lopen' />
-                    <div class='instructions'>" . $this->instructions . "</div>
+                    <img src='" . ($this->travelMode === "DRIVING" ? "images/car.png" : "http://maps.gstatic.com/mapfiles/transit/iw/6/walk.png") . "' alt='Lopen' title='Lopen' />
+                    <div class='instructions'>" . $this->instructions . " (" . $this->getDuration() . ")</div>
                 </div>
             </div>";
         }
