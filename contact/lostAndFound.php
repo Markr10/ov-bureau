@@ -140,7 +140,7 @@
                 <label for="emailAddress" class="required">E-mail*</label>
             </td>
             <td>
-                <input type="text" name="emailAdres" id="emailAddress" value="" required />
+                <input type="email" name="emailAdres" id="emailAddress" value="" required />
             </td>
         </tr>
         <tr>
