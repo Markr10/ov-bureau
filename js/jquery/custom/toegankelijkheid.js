@@ -14,7 +14,7 @@ $(document).ready(function(){
             var textColorBlack = {'color': '#000'};
             var border = { 'border-bottom': '1px solid #D1E631' };
             var borderheader = { 'border-bottom': '2px solid #D1E631' };
-            var borderContact = {'border-color': '#D1E631'};
+            //var borderContact = {'border-color': '#D1E631'};
             $("#menu").css(backgroundColor);
             $("#slogan").css(backgroundColor);
             $("#plan").css(backgroundColor);
@@ -26,7 +26,7 @@ $(document).ready(function(){
             $("#inleiding").css(backgroundColor);
             $("#afbeeldingen").css(backgroundColor);
             $("#footer").css(backgroundColor);
-            $("#contactContent fieldset").css(borderContact);
+            //$("#contactContent fieldset").css(borderContact);
             $("body").css(backgroundColor);
             $("#transitAdvice").css(backgroundColor);
             $("#transitAdvice #routeHeader").css(borderheader);
@@ -108,7 +108,7 @@ $(document).ready(function(){
             $("#afbeeldingen").removeAttr('style');
             $("#inleiding").removeAttr('style');
             $("#footer").removeAttr('style');
-            $("#contactContent fieldset").removeAttr('style');
+            //$("#contactContent fieldset").removeAttr('style');
             $("body").removeAttr('style');
             $("#transitAdvice").removeAttr('style');
             $("#from-to").removeAttr('style');
