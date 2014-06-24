@@ -63,8 +63,8 @@ $(document).ready(function() {
     $(".detailedRoute").click(function() {
         var routeNr = $(this).attr("data-detailnr");
 
-        // display map
-        if (routeNr === "regiotaxi")
+        // display map if not a number
+        if (isNaN(routeNr))
         {
             $("#map_canvas").attr("class", "map_canvas_active");
         }

@@ -139,10 +139,37 @@ class TransitAdvice
                  <div id='backLink'><a href='" . $_SERVER["PHP_SELF"] . "' title='Plan opnieuw een reis'><span class='mirror'>" . ARROW . "</span>Plan opnieuw</a></div>
                  <div id='routeHeader'></div>";
             echo"<div id='routeDetails'>";
+            /*
+             * IMPLEMENTEER ALTERNATIEVE ROUTES
+             * 
+             * Hier kun je een alternatieve route toevoegen door simpelweg het volgende stukje code 
+             * te kopiëren en te plakken onder de rest van de regels:
+             * 
+             * $this->implementeerVervoersMiddel("naam_van_vervoermiddel", "routeDetails_of_route?");
+             * 
+             * Hierbij moeten twee parameters(gescheiden door een comma) tussen de haakjes meegezonden worden.
+             * Bij "naam_van_vervoermiddel" kun je een geheel eigen naam bedenken, deze wordt doorgevoerd 
+             * en ook als kopje gebruikt.(Bijv: "Leerlingenvervoer") De tweede parameter zegt iets over of het een 
+             * blokje links is of een complete beschijving van de route. Kies voor "routeDetails" als slechts 
+             * enkele details op het scherm te zien moeten zijn in een klein blokje aan de linkerkant van het 
+             * scherm. Kies voor "route" als je een beschrijving van de route in het rechtergedeelte van de 
+             * website wilt waarbij ook een Google Maps routeplanner wordt weergegeven.
+             * 
+             * Het script maakt hieronder een check op de vragen die vooraf gesteld worden, die gaan over
+             * of de persoon kan lopen of niet.
+             * Plaats de regel tussen deze if{} - statement als je wilt dat deze pas BOVENAAN komt te
+             * staan indien de persoon slecht ter been is en dus alternatief vervoer nodig heeft.
+             * 
+             * Er is ruimte vrijgelaten voor het toevoegen van een nieuwe regel.
+             */
             if (isset($_COOKIE["kanLopen"]) && $_COOKIE["kanLopen"] == "false")
             {
                 $this->implementeerVervoersMiddel("Regiotaxi", "routeDetails");
+                // plaats onder deze regel een alternatief vervoersmiddel die slechts bovenaan staat als de persoon slecht ter been is
+                
             }
+            // plaats onder deze regel een alternatief vervoersmiddel die altijd bovenaan staat
+
             echo"<div id='routeDetailsHeader'>Openbaar Vervoer</div>";
             echo"<div id='earlier_travel_options' onClick=\"window.location.href='" . $_SERVER["PHP_SELF"] . "?earlier=true&t=" . strtotime($this->routes[$this->printRoutes("firstKey")]->getDepartureTime()) . "&sa=" . urlencode($this->getFrom()) . "&ea=" . urlencode($this->getTo()) . "&d=" . urlencode($this->getDate()) . "&h=" . urlencode($this->getHow()) . "'; document.body.style.cursor='wait'; return true;\">Eerdere reisopties<span class='arrow_top'>" . ARROW . "</span></div>";
             $this->printRoutes();
@@ -186,11 +213,37 @@ class TransitAdvice
                 $route->printRouteDetails($routeNr);
             }
             echo"<div id='later_travel_options' onClick=\"window.location.href='" . $_SERVER["PHP_SELF"] . "?later=true&t=" . $unixDepartureTime . "&sa=" . urlencode($this->getFrom()) . "&ea=" . urlencode($this->getTo()) . "&d=" . urlencode($this->getDate()) . "&h=" . urlencode($this->getHow()) . "'; document.body.style.cursor='wait'; return true;\">Latere reisopties<span class='arrow_bottom'>" . ARROW . "</span></div>";
+            /*
+             * IMPLEMENTEER ALTERNATIEVE ROUTES
+             * 
+             * Hier kun je een alternatieve route toevoegen door simpelweg het volgende stukje code 
+             * te kopiëren en te plakken onder de rest van de regels:
+             * 
+             * $this->implementeerVervoersMiddel("naam_van_vervoermiddel", "routeDetails_of_route?");
+             * 
+             * Hierbij moeten twee parameters(gescheiden door een comma) tussen de haakjes meegezonden worden.
+             * Bij "naam_van_vervoermiddel" kun je een geheel eigen naam bedenken, deze wordt doorgevoerd 
+             * en ook als kopje gebruikt.(Bijv: "Leerlingenvervoer") De tweede parameter zegt iets over of het een 
+             * blokje links is of een complete beschijving van de route. Kies voor "routeDetails" als slechts 
+             * enkele details op het scherm te zien moeten zijn in een klein blokje aan de linkerkant van het 
+             * scherm. Kies voor "route" als je een beschrijving van de route in het rechtergedeelte van de 
+             * website wilt waarbij ook een Google Maps routeplanner wordt weergegeven.
+             * 
+             * Het script maakt hieronder een check op de vragen die vooraf gesteld worden, die gaan over
+             * of de persoon kan lopen of niet.
+             * Plaats de regel tussen deze if{} - statement als je wilt dat deze pas ONDERAAN komt te
+             * staan indien de persoon goed kan lopen en dus GEEN alternatief vervoer nodig heeft.
+             * 
+             * Er is ruimte vrijgelaten voor het toevoegen van een nieuwe regel.
+             */
             if (isset($_COOKIE["kanLopen"]) && $_COOKIE["kanLopen"] == "true")
             {
-                //
                 $this->implementeerVervoersMiddel("Regiotaxi", "routeDetails");
+                // plaats onder deze regel een alternatief vervoersmiddel die slechts onderaan staat als de persoon kan lopen
+                
             }
+            // plaats onder deze regel een alternatief vervoersmiddel als je deze altijd onderaan wilt
+
             echo"</div>";
             echo"<div id='routes'>";
             // loop through the sorted array and fetch each key corresponding to the class field `routes`
@@ -199,6 +252,32 @@ class TransitAdvice
                 $route = $this->routes[$routeNr];
                 $route->printRoute($routeNr);
             }
+            /*
+             * IMPLEMENTEER ALTERNATIEVE ROUTES
+             * 
+             * Hier kun je een alternatieve route toevoegen door simpelweg het volgende stukje code 
+             * te kopiëren en te plakken onder de rest van de regels:
+             * 
+             * $this->implementeerVervoersMiddel("naam_van_vervoermiddel", "routeDetails_of_route?");
+             * 
+             * Hierbij moeten twee parameters(gescheiden door een comma) tussen de haakjes meegezonden worden.
+             * Bij "naam_van_vervoermiddel" kun je een geheel eigen naam bedenken, deze wordt doorgevoerd 
+             * en ook als kopje gebruikt.(Bijv: "Leerlingenvervoer") De tweede parameter zegt iets over of het een 
+             * blokje links is of een complete beschijving van de route. Kies voor "routeDetails" als slechts 
+             * enkele details op het scherm te zien moeten zijn in een klein blokje aan de linkerkant van het 
+             * scherm. Kies voor "route" als je een beschrijving van de route in het rechtergedeelte van de 
+             * website wilt waarbij ook een Google Maps routeplanner wordt weergegeven.
+             * 
+             * Het script maakt hieronder een check op de vragen die vooraf gesteld worden, die gaan over
+             * of de persoon kan lopen of niet.
+             * Plaats de regel tussen deze if{} - statement als je wilt dat deze pas ONDERAAN komt te
+             * staan indien de persoon goed kan lopen en dus GEEN alternatief vervoer nodig heeft.
+             * 
+             * Er is ruimte vrijgelaten voor het toevoegen van een nieuwe regel.
+             */
+            $this->implementeerVervoersMiddel("Regiotaxi", "route");
+            // plaats onder deze regel een alternatief vervoersmiddel om te laten zien op het scherm
+            
         }
         else
         {
@@ -251,9 +330,9 @@ class TransitAdvice
             echo"<div class='step'>
                     <div class='details'>
                         <img src='images/car.png' alt='Auto' title='Auto'>
-                        <div class='lineName'>$vervoer</div>
+                        <div class='lineName'>" . $vervoer . "</div>
                         <div class='richting'></div>
-                        <div class='lineAgency'>WMO</div>
+                        <div class='lineAgency'>" . ($vervoersmiddel == "Regiotaxi" ? "WMO" : "Regionaal") . "</div>
                     </div>
                     <div class='departure'>
                         <div class='departureTime'>" . $this->getTime() . "</div>
