@@ -187,34 +187,34 @@
         </tr>
         <tr>
             <td>
-                <label for="numberOfAdults" class="required">Aantal volwassenen (+18 jr)</label>
+                <label for="numberOfAdults" >Aantal volwassenen (+18 jr)</label>
             </td>
             <td>
-                <input type="text" name="aantalVolwassenen" id="numberOfAdults" value="" maxlength="5" required />
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <label for="numberOfChildren" class="required">Aantal kinderen (4-11 jr)</label>
-            </td>
-            <td>
-                <input type="text" name="aantalKinderen" id="numberOfChildren" value="" maxlength="5" required />
+                <input type="text" name="aantalVolwassenen" id="numberOfAdults" value="" maxlength="5"  />
             </td>
         </tr>
         <tr>
             <td>
-                <label for="numberOfChildren2" class="required">Aantal kinderen (+12 jr)</label>
+                <label for="numberOfChildren" >Aantal kinderen (4-11 jr)</label>
             </td>
             <td>
-                <input type="text" name="aantalTieners" id="numberOfChildren2" value="" maxlength="5" required />
+                <input type="text" name="aantalKinderen" id="numberOfChildren" value="" maxlength="5"  />
             </td>
         </tr>
         <tr>
             <td>
-                <label for="numberOfAdults2" class="required">Aantal volwassenen (65+)</label>
+                <label for="numberOfChildren2" >Aantal kinderen (+12 jr)</label>
             </td>
             <td>
-                <input type="text" name="aantalSenioren" id="numberOfAdults2" value="" maxlength="5" required />
+                <input type="text" name="aantalTieners" id="numberOfChildren2" value="" maxlength="5"  />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="numberOfAdults2" >Aantal volwassenen (65+)</label>
+            </td>
+            <td>
+                <input type="text" name="aantalSenioren" id="numberOfAdults2" value="" maxlength="5"  />
             </td>
         </tr>
         <tr>
