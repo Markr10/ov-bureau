@@ -209,8 +209,7 @@ hr .sepRoute {
     color: #fff;
 }
 
-#routeDetails #regioTaxiDetailsHeader,
-#routeDetails #ovDetailsHeader {
+#routeDetails #routeDetailsHeader {
     font-size: 16px;
     border-bottom: 1px solid black;
 /*    border-bottom-left-radius: 5px;

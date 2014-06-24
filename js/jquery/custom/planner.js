@@ -1,5 +1,8 @@
 /**
  * jQuery to get GET-variables
+ * 
+ * @param {type} qs         document location
+ * @returns {unresolved}    returns array of all GET parameters
  */
 function getQueryParams(qs) {
     qs = qs.split("+").join(" ");
