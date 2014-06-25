@@ -157,13 +157,6 @@ if (!in_array('https', $w))
 
                 $advice = new TransitAdvice($startAddress, $endAddress, $date, $time, $how);
                 $advice->printAdvice();
-                
-                $unixTime = strtotime(date("d-m-Y H:i", strtotime($date . " " . $time)));
-                $content = file_get_contents("https://maps.googleapis.com/maps/api/directions/json?origin=" . urlencode($startAddress) . "&destination=" . urlencode($endAddress) . "&sensor=false&key=AIzaSyCKZlUXOE0zYan1v9SD1RNyVipP-ZZAABc&" . $how . "=$unixTime&mode=transit&alternatives=true&language=nl");
-                $result = (array) json_decode($content, true);
-                echo'<pre>';
-                var_dump($result);
-                echo'</pre>';
                 ?>
                 <script type="text/javascript">
                     calcRoute();
