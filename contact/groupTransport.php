@@ -39,7 +39,7 @@
     <table>
         <tr>
             <td>
-                <label for="title" class="required">Aanhef</label>
+                <label for="title" class="required">Aanhef*</label>
             </td>
             <td>
                 <input type="radio" name="title" id="title_De heer" value="De heer">
@@ -50,7 +50,7 @@
         </tr>
         <tr>
             <td>
-                <label for="initials" class="required">Voorletters</label>
+                <label for="initials" class="required">Voorletters*</label>
             </td>
             <td>
                 <input type="text" name="initialen" id="initials" value="" maxlength="50" required />
@@ -66,7 +66,7 @@
         </tr>
         <tr>
             <td>
-                <label for="surname" class="required">Achternaam</label>
+                <label for="surname" class="required">Achternaam*</label>
             </td>
             <td>
                 <input type="text" name="achternaam" id="surname" value="" maxlength="50" required />
@@ -74,7 +74,7 @@
         </tr>
         <tr>
             <td>
-                <label for="postalCode" class="required">Postcode</label>
+                <label for="postalCode" class="required">Postcode*</label>
             </td>
             <td>
                 <input type="text" name="postcode" id="postalCode" value="" maxlength="6" required />
@@ -82,7 +82,7 @@
         </tr>
         <tr>
             <td>
-                <label for="houseNumber" class="required">Huisnummer</label>
+                <label for="houseNumber" class="required">Huisnummer*</label>
             </td>
             <td>
                 <input type="text" name="huisnummer" id="houseNumber" value="" maxlength="5" required />
@@ -98,7 +98,7 @@
         </tr>
         <tr>
             <td>
-                <label for="street" class="required">Straat</label>
+                <label for="street" class="required">Straat*</label>
             </td>
             <td>
                 <input type="text" name="straat" id="street" value="" maxlength="50" required />
@@ -106,7 +106,7 @@
         </tr>
         <tr>
             <td>
-                <label for="city" class="required">Woonplaats</label>
+                <label for="city" class="required">Woonplaats*</label>
             </td>
             <td>
                 <input type="text" name="woonplaats" id="city" value="" maxlength="50" required />
@@ -137,10 +137,10 @@
         </tr>
         <tr>
             <td>
-                <label for="emailAddress" class="required">E-mail</label>
+                <label for="emailAddress" class="required">E-mail*</label>
             </td>
             <td>
-                <input type="text" name="emailAdres" id="emailAddress" value="" required />
+                <input type="email" name="emailAdres" id="emailAddress" value="" required />
             </td>
         </tr>
     </table>
@@ -151,7 +151,7 @@
     <table>
         <tr>
             <td>
-                <label for="organisation" class="required">Bedrijf/Instelling</label>
+                <label for="organisation" class="required">Bedrijf/Instelling*</label>
             </td>
             <td>
                 <input type="text" name="organisatie" id="organisation" value="" maxlength="50" required />
@@ -167,7 +167,7 @@
         </tr>
         <tr>
             <td>
-                <label for="departureTime" class="required">Vertrektijd heen</label>
+                <label for="departureTime" class="required">Vertrektijd heen*</label>
             </td>
             <td>
                 <input type="text" name="vertrektijd[0]" id="departureTime_0" value="" maxlength="2" style="width:25px;" required />
@@ -177,7 +177,7 @@
         </tr>
         <tr>
             <td>
-                <label for="returnTime" class="required">Vertrektijd terug</label>
+                <label for="returnTime" class="required">Vertrektijd terug*</label>
             </td>
             <td>
                 <input type="text" name="vertrektijdTerug[0]" id="returnTime_0" value="" maxlength="2" style="width:25px;" required />
@@ -187,34 +187,34 @@
         </tr>
         <tr>
             <td>
-                <label for="numberOfAdults" class="required">Aantal volwassenen (+18 jr)</label>
+                <label for="numberOfAdults" >Aantal volwassenen (+18 jr)</label>
             </td>
             <td>
-                <input type="text" name="aantalVolwassenen" id="numberOfAdults" value="" maxlength="5" required />
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <label for="numberOfChildren" class="required">Aantal kinderen (4-11 jr)</label>
-            </td>
-            <td>
-                <input type="text" name="aantalKinderen" id="numberOfChildren" value="" maxlength="5" required />
+                <input type="text" name="aantalVolwassenen" id="numberOfAdults" value="" maxlength="5"  />
             </td>
         </tr>
         <tr>
             <td>
-                <label for="numberOfChildren2" class="required">Aantal kinderen (+12 jr)</label>
+                <label for="numberOfChildren" >Aantal kinderen (4-11 jr)</label>
             </td>
             <td>
-                <input type="text" name="aantalTieners" id="numberOfChildren2" value="" maxlength="5" required />
+                <input type="text" name="aantalKinderen" id="numberOfChildren" value="" maxlength="5"  />
             </td>
         </tr>
         <tr>
             <td>
-                <label for="numberOfAdults2" class="required">Aantal volwassenen (65+)</label>
+                <label for="numberOfChildren2" >Aantal kinderen (+12 jr)</label>
             </td>
             <td>
-                <input type="text" name="aantalSenioren" id="numberOfAdults2" value="" maxlength="5" required />
+                <input type="text" name="aantalTieners" id="numberOfChildren2" value="" maxlength="5"  />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="numberOfAdults2" >Aantal volwassenen (65+)</label>
+            </td>
+            <td>
+                <input type="text" name="aantalSenioren" id="numberOfAdults2" value="" maxlength="5"  />
             </td>
         </tr>
         <tr>
@@ -227,7 +227,7 @@
         </tr>
         <tr>
             <td>
-                <label for="datepicker" class="required">Datum vervoer</label>
+                <label for="datepicker" class="required">Datum vervoer*</label>
             </td>
             <td>
                 <div class="pickDateTime">

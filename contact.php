@@ -149,6 +149,7 @@
                         <option value="groupTransport"> Groepsvervoer</option>
                         <option value="lostAndFound"> Verloren voorwerpen</option>
                     </select>
+                    &nbsp; Velden met een * zijn verplicht
 
                     <script type="text/javascript" >
                         $('#formType').change(function(event) {

@@ -41,7 +41,7 @@
     <table>
         <tr>
             <td>
-                <label for="title" class="required">Aanhef</label>
+                <label for="title" class="required">Aanhef*</label>
             </td>
             <td>
                 <input type="radio" name="title" id="title_De heer" value="De heer">
@@ -52,7 +52,7 @@
         </tr>
         <tr>
             <td>
-                <label for="initials" class="required">Voorletters</label>
+                <label for="initials" class="required">Voorletters*</label>
             </td>
             <td>
                 <input type="text" style="" name="initialen" id="initials" value="" maxlength="50" required />
@@ -68,7 +68,7 @@
         </tr>
         <tr>
             <td>
-                <label for="surname" class="required">Achternaam</label>
+                <label for="surname" class="required">Achternaam*</label>
             </td>
             <td>
                 <input type="text" name="achternaam" id="surname" value="" maxlength="50" required />
@@ -76,7 +76,7 @@
         </tr>
         <tr>
             <td>
-                <label for="postalCode" class="required">Postcode</label>
+                <label for="postalCode" class="required">Postcode*</label>
             </td>
             <td>
                 <input type="text" name="postcode" id="postalCode" value="" maxlength="6" required />
@@ -84,7 +84,7 @@
         </tr>
         <tr>
             <td>
-                <label for="houseNumber" class="required">Huisnummer</label>
+                <label for="houseNumber" class="required">Huisnummer*</label>
             </td>
             <td>
                 <input type="text" name="huisnummer" id="houseNumber" value="" maxlength="5" required />
@@ -100,7 +100,7 @@
         </tr>
         <tr>
             <td>
-                <label for="street" class="required">Straat</label>
+                <label for="street" class="required">Straat*</label>
             </td>
             <td>
                 <input type="text" name="straat" id="street" value="" maxlength="50" required />
@@ -108,7 +108,7 @@
         </tr>
         <tr>
             <td>
-                <label for="city" class="required">Woonplaats</label>
+                <label for="city" class="required">Woonplaats*</label>
             </td>
             <td>
                 <input type="text" name="woonplaats" id="city" value="" maxlength="50" required />
@@ -139,10 +139,10 @@
         </tr>
         <tr>
             <td>
-                <label for="emailAddress" class="required">E-mail</label>
+                <label for="emailAddress" class="required">E-mail*</label>
             </td>
             <td>
-                <input type="text" name="emailAdres" id="emailAddress" value="" required />
+                <input type="email" name="emailAdres" id="emailAddress" value="" required />
             </td>
         </tr>
     </table>
@@ -153,7 +153,7 @@
     <table>
         <tr>
             <td>
-                <label for="complaintCategory" class="required">Categorie</label>
+                <label for="complaintCategory" class="required">Categorie*</label>
             </td>
             <td>
                 <select name="complaintCategory" id="complaintCategory" required>
@@ -172,7 +172,7 @@
         </tr>
         <tr>
             <td>
-                <label for="datepicker" class="required">Datum voorval</label>
+                <label for="datepicker" class="required">Datum voorval*</label>
             </td>
             <td>
                 <div class="pickDateTime">
@@ -184,7 +184,7 @@
         </tr>
         <tr>
             <td>
-                <label for="incidentTime" class="required">Tijd voorval</label>
+                <label for="incidentTime" class="required">Tijd voorval*</label>
             </td>
             <td>
                 <input type="text" name="incidentTijd[0]" id="incidentTime_0" value="" maxlength="2" style="width:25px;" required />
@@ -194,7 +194,7 @@
         </tr>
         <tr>
             <td>
-                <label for="complaintDescription" class="required">Omschrijving klacht</label>
+                <label for="complaintDescription" class="required">Omschrijving klacht*</label>
             </td>
             <td>
                 <textarea name="klachtBeschrijving" id="complaintDescription" style="width:300px;" required></textarea>

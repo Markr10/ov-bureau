@@ -14,6 +14,7 @@ $(document).ready(function(){
             var textColorBlack = {'color': '#000'};
             var border = { 'border-bottom': '1px solid #D1E631' };
             var borderheader = { 'border-bottom': '2px solid #D1E631' };
+            //var borderContact = {'border-color': '#D1E631'};
             $("#menu").css(backgroundColor);
             $("#slogan").css(backgroundColor);
             $("#plan").css(backgroundColor);
@@ -21,9 +22,11 @@ $(document).ready(function(){
             $("#contact").css(backgroundColor);
             $("#container").css(backgroundColor);
             $("#argumenten").css(backgroundColor);
+            $("#question").css(backgroundColor);
             $("#inleiding").css(backgroundColor);
             $("#afbeeldingen").css(backgroundColor);
             $("#footer").css(backgroundColor);
+            //$("#contactContent fieldset").css(borderContact);
             $("body").css(backgroundColor);
             $("#transitAdvice").css(backgroundColor);
             $("#transitAdvice #routeHeader").css(borderheader);
@@ -61,6 +64,7 @@ $(document).ready(function(){
             $("#content").css(textColor);
             $("#contact").css(textColor);
             $("#argumenten").css(textColor);
+            $("#question").css(textColor);
             $("#inleiding").css(textColor);
             $("#slogan").css(textColor);
             $("#menu").css(textColor);
@@ -100,9 +104,11 @@ $(document).ready(function(){
             $("#content").removeAttr('style');
             $("#contact").removeAttr('style');
             $("#argumenten").removeAttr('style');
+            $("#question").removeAttr('style');
             $("#afbeeldingen").removeAttr('style');
             $("#inleiding").removeAttr('style');
             $("#footer").removeAttr('style');
+            //$("#contactContent fieldset").removeAttr('style');
             $("body").removeAttr('style');
             $("#transitAdvice").removeAttr('style');
             $("#from-to").removeAttr('style');
@@ -249,10 +255,12 @@ $(document).ready(function(){
         $("#contact").removeClass('textNormal').addClass('textBig');
         $("#inleiding").removeClass('textNormal').addClass('textBig');
         $("#argumenten").removeClass('textNormal').addClass('textBig');
+        $("#question").removeClass('textNormal').addClass('textBig');
         $("#transitAdvice").removeClass('textNormal').addClass('textBig');
         $("#from-to").removeClass('textNormal').addClass('textBig');
         $("#next-travel").removeClass('textNormal').addClass('textBig');
         $("#backLink").removeClass('textNormal').addClass('textBig');
+        $("#questionLink").removeClass('textNormal').addClass('textBig');
         $("#routeDetails").removeClass('textNormal').addClass('textBig');
         $("#detailedRoute").removeClass('textNormal').addClass('textBig');
         $("#routes").removeClass('textNormal').addClass('textBig');
@@ -269,10 +277,12 @@ $(document).ready(function(){
         $("#contact").removeClass('textBig').addClass('textNormal');
         $("#inleiding").removeClass('textBig').addClass('textNormal');
         $("#argumenten").removeClass('textBig').addClass('textNormal');
+        $("#question").removeClass('textBig').addClass('textNormal');
         $("#transitAdvice").removeClass('textBig').addClass('textNormal');
         $("#from-to").removeClass('textBig').addClass('textNormal');
         $("#next-travel").removeClass('textBig').addClass('textNormal');
         $("#backLink").removeClass('textBig').addClass('textNormal');
+        $("#questionLink").removeClass('textBig').addClass('textNormal');
         $("#routeDetails").removeClass('textBig').addClass('textNormal');
         $("#detailedRoute").removeClass('textBig').addClass('textNormal');
         $("#routes").removeClass('textBig').addClass('textNormal');

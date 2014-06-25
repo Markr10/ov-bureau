@@ -196,7 +196,7 @@ else
 
                     <input type="hidden" name="transitURL" value="<?php echo $transitURL; ?>"/>
 
-                    <input id="submit" name="submit_question" type="submit" value="Toon reisadvies"/>
+                    <input id="submit" name="submit_question" type="submit" value="Toon advies"/>
 
                 </form>
 
