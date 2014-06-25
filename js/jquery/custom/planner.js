@@ -1,5 +1,8 @@
 /**
  * jQuery to get GET-variables
+ * 
+ * @param {type} qs         document location
+ * @returns {unresolved}    returns array of all GET parameters
  */
 function getQueryParams(qs) {
     qs = qs.split("+").join(" ");
@@ -60,8 +63,8 @@ $(document).ready(function() {
     $(".detailedRoute").click(function() {
         var routeNr = $(this).attr("data-detailnr");
 
-        // display map
-        if (routeNr === "regiotaxi")
+        // display map if not a number
+        if (isNaN(routeNr))
         {
             $("#map_canvas").attr("class", "map_canvas_active");
         }

@@ -6,6 +6,21 @@ require_once './include/fnc.functions.php';
 require_once './include/cls.transitadvice.php';
 require_once './include/cls.route.php';
 require_once './include/cls.step.php';
+
+error_reporting(0);
+$w = stream_get_wrappers();
+if (!extension_loaded('openssl'))
+{
+    error_log("De 'openssl' extensie is niet geladen of niet gevonden. Dit kan gevolgen hebben voor het plannen van een reis met de Google API. Controleer of u dit bij PHP geïnstalleerd hebt.", 0);
+}
+if (!in_array('http', $w))
+{
+    error_log("De 'http' extensie is niet geladen of niet gevonden. Dit kan gevolgen hebben voor het plannen van een reis met de Google API. Controleer of u dit bij PHP geïnstalleerd hebt.", 0);
+}
+if (!in_array('https', $w))
+{
+    error_log("De 'https' extensie is niet geladen of niet gevonden. Dit kan gevolgen hebben voor het plannen van een reis met de Google API. Controleer of u dit bij PHP geïnstalleerd hebt.", 0);
+}
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -16,7 +31,7 @@ require_once './include/cls.step.php';
         <link rel="stylesheet" type="text/css" href="css/slider.css" media="screen" />
         <!-- PrettyPhoto screen CSS -->
         <link rel="stylesheet" type="text/css" href="js/jquery/prettyPhoto/css/prettyPhoto.css" media="screen" />
-        <!--Stylesheets OV Bureau-->
+        <!-- Stylesheets OV Bureau -->
         <link rel="stylesheet" type="text/css" href="css/ov-style.css" />
         <link rel="stylesheet" type="text/css" href="css/style.css" />
         <link rel="stylesheet" type="text/css" href="css/form-planner.css" />
@@ -37,7 +52,7 @@ require_once './include/cls.step.php';
         <!-- Google Maps -->
         <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
         <script type="text/javascript" src="js/maps.js"></script>
-        
+        <!-- jQuery DatePicker -->
         <script type="text/javascript">
             // Setup jQuery DatePicker
             $(function() {
@@ -66,26 +81,26 @@ require_once './include/cls.step.php';
                     dayNamesMin: ['zo', 'ma', 'di', 'wo', 'do', 'vr', 'za'],
                     weekHeader: 'Wk'
                 });
-                
+
                 $(".datePicker").each(function()
                 {
                     $(this).attr('style', 'z-index:25;');
                 });
-                
+
                 $("img[class='ui-datepicker-trigger']").each(function()
                 {
                     $(this).attr('style', 'height:20px; position:absolute; top:50px;right:20px;');
                 });
-                
-                
+
+
                 // Set the cursor ASAP to "Wait"
-                document.body.style.cursor='wait';
+                document.body.style.cursor = 'wait';
             });
-            
+
             // When the window has finished loading, set it back to default...
             $(window).load(function()
             {
-                document.body.style.cursor='default';
+                document.body.style.cursor = 'default';
             });
         </script>
     </head>
@@ -142,9 +157,16 @@ require_once './include/cls.step.php';
 
                 $advice = new TransitAdvice($startAddress, $endAddress, $date, $time, $how);
                 $advice->printAdvice();
+                
+                $unixTime = strtotime(date("d-m-Y H:i", strtotime($date . " " . $time)));
+                $content = file_get_contents("https://maps.googleapis.com/maps/api/directions/json?origin=" . urlencode($startAddress) . "&destination=" . urlencode($endAddress) . "&sensor=false&key=AIzaSyCKZlUXOE0zYan1v9SD1RNyVipP-ZZAABc&" . $how . "=$unixTime&mode=transit&alternatives=true&language=nl");
+                $result = (array) json_decode($content, true);
+                echo'<pre>';
+                var_dump($result);
+                echo'</pre>';
                 ?>
                 <script type="text/javascript">
-                calcRoute();
+                    calcRoute();
                 </script>
                 <?php
                 $requestStatus = $advice->getStatus();
@@ -184,7 +206,7 @@ require_once './include/cls.step.php';
                 $advice->printAdvice();
                 ?>
                 <script type="text/javascript">
-                calcRoute();
+                    calcRoute();
                 </script>
                 <?php
                 // request the status
