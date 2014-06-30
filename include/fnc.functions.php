@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @author  Reinier Gombert
+ * @author  INF2D
  * @date    27-mei-2014
  */
 /**

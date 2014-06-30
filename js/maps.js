@@ -32,7 +32,7 @@ function initialize() {
   }
 }
 function notFound(msg) {  
-  alert('Could not find your location :(');
+  // alert('Could not find your location :(');
 }
 
 function foundYou(position) {

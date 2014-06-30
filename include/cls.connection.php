@@ -1,6 +1,6 @@
 <?php
 /**
- * @author  Reinier Gombert
+ * @author  INF2D
  * @date    13-mei-2014
  */
 
